@@ -1,1 +1,1 @@
-# wait-for-wisdom
+# WaitWise
