@@ -2,19 +2,20 @@
  * detector.ts — all ChatGPT DOM selectors live here.
  * Nothing outside this file should touch ChatGPT-specific DOM structure.
  *
- * Confirmed selector (DevTools, 2025):
- *   <div class="loading-shimmer ...">Thinking</div>
+ * Generation currently has two observable phases in ChatGPT:
+ * 1. an explicit "Thinking" label near the response
+ * 2. an in-progress composer state with a Stop control after the label disappears
  *
- * The element can appear anywhere inside <main> — its parent section
- * changes with each conversation turn, so we always search globally.
+ * We treat either phase as "generation active" so the widget stays mounted until
+ * ChatGPT returns to its idle/send state.
  */
 
 // Update this list if ChatGPT renames or localises the label.
 const THINKING_TEXTS = ['Thinking'];
 
-// Debounce for "ended" detection only — we don't debounce the start
-// so a brief Thinking flash isn't missed.
-const END_DEBOUNCE_MS = 200;
+// ChatGPT keeps a stop control mounted for the full generation lifecycle.
+const STOP_LABEL_SNIPPETS = ['stop', 'stop generating', 'stop streaming'];
+const END_DEBOUNCE_MS = 500;
 
 export interface DetectorCallbacks {
   onThinkingStarted: (prompt: string) => void;
@@ -39,12 +40,79 @@ function findThinkingEl(): Element | null {
   );
 }
 
-/** Returns true if an element is still the active Thinking indicator. */
-function isStillThinking(el: Element): boolean {
+function getComposerRoots(): Element[] {
+  const candidates = [
+    document.querySelector('#thread-bottom-container'),
+    document.querySelector('[data-testid="composer"]'),
+    document.querySelector('main form'),
+    document.querySelector('form'),
+    document.querySelector('footer'),
+  ].filter((el): el is Element => el instanceof Element);
+
+  return [...new Set(candidates)];
+}
+
+function hasStopLabel(value: string | null): boolean {
+  const normalized = value?.trim().toLowerCase() ?? '';
+  return normalized !== '' &&
+    STOP_LABEL_SNIPPETS.some((snippet) => normalized.includes(snippet));
+}
+
+function isSemanticStopControl(el: Element): boolean {
+  if (el instanceof HTMLButtonElement) {
+    if (hasStopLabel(el.getAttribute('aria-label'))) return true;
+    if (hasStopLabel(el.getAttribute('title'))) return true;
+    if (hasStopLabel(el.textContent)) return true;
+  }
+
+  return hasStopLabel(el.getAttribute('data-testid'));
+}
+
+function hasSemanticStopControl(root: ParentNode): boolean {
+  const candidates = root.querySelectorAll('button, [data-testid]');
+  return [...candidates].some(isSemanticStopControl);
+}
+
+function isSquareStopIconPath(path: SVGPathElement): boolean {
+  const d = path.getAttribute('d')?.replace(/\s+/g, '').toLowerCase() ?? '';
+  if (!d) return false;
+
   return (
-    document.contains(el) &&
-    THINKING_TEXTS.includes(el.textContent?.trim() ?? '')
+    d.includes('h10v10h-10z') ||
+    d.includes('h12v12h-12z') ||
+    d.includes('h8v8h-8z')
   );
+}
+
+function hasStopIconFallback(root: ParentNode): boolean {
+  const buttons = [...root.querySelectorAll('button')];
+
+  return buttons.some((button) => {
+    const svg = button.querySelector('svg');
+    if (!svg) return false;
+
+    const rect = svg.querySelector('rect');
+    if (rect) {
+      const width = Number(rect.getAttribute('width') ?? '0');
+      const height = Number(rect.getAttribute('height') ?? '0');
+      if (width > 0 && width === height) return true;
+    }
+
+    const paths = [...svg.querySelectorAll('path')];
+    return paths.some(isSquareStopIconPath);
+  });
+}
+
+function hasActiveStopControl(): boolean {
+  const roots = getComposerRoots();
+  if (roots.length === 0) return false;
+
+  if (roots.some(hasSemanticStopControl)) return true;
+  return roots.some(hasStopIconFallback);
+}
+
+function isGenerationActive(): boolean {
+  return findThinkingEl() !== null || hasActiveStopControl();
 }
 
 function extractPrompt(): string {
@@ -57,34 +125,30 @@ function extractPrompt(): string {
 }
 
 export function startDetector(callbacks: DetectorCallbacks): () => void {
-  let thinkingEl: Element | null = null;
+  let generationActive = false;
   let endDebounce: ReturnType<typeof setTimeout> | null = null;
 
   function handleMutation() {
-    const found = findThinkingEl();
+    const nextGenerationActive = isGenerationActive();
 
-    if (!thinkingEl && found) {
-      // Thinking indicator appeared — fire immediately (no debounce)
-      if (endDebounce) clearTimeout(endDebounce);
-      thinkingEl = found;
+    if (nextGenerationActive && endDebounce) {
+      clearTimeout(endDebounce);
+      endDebounce = null;
+    }
+
+    if (!generationActive && nextGenerationActive) {
+      generationActive = true;
       callbacks.onThinkingStarted(extractPrompt());
       return;
     }
 
-    if (thinkingEl && !isStillThinking(thinkingEl)) {
-      // Element was removed OR its text changed away from "Thinking"
-      // Debounce slightly to avoid noise from brief DOM reshuffles
+    if (generationActive && !nextGenerationActive) {
       if (endDebounce) clearTimeout(endDebounce);
       endDebounce = setTimeout(() => {
-        // Double-check: a new Thinking element may have appeared in a new section
-        const recheck = findThinkingEl();
-        if (recheck) {
-          // New turn started — update ref, don't fire ended/started again
-          thinkingEl = recheck;
-        } else {
-          thinkingEl = null;
-          callbacks.onThinkingEnded();
-        }
+        endDebounce = null;
+        if (isGenerationActive()) return;
+        generationActive = false;
+        callbacks.onThinkingEnded();
       }, END_DEBOUNCE_MS);
     }
   }
@@ -96,10 +160,11 @@ export function startDetector(callbacks: DetectorCallbacks): () => void {
     subtree: true,
     characterData: true, // catch text node changes inside the element
   });
+  handleMutation();
 
   return () => {
     observer.disconnect();
     if (endDebounce) clearTimeout(endDebounce);
-    thinkingEl = null;
+    generationActive = false;
   };
 }
