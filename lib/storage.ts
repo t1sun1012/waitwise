@@ -7,9 +7,37 @@ const DEFAULT_STATS: UserStats = {
   streak: 0,
 };
 
+export interface WidgetPosition {
+  top: number;
+  left: number;
+}
+
+function isWidgetPosition(value: unknown): value is WidgetPosition {
+  if (!value || typeof value !== 'object') return false;
+
+  const candidate = value as Partial<WidgetPosition>;
+  return (
+    typeof candidate.top === 'number' &&
+    Number.isFinite(candidate.top) &&
+    typeof candidate.left === 'number' &&
+    Number.isFinite(candidate.left)
+  );
+}
+
 export async function getStats(): Promise<UserStats> {
   const result = await chrome.storage.local.get('stats');
   return (result.stats as UserStats) ?? DEFAULT_STATS;
+}
+
+export async function getWidgetPosition(): Promise<WidgetPosition | null> {
+  const result = await chrome.storage.local.get('widgetPosition');
+  return isWidgetPosition(result.widgetPosition) ? result.widgetPosition : null;
+}
+
+export async function setWidgetPosition(
+  position: WidgetPosition
+): Promise<void> {
+  await chrome.storage.local.set({ widgetPosition: position });
 }
 
 export async function recordAnswer(correct: boolean): Promise<UserStats> {

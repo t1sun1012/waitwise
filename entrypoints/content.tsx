@@ -3,9 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QuizWidget } from '../components/QuizWidget';
 import { startDetector } from '../lib/detector';
+import { getWidgetPosition, setWidgetPosition } from '../lib/storage';
 import type { QuizQuestion } from '../types/messages';
 
 type ShadowUi = Awaited<ReturnType<typeof createShadowRootUi>>;
+const SHOW_DELAY_MS = 800;
 
 export default defineContentScript({
   matches: ['https://chatgpt.com/*', 'https://chat.openai.com/*'],
@@ -15,9 +17,62 @@ export default defineContentScript({
     type State = 'idle' | 'generating' | 'dismissed';
     let state: State = 'idle';
     let uiRoot: ShadowUi | null = null;
+    let generationId = 0;
+    let activeGenerationId: number | null = null;
+    let mountedGenerationId: number | null = null;
+    let showTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function clearShowTimer() {
+      if (showTimer === null) return;
+      clearTimeout(showTimer);
+      showTimer = null;
+    }
+
+    function removeMountedUi(targetUi?: ShadowUi | null) {
+      if (targetUi) {
+        if (uiRoot === targetUi) {
+          uiRoot = null;
+        }
+        targetUi.remove();
+      } else {
+        uiRoot?.remove();
+        uiRoot = null;
+      }
+
+      mountedGenerationId = null;
+    }
+
+    function isActiveGeneration(targetGenerationId: number): boolean {
+      return (
+        state === 'generating' &&
+        activeGenerationId === targetGenerationId
+      );
+    }
+
+    function resetGenerationState() {
+      clearShowTimer();
+      activeGenerationId = null;
+      state = 'idle';
+      removeMountedUi();
+    }
+
+    function dismissGeneration(targetGenerationId: number, targetUi?: ShadowUi | null) {
+      if (activeGenerationId !== targetGenerationId) return;
+
+      clearShowTimer();
+      state = 'dismissed';
+      removeMountedUi(targetUi);
+      void chrome.runtime.sendMessage({ type: 'QUIZ_SKIPPED' });
+    }
 
     // ── Shadow DOM UI ───────────────────────────────────────────────────────
-    async function mountUi(question: QuizQuestion): Promise<ShadowUi> {
+    async function mountUi(
+      question: QuizQuestion,
+      targetGenerationId: number
+    ): Promise<ShadowUi> {
+      const initialPosition = await getWidgetPosition();
+      let localUi: ShadowUi | null = null;
+
       const ui = await createShadowRootUi(ctx, {
         name: 'waitwise-widget',
         position: 'overlay',
@@ -30,11 +85,12 @@ export default defineContentScript({
               onAnswer={(correct) => {
                 chrome.runtime.sendMessage({ type: 'QUIZ_ANSWERED', correct });
               }}
+              initialPosition={initialPosition}
+              onPositionCommitted={(position) => {
+                void setWidgetPosition(position);
+              }}
               onSkip={() => {
-                state = 'dismissed';
-                chrome.runtime.sendMessage({ type: 'QUIZ_SKIPPED' });
-                uiRoot?.remove();
-                uiRoot = null;
+                dismissGeneration(targetGenerationId, localUi);
               }}
             />
           );
@@ -44,16 +100,19 @@ export default defineContentScript({
           root?.unmount();
         },
       });
+      localUi = ui;
       ui.mount();
       return ui;
     }
 
-    // ── Detector callbacks ──────────────────────────────────────────────────
-    async function onThinkingStarted(_prompt: string) {
-      if (state !== 'idle') return;
-      // If extension was reloaded without refreshing the tab, bail out silently
-      if (!chrome.runtime?.id) return;
-      state = 'generating';
+    async function requestAndMountQuiz(targetGenerationId: number) {
+      if (
+        !isActiveGeneration(targetGenerationId) ||
+        mountedGenerationId === targetGenerationId
+      ) {
+        return;
+      }
+
       console.log('[wAItwise] Thinking detected — requesting quiz');
 
       let response: { question?: QuizQuestion } | undefined;
@@ -61,30 +120,63 @@ export default defineContentScript({
         response = await chrome.runtime.sendMessage({ type: 'GET_QUIZ' });
       } catch (err) {
         console.warn('[wAItwise] sendMessage failed (reload the tab):', err);
-        state = 'idle';
+        return;
+      }
+
+      if (
+        !isActiveGeneration(targetGenerationId) ||
+        mountedGenerationId === targetGenerationId
+      ) {
         return;
       }
 
       if (!response?.question) {
         console.warn('[wAItwise] No question in response:', response);
-        state = 'idle';
         return;
       }
 
       console.log('[wAItwise] Mounting widget');
-      uiRoot = await mountUi(response.question);
+      const nextUi = await mountUi(response.question, targetGenerationId);
+
+      if (!isActiveGeneration(targetGenerationId)) {
+        nextUi.remove();
+        return;
+      }
+
+      uiRoot = nextUi;
+      mountedGenerationId = targetGenerationId;
+    }
+
+    // ── Detector callbacks ──────────────────────────────────────────────────
+    async function onThinkingStarted(_prompt: string) {
+      if (state !== 'idle') return;
+      // If extension was reloaded without refreshing the tab, bail out silently
+      if (!chrome.runtime?.id) return;
+
+      generationId += 1;
+      const currentGenerationId = generationId;
+      activeGenerationId = currentGenerationId;
+      state = 'generating';
+      clearShowTimer();
+      console.log('[wAItwise] Thinking detected — scheduling quiz');
+
+      showTimer = setTimeout(() => {
+        showTimer = null;
+        void requestAndMountQuiz(currentGenerationId);
+      }, SHOW_DELAY_MS);
     }
 
     function onThinkingEnded() {
       console.log('[wAItwise] Thinking ended, state:', state);
       if (state === 'dismissed') {
+        clearShowTimer();
+        activeGenerationId = null;
+        mountedGenerationId = null;
         state = 'idle';
         return;
       }
       if (state === 'generating') {
-        state = 'idle';
-        uiRoot?.remove();
-        uiRoot = null;
+        resetGenerationState();
       }
     }
 
@@ -95,15 +187,13 @@ export default defineContentScript({
     ctx.addEventListener(window, 'wxt:locationchange', () => {
       console.log('[wAItwise] URL changed, resetting');
       stopDetector();
-      state = 'idle';
-      uiRoot?.remove();
-      uiRoot = null;
+      resetGenerationState();
       stopDetector = startDetector({ onThinkingStarted, onThinkingEnded });
     });
 
     ctx.onInvalidated(() => {
       stopDetector();
-      uiRoot?.remove();
+      resetGenerationState();
     });
   },
 });
