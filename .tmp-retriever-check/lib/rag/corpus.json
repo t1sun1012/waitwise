@@ -1,0 +1,189 @@
+[
+    {
+        "id": "python_flask_benefits_q13",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "python",
+        "subcategory": "flask",
+        "title": "Explain what Flask is and its benefits",
+        "question": "Explain what Flask is and its benefits.",
+        "answer": "Flask is a web framework that provides tools, libraries, and technologies for building web applications. Its benefits include being scalable, flexible, easy to work with, and lightweight through a modular microframework design.",
+        "tags": ["python", "flask", "framework", "web"],
+        "keywords": ["flask", "web framework", "microframework", "benefits", "scalable", "lightweight"],
+        "text": "Python Flask web framework interview question about explaining what Flask is and why it is useful. Flask is a lightweight Python microframework for web applications with benefits including scalability, flexibility, easy understanding, and modular design.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Python Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Python%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q13"
+        }
+    },
+    {
+        "id": "python_lists_vs_tuples_q5",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "python",
+        "subcategory": "collections",
+        "title": "Differences between Python lists and tuples",
+        "question": "Define tuples and lists in Python. What are the major differences between them?",
+        "answer": "Lists are mutable sequences stored with square brackets and are better suited for insertion, deletion, and general-purpose operations. Tuples are immutable sequences stored with parentheses, use less memory, and are better when you want fixed values with fewer built-in mutation methods.",
+        "tags": ["python", "lists", "tuples", "collections"],
+        "keywords": ["list", "tuple", "mutable", "immutable", "memory", "built-in methods"],
+        "text": "Python interview question about tuples versus lists. Lists are mutable and flexible for edits, while tuples are immutable, lighter in memory, and better for fixed records.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Python Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Python%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q5-define-tuples-and-lists-in-python-what-are-the-major-differences-between-them"
+        }
+    },
+    {
+        "id": "python_apply_vs_applymap_q9",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "python",
+        "subcategory": "pandas",
+        "title": "Difference between apply and applymap in pandas",
+        "question": "What is the difference between apply and applymap in pandas?",
+        "answer": "applymap is defined on DataFrames and works element by element. apply works on both DataFrames and Series and can operate row-wise, column-wise, or element-wise. applymap is better for straightforward transformations, while apply is used for more complex operations and aggregations.",
+        "tags": ["python", "pandas", "apply", "applymap"],
+        "keywords": ["apply", "applymap", "dataframe", "series", "element-wise", "aggregation"],
+        "text": "Pandas interview question about apply versus applymap. applymap transforms each DataFrame cell, while apply is more general and can work across rows, columns, series, and aggregations.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Python Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Python%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q9-what-is-the-difference-between-apply-and-applymap-function-in-pandas"
+        }
+    },
+    {
+        "id": "python_factorial_recursion_q11",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "python",
+        "subcategory": "algorithms",
+        "title": "Recursive factorial with negative input handling",
+        "question": "Given a positive integer X return its factorial. If a negative integer is provided, return -1. Implement the solution by using a recursive function.",
+        "answer": "A recursive factorial solution should return -1 for negative input, return 1 for zero, and otherwise return x multiplied by factorial(x - 1) until the recursion reaches the base case.",
+        "tags": ["python", "recursion", "factorial", "algorithms"],
+        "keywords": ["factorial", "recursive", "base case", "negative input", "python function"],
+        "text": "Python algorithm interview question about implementing factorial recursively. Important details are handling negative numbers, defining a base case for zero or one, and multiplying by factorial of x minus one.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Python Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Python%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q11-given-a-positive-integerx-return-an-integer-that-is-a-factorial-ofx-if-a-negative-integer-is-provided-return--1-implement-the-solution-by-using-a-recursive-function"
+        }
+    },
+    {
+        "id": "sql_join_types_q1",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "sql",
+        "subcategory": "joins",
+        "title": "SQL joins and their types",
+        "question": "What are joins in SQL and discuss their types?",
+        "answer": "A JOIN combines rows from two or more tables using a related column. Common types are inner join for matching rows only, left join for all rows from the left table plus matches from the right, right join for all rows from the right table plus matches from the left, and full join for all rows from both sides when matches exist or not.",
+        "tags": ["sql", "joins", "relational-databases"],
+        "keywords": ["inner join", "left join", "right join", "full join", "combine rows"],
+        "text": "SQL interview question about what joins are and how inner, left, right, and full joins differ. Joins combine rows from multiple tables using related columns.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "SQL & DB Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/SQL%20%26%20DB%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q1-what-are-joins-in-sql-and-discuss-its-types"
+        }
+    },
+    {
+        "id": "sql_primary_foreign_unique_keys_q2",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "sql",
+        "subcategory": "schema-design",
+        "title": "Primary key vs foreign key vs unique key",
+        "question": "Define the primary, foreign, and unique keys and the differences between them.",
+        "answer": "A primary key uniquely identifies each row, does not allow nulls or duplicates, and each table has one primary key definition. A foreign key references a primary key in another table to maintain relationships and can contain nulls. A unique key also identifies rows uniquely but can allow one null and a table can have multiple unique keys.",
+        "tags": ["sql", "database-design", "primary-key", "foreign-key", "unique-key"],
+        "keywords": ["primary key", "foreign key", "unique key", "integrity", "relationships"],
+        "text": "SQL database design interview question comparing primary keys, foreign keys, and unique keys. Primary keys uniquely identify rows, foreign keys define relationships, and unique keys enforce uniqueness with slightly different null behavior.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "SQL & DB Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/SQL%20%26%20DB%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q2-define-the-primary-foreign-and-unique-keys-and-the-differences-between-them"
+        }
+    },
+    {
+        "id": "sql_between_vs_in_q3",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "sql",
+        "subcategory": "querying",
+        "title": "BETWEEN versus IN in SQL",
+        "question": "What is the difference between BETWEEN and IN operators in SQL?",
+        "answer": "BETWEEN selects values inside an inclusive range and is commonly used for numeric, text, or date ranges. IN checks whether a value matches one of the values in a provided list and is often used for categorical matching. In practice, BETWEEN is usually used for ranges and IN for explicit sets.",
+        "tags": ["sql", "operators", "querying"],
+        "keywords": ["between", "in", "range", "categorical", "where clause"],
+        "text": "SQL interview question about the difference between BETWEEN and IN. BETWEEN handles inclusive ranges, while IN checks membership in an explicit list of values.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "SQL & DB Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/SQL%20%26%20DB%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q3-what-is-the-difference-between-between-and-in-operators-in-sql"
+        }
+    },
+    {
+        "id": "ml_logistic_regression_q7",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "machine-learning",
+        "subcategory": "classification",
+        "title": "Explain logistic regression",
+        "question": "Explain briefly the logistic regression model and state an example of when you have used it recently.",
+        "answer": "Logistic regression estimates the probability that an example belongs to a class based on input features. It is commonly used as a binary classifier by applying a threshold such as 0.5 to the predicted probability. Typical use cases include spam detection and medical risk classification.",
+        "tags": ["machine-learning", "logistic-regression", "classification"],
+        "keywords": ["logistic regression", "binary classifier", "probability", "threshold", "classification"],
+        "text": "Machine learning interview question about logistic regression. Logistic regression predicts class probabilities and is commonly used for binary classification tasks such as spam filtering or medical classification.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Machine Learning Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Machine%20Learning%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q7-explain-briefly-the-logistic-regression-model-and-state-an-example-of-when-you-have-used-it-recently"
+        }
+    },
+    {
+        "id": "ml_entropy_information_gain_q9",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "machine-learning",
+        "subcategory": "decision-trees",
+        "title": "Entropy and information gain in decision trees",
+        "question": "Explain what information gain and entropy are in the context of decision trees.",
+        "answer": "Entropy measures impurity or uncertainty in a set of examples. Information gain measures how much entropy is reduced after splitting the data on a feature. Decision trees choose splits that maximize information gain because those splits reduce uncertainty the most.",
+        "tags": ["machine-learning", "decision-trees", "entropy", "information-gain"],
+        "keywords": ["entropy", "information gain", "decision tree", "impurity", "split"],
+        "text": "Decision tree interview question about entropy and information gain. Entropy measures uncertainty, and information gain measures the reduction in entropy after a split. Better features produce larger information gain.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Machine Learning Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Machine%20Learning%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q9-explain-what-is-information-gain-and-entropy-in-the-context-of-decision-trees"
+        }
+    },
+    {
+        "id": "ml_roc_curve_q19",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "machine-learning",
+        "subcategory": "evaluation",
+        "title": "ROC curve and when to use it",
+        "question": "What is the ROC curve and when should you use it?",
+        "answer": "The ROC curve plots true positive rate against false positive rate across classification thresholds. It helps compare classifiers, choose thresholds visually, and is especially useful when class balance matters. The area under the ROC curve summarizes overall separability.",
+        "tags": ["machine-learning", "roc", "auc", "evaluation", "classification"],
+        "keywords": ["roc curve", "auc", "true positive rate", "false positive rate", "threshold"],
+        "text": "Model evaluation interview question about ROC curves. ROC plots true positive rate versus false positive rate across thresholds and helps compare models, especially in classification settings with threshold tradeoffs.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Machine Learning Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Machine%20Learning%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q19-what-is-the-roc-curve-and-when-should-you-use-it"
+        }
+    },
+    {
+        "id": "ml_concept_vs_data_drift_q34",
+        "corpus": "data_science_interview_questions_answers",
+        "category": "machine-learning",
+        "subcategory": "ml-systems",
+        "title": "Concept drift versus data drift",
+        "question": "What is the difference between concept drift and data drift and how do you overcome each of them?",
+        "answer": "Concept drift is when the relationship between inputs and targets changes over time, so the model logic itself becomes outdated. Data drift is when the input feature distribution changes over time. Concept drift can be handled with online learning or periodic retraining on recent data, while data drift can be handled by monitoring feature distributions and retraining or preprocessing when significant changes occur.",
+        "tags": ["machine-learning", "ml-systems", "concept-drift", "data-drift"],
+        "keywords": ["concept drift", "data drift", "monitoring", "retraining", "online learning"],
+        "text": "Machine learning systems interview question about concept drift versus data drift. Concept drift changes the mapping from input to target, while data drift changes the input distribution. Both usually require monitoring and retraining strategies.",
+        "source": {
+            "repo": "youssefHosni/Data-Science-Interview-Questions-Answers",
+            "path": "Machine Learning Interview Questions & Answers for Data Scientists.md",
+            "url": "https://github.com/youssefHosni/Data-Science-Interview-Questions-Answers/blob/main/Machine%20Learning%20Interview%20Questions%20%26%20Answers%20for%20Data%20Scientists.md#q34-what-is-the-difference-between-concept-and-data-drift-and-how-to-overcome-each-of-them"
+        }
+    }
+]

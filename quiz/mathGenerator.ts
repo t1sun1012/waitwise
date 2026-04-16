@@ -67,6 +67,7 @@ function generate(): QuizQuestion {
     question,
     options: allOptions.map(String),
     correctIndex,
+    mode: 'math',
   };
 }
 

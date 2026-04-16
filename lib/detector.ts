@@ -18,8 +18,34 @@ const STOP_LABEL_SNIPPETS = ['stop', 'stop generating', 'stop streaming'];
 const END_DEBOUNCE_MS = 500;
 
 export interface DetectorCallbacks {
-  onThinkingStarted: (prompt: string) => void;
+  onThinkingStarted: (
+    prompt: string,
+    recentUserPrompts: string[],
+    recentAssistantReplies: string[]
+  ) => void;
   onThinkingEnded: () => void;
+}
+
+function normalizeMessageText(value: string | null | undefined): string {
+  return value?.replace(/\s+/g, ' ').trim() ?? '';
+}
+
+function extractMessageText(messageEl: Element): string {
+  const textNodes = messageEl.querySelectorAll('.text-message');
+  if (textNodes.length > 0) {
+    const combined = [...textNodes]
+      .map((node) => normalizeMessageText(node.textContent))
+      .filter(Boolean)
+      .join('\n\n');
+
+    if (combined) return combined;
+  }
+
+  return normalizeMessageText(messageEl.textContent);
+}
+
+function getMessageElements(role: 'user' | 'assistant'): Element[] {
+  return [...document.querySelectorAll(`[data-message-author-role="${role}"]`)];
 }
 
 /** Returns the active Thinking indicator element, wherever it is in the DOM. */
@@ -115,21 +141,46 @@ function isGenerationActive(): boolean {
   return findThinkingEl() !== null || hasActiveStopControl();
 }
 
-function extractPrompt(): string {
-  const userMessages = document.querySelectorAll(
-    '[data-message-author-role="user"]'
-  );
+export function getLatestUserPrompt(): string {
+  const userMessages = getMessageElements('user');
   if (userMessages.length === 0) return '';
-  const last = userMessages[userMessages.length - 1];
-  return last.textContent?.trim() ?? '';
+
+  return extractMessageText(userMessages[userMessages.length - 1]);
+}
+
+export function getRecentUserPrompts(limit = 2): string[] {
+  const userMessages = getMessageElements('user');
+  if (userMessages.length <= 1) return [];
+
+  return userMessages
+    .slice(Math.max(0, userMessages.length - 1 - limit), userMessages.length - 1)
+    .map((messageEl) => extractMessageText(messageEl))
+    .filter(Boolean);
+}
+
+export function getRecentAssistantReplies(limit = 2): string[] {
+  const assistantMessages = getMessageElements('assistant');
+  if (assistantMessages.length === 0) return [];
+
+  return assistantMessages
+    .slice(-limit)
+    .map((messageEl) => extractMessageText(messageEl))
+    .filter(Boolean);
 }
 
 export function startDetector(callbacks: DetectorCallbacks): () => void {
   let generationActive = false;
   let endDebounce: ReturnType<typeof setTimeout> | null = null;
+  let stableUserPrompts = getRecentUserPrompts();
+  let stableAssistantReplies = getRecentAssistantReplies();
 
   function handleMutation() {
     const nextGenerationActive = isGenerationActive();
+
+    if (!nextGenerationActive) {
+      stableUserPrompts = getRecentUserPrompts();
+      stableAssistantReplies = getRecentAssistantReplies();
+    }
 
     if (nextGenerationActive && endDebounce) {
       clearTimeout(endDebounce);
@@ -138,7 +189,11 @@ export function startDetector(callbacks: DetectorCallbacks): () => void {
 
     if (!generationActive && nextGenerationActive) {
       generationActive = true;
-      callbacks.onThinkingStarted(extractPrompt());
+      callbacks.onThinkingStarted(
+        getLatestUserPrompt(),
+        stableUserPrompts,
+        stableAssistantReplies
+      );
       return;
     }
 

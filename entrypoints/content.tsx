@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QuizWidget } from '../components/QuizWidget';
 import { startDetector } from '../lib/detector';
+import { buildConversationContext } from '../lib/rag/queryBuilder';
 import { getWidgetPosition, setWidgetPosition } from '../lib/storage';
 import type { QuizQuestion } from '../types/messages';
 
@@ -49,20 +50,25 @@ export default defineContentScript({
       );
     }
 
-    function resetGenerationState() {
+    function clearActiveGeneration() {
       clearShowTimer();
       activeGenerationId = null;
       state = 'idle';
+    }
+
+    function resetGenerationState() {
+      clearActiveGeneration();
       removeMountedUi();
     }
 
-    function dismissGeneration(targetGenerationId: number, targetUi?: ShadowUi | null) {
-      if (activeGenerationId !== targetGenerationId) return;
+    function closeWidget(targetGenerationId: number, targetUi?: ShadowUi | null) {
+      if (activeGenerationId === targetGenerationId && state === 'generating') {
+        clearShowTimer();
+        state = 'dismissed';
+        void chrome.runtime.sendMessage({ type: 'QUIZ_SKIPPED' });
+      }
 
-      clearShowTimer();
-      state = 'dismissed';
       removeMountedUi(targetUi);
-      void chrome.runtime.sendMessage({ type: 'QUIZ_SKIPPED' });
     }
 
     // ── Shadow DOM UI ───────────────────────────────────────────────────────
@@ -82,15 +88,19 @@ export default defineContentScript({
           root.render(
             <QuizWidget
               question={question}
-              onAnswer={(correct) => {
-                chrome.runtime.sendMessage({ type: 'QUIZ_ANSWERED', correct });
+              onAnswer={(selectedIndex) => {
+                chrome.runtime.sendMessage({
+                  type: 'QUIZ_ANSWERED',
+                  question,
+                  selectedIndex,
+                });
               }}
               initialPosition={initialPosition}
               onPositionCommitted={(position) => {
                 void setWidgetPosition(position);
               }}
               onSkip={() => {
-                dismissGeneration(targetGenerationId, localUi);
+                closeWidget(targetGenerationId, localUi);
               }}
             />
           );
@@ -105,7 +115,12 @@ export default defineContentScript({
       return ui;
     }
 
-    async function requestAndMountQuiz(targetGenerationId: number) {
+    async function requestAndMountQuiz(
+      targetGenerationId: number,
+      currentPrompt: string,
+      recentUserPrompts: string[],
+      recentAssistantReplies: string[]
+    ) {
       if (
         !isActiveGeneration(targetGenerationId) ||
         mountedGenerationId === targetGenerationId
@@ -113,11 +128,24 @@ export default defineContentScript({
         return;
       }
 
+      const retrievalContext = buildConversationContext({
+        currentUserPrompt: currentPrompt,
+        recentUserPrompts,
+        recentAssistantReplies,
+      });
+
       console.log('[wAItwise] Thinking detected — requesting quiz');
+      console.log('[wAItwise] Retrieval context:', retrievalContext);
 
       let response: { question?: QuizQuestion } | undefined;
       try {
-        response = await chrome.runtime.sendMessage({ type: 'GET_QUIZ' });
+        response = await chrome.runtime.sendMessage({
+          type: 'GET_QUIZ',
+          currentPrompt,
+          recentUserPrompts,
+          retrievalQuery: retrievalContext.retrievalQueries[0] ?? retrievalContext.summary,
+          retrievalContext,
+        });
       } catch (err) {
         console.warn('[wAItwise] sendMessage failed (reload the tab):', err);
         return;
@@ -148,13 +176,21 @@ export default defineContentScript({
     }
 
     // ── Detector callbacks ──────────────────────────────────────────────────
-    async function onThinkingStarted(_prompt: string) {
+    async function onThinkingStarted(
+      prompt: string,
+      recentUserPrompts: string[],
+      recentAssistantReplies: string[]
+    ) {
       if (state !== 'idle') return;
       // If extension was reloaded without refreshing the tab, bail out silently
       if (!chrome.runtime?.id) return;
 
+      removeMountedUi();
       generationId += 1;
       const currentGenerationId = generationId;
+      const promptSnapshot = prompt;
+      const userPromptsSnapshot = [...recentUserPrompts];
+      const assistantRepliesSnapshot = [...recentAssistantReplies];
       activeGenerationId = currentGenerationId;
       state = 'generating';
       clearShowTimer();
@@ -162,21 +198,23 @@ export default defineContentScript({
 
       showTimer = setTimeout(() => {
         showTimer = null;
-        void requestAndMountQuiz(currentGenerationId);
+        void requestAndMountQuiz(
+          currentGenerationId,
+          promptSnapshot,
+          userPromptsSnapshot,
+          assistantRepliesSnapshot
+        );
       }, SHOW_DELAY_MS);
     }
 
     function onThinkingEnded() {
       console.log('[wAItwise] Thinking ended, state:', state);
       if (state === 'dismissed') {
-        clearShowTimer();
-        activeGenerationId = null;
-        mountedGenerationId = null;
-        state = 'idle';
+        clearActiveGeneration();
         return;
       }
       if (state === 'generating') {
-        resetGenerationState();
+        clearActiveGeneration();
       }
     }
 
