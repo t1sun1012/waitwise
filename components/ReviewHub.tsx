@@ -32,6 +32,35 @@ const MODE_COPY: Record<
   },
 };
 
+type AttemptSortOrder =
+  | 'newest'
+  | 'oldest'
+  | 'correct-first'
+  | 'incorrect-first'
+  | 'topic';
+
+const SORT_OPTIONS: Array<{ value: AttemptSortOrder; label: string }> = [
+  { value: 'newest', label: 'Newest to oldest' },
+  { value: 'oldest', label: 'Oldest to newest' },
+  { value: 'correct-first', label: 'Correct to incorrect' },
+  { value: 'incorrect-first', label: 'Incorrect to correct' },
+  { value: 'topic', label: 'Sorted by topic' },
+];
+
+function getAttemptTopic(attempt: QuizAttempt): string {
+  if (attempt.source?.subcategory) return attempt.source.subcategory;
+  if (attempt.source?.category) return attempt.source.category;
+  if (attempt.mode === 'retrieval') return 'Retrieval Review';
+  if (attempt.mode === 'math') return 'Math Drill';
+  return 'Quiz';
+}
+
+function getAttemptModeLabel(mode: QuizMode | undefined): string {
+  if (mode === 'retrieval') return 'Retrieval Review';
+  if (mode === 'math') return 'Math Drill';
+  return 'Quiz';
+}
+
 export function ReviewHub() {
   const [quizMode, setQuizModeState] = useState<QuizMode>('retrieval');
   const [expandedMode, setExpandedMode] = useState<QuizMode | null>(null);
@@ -42,6 +71,9 @@ export function ReviewHub() {
   const [geminiApiKeyDraft, setGeminiApiKeyDraft] = useState('');
   const [isSavingGeminiKey, setIsSavingGeminiKey] = useState(false);
   const [isGeminiKeyVisible, setIsGeminiKeyVisible] = useState(false);
+  const [isGeminiSectionOpen, setIsGeminiSectionOpen] = useState(true);
+  const [attemptSortOrder, setAttemptSortOrder] =
+    useState<AttemptSortOrder>('newest');
 
   useEffect(() => {
     async function loadState() {
@@ -57,6 +89,7 @@ export function ReviewHub() {
       setAttempts(savedAttempts);
       setGeminiApiKeyState(savedGeminiApiKey);
       setGeminiApiKeyDraft(savedGeminiApiKey);
+      setIsGeminiSectionOpen(savedGeminiApiKey.trim().length === 0);
     }
 
     void loadState();
@@ -86,11 +119,13 @@ export function ReviewHub() {
       if (typeof nextGeminiApiKey === 'string') {
         setGeminiApiKeyState(nextGeminiApiKey);
         setGeminiApiKeyDraft(nextGeminiApiKey);
+        setIsGeminiSectionOpen(nextGeminiApiKey.trim().length === 0);
       }
 
       if (changes.geminiApiKey && changes.geminiApiKey.newValue === undefined) {
         setGeminiApiKeyState('');
         setGeminiApiKeyDraft('');
+        setIsGeminiSectionOpen(true);
       }
     }
 
@@ -103,9 +138,54 @@ export function ReviewHub() {
     return `${Math.round((stats.correctAnswers / stats.quizzesAnswered) * 100)}%`;
   }, [stats.correctAnswers, stats.quizzesAnswered]);
 
-  const recentAttempts = attempts.slice(0, 5);
   const hasStoredGeminiApiKey = geminiApiKey.trim().length > 0;
   const geminiKeyHasChanges = geminiApiKeyDraft.trim() !== geminiApiKey.trim();
+  const sortedAttempts = useMemo(() => {
+    const nextAttempts = [...attempts];
+
+    switch (attemptSortOrder) {
+      case 'oldest':
+        nextAttempts.sort((left, right) => left.answeredAt - right.answeredAt);
+        break;
+      case 'correct-first':
+        nextAttempts.sort((left, right) => {
+          if (left.isCorrect !== right.isCorrect) {
+            return Number(right.isCorrect) - Number(left.isCorrect);
+          }
+
+          return right.answeredAt - left.answeredAt;
+        });
+        break;
+      case 'incorrect-first':
+        nextAttempts.sort((left, right) => {
+          if (left.isCorrect !== right.isCorrect) {
+            return Number(left.isCorrect) - Number(right.isCorrect);
+          }
+
+          return right.answeredAt - left.answeredAt;
+        });
+        break;
+      case 'topic':
+        nextAttempts.sort((left, right) => {
+          const topicComparison = getAttemptTopic(left).localeCompare(
+            getAttemptTopic(right)
+          );
+
+          if (topicComparison !== 0) {
+            return topicComparison;
+          }
+
+          return right.answeredAt - left.answeredAt;
+        });
+        break;
+      case 'newest':
+      default:
+        nextAttempts.sort((left, right) => right.answeredAt - left.answeredAt);
+        break;
+    }
+
+    return nextAttempts;
+  }, [attemptSortOrder, attempts]);
 
   async function handleModeChange(nextMode: QuizMode) {
     if (nextMode === quizMode) return;
@@ -130,6 +210,7 @@ export function ReviewHub() {
       await setGeminiApiKey(normalized);
       setGeminiApiKeyState(normalized);
       setGeminiApiKeyDraft(normalized);
+      setIsGeminiSectionOpen(normalized.length === 0);
     } finally {
       setIsSavingGeminiKey(false);
     }
@@ -141,6 +222,7 @@ export function ReviewHub() {
       await setGeminiApiKey('');
       setGeminiApiKeyState('');
       setGeminiApiKeyDraft('');
+      setIsGeminiSectionOpen(true);
     } finally {
       setIsSavingGeminiKey(false);
     }
@@ -286,196 +368,281 @@ export function ReviewHub() {
         </section>
 
         <section className="mt-5 border-t border-slate-200 pt-5">
-          <div className="mb-3">
-            <h2 className="text-sm font-semibold text-slate-900">
-              Gemini API Key
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-slate-600">
-              Enter your own Gemini API key here. WaitWise stores it only in this
-              browser&apos;s extension storage so you can edit it later in the
-              review hub.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4">
-            <div className="mb-3 flex items-center justify-between gap-3">
-              <div className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                Local-only setting
-              </div>
-              <div
-                className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${
-                  hasStoredGeminiApiKey
-                    ? 'bg-emerald-100 text-emerald-800'
-                    : 'bg-slate-200 text-slate-600'
+          <div className="mb-3 flex items-start justify-between gap-3">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900">
+                Gemini API Key
+              </h2>
+              {(!hasStoredGeminiApiKey || isGeminiSectionOpen) && (
+                <p className="mt-1 text-sm leading-6 text-slate-600">
+                  Enter your own Gemini API key here. WaitWise stores it only in this
+                  browser&apos;s extension storage so you can edit it later in the
+                  review hub.
+                </p>
+              )}
+            </div>
+            <button
+              type="button"
+              aria-expanded={isGeminiSectionOpen}
+              aria-controls="gemini-api-key-panel"
+              aria-label={`${
+                isGeminiSectionOpen ? 'Hide' : 'Show'
+              } Gemini API key settings`}
+              onClick={() => setIsGeminiSectionOpen((current) => !current)}
+              className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
+            >
+              <svg
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+                className={`h-4 w-4 transition-transform ${
+                  isGeminiSectionOpen ? 'rotate-180' : ''
                 }`}
               >
-                {hasStoredGeminiApiKey ? 'Saved locally' : 'Not set'}
+                <path
+                  d="M5 7.5L10 12.5L15 7.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {isGeminiSectionOpen && (
+            <div
+              id="gemini-api-key-panel"
+              className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
+            >
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <div className="text-xs uppercase tracking-[0.2em] text-slate-400">
+                  Local-only setting
+                </div>
+                <div
+                  className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${
+                    hasStoredGeminiApiKey
+                      ? 'bg-emerald-100 text-emerald-800'
+                      : 'bg-slate-200 text-slate-600'
+                  }`}
+                >
+                  {hasStoredGeminiApiKey ? 'Saved locally' : 'Not set'}
+                </div>
+              </div>
+
+              <label className="block text-sm font-medium text-slate-900">
+                API key
+              </label>
+              <div className="mt-2 flex gap-2">
+                <input
+                  type={isGeminiKeyVisible ? 'text' : 'password'}
+                  value={geminiApiKeyDraft}
+                  onChange={(event) => setGeminiApiKeyDraft(event.target.value)}
+                  placeholder="Paste your Gemini API key"
+                  autoComplete="off"
+                  spellCheck={false}
+                  className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+                />
+                <button
+                  type="button"
+                  onClick={() => setIsGeminiKeyVisible((current) => !current)}
+                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
+                >
+                  {isGeminiKeyVisible ? 'Hide' : 'Show'}
+                </button>
+              </div>
+
+              <p className="mt-3 text-xs leading-5 text-slate-500">
+                This key stays on your machine. WaitWise does not need a shared
+                backend key for this flow.
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => void handleGeminiApiKeySave()}
+                  disabled={isSavingGeminiKey || !geminiKeyHasChanges}
+                  className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
+                    isSavingGeminiKey || !geminiKeyHasChanges
+                      ? 'cursor-not-allowed bg-slate-200 text-slate-500'
+                      : 'bg-teal-600 text-white hover:bg-teal-700'
+                  }`}
+                >
+                  {isSavingGeminiKey ? 'Saving...' : 'Save key'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void handleGeminiApiKeyClear()}
+                  disabled={isSavingGeminiKey && !hasStoredGeminiApiKey}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
+                >
+                  Remove key
+                </button>
               </div>
             </div>
-
-            <label className="block text-sm font-medium text-slate-900">
-              API key
-            </label>
-            <div className="mt-2 flex gap-2">
-              <input
-                type={isGeminiKeyVisible ? 'text' : 'password'}
-                value={geminiApiKeyDraft}
-                onChange={(event) => setGeminiApiKeyDraft(event.target.value)}
-                placeholder="Paste your Gemini API key"
-                autoComplete="off"
-                spellCheck={false}
-                className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
-              />
-              <button
-                type="button"
-                onClick={() => setIsGeminiKeyVisible((current) => !current)}
-                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
-              >
-                {isGeminiKeyVisible ? 'Hide' : 'Show'}
-              </button>
-            </div>
-
-            <p className="mt-3 text-xs leading-5 text-slate-500">
-              This key stays on your machine. WaitWise does not need a shared
-              backend key for this flow.
-            </p>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => void handleGeminiApiKeySave()}
-                disabled={isSavingGeminiKey || !geminiKeyHasChanges}
-                className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
-                  isSavingGeminiKey || !geminiKeyHasChanges
-                    ? 'cursor-not-allowed bg-slate-200 text-slate-500'
-                    : 'bg-teal-600 text-white hover:bg-teal-700'
-                }`}
-              >
-                {isSavingGeminiKey ? 'Saving...' : 'Save key'}
-              </button>
-              <button
-                type="button"
-                onClick={() => void handleGeminiApiKeyClear()}
-                disabled={isSavingGeminiKey && !hasStoredGeminiApiKey}
-                className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
-              >
-                Remove key
-              </button>
-            </div>
-          </div>
+          )}
         </section>
 
         <section className="mt-5 border-t border-slate-200 pt-5">
-          <div className="mb-3">
-            <h2 className="text-sm font-semibold text-slate-900">
-              Recent Review
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-slate-600">
-              Your latest answered quizzes live here so we can turn this popup
-              into a real review hub instead of just a stats board.
-            </p>
+          <div className="mb-3 flex items-end justify-between gap-3">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900">
+                Recent Review
+              </h2>
+              <p className="mt-1 text-sm leading-6 text-slate-600">
+                Your latest answered quizzes live here so we can turn this popup
+                into a real review hub instead of just a stats board.
+              </p>
+            </div>
+            <label className="min-w-0">
+              <span className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                Sort
+              </span>
+              <select
+                value={attemptSortOrder}
+                onChange={(event) =>
+                  setAttemptSortOrder(event.target.value as AttemptSortOrder)
+                }
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+              >
+                {SORT_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
 
-          {recentAttempts.length === 0 ? (
+          {sortedAttempts.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-500">
               No answered quizzes yet. Answer one in ChatGPT and it will show up
               here.
             </div>
           ) : (
             <div className="space-y-3">
-              {recentAttempts.map((attempt) => (
-                <article
+              {sortedAttempts.map((attempt) => (
+                <details
                   key={attempt.id}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
+                  className={`group rounded-2xl border px-4 py-4 ${
+                    attempt.isCorrect
+                      ? 'border-emerald-200 bg-emerald-50/70'
+                      : 'border-rose-200 bg-rose-50/70'
+                  }`}
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span
-                        className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
-                          attempt.isCorrect
-                            ? 'bg-emerald-100 text-emerald-800'
-                            : 'bg-rose-100 text-rose-800'
-                        }`}
-                      >
-                        {attempt.isCorrect ? 'Correct' : 'Missed'}
-                      </span>
-                      <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                        {attempt.mode ?? 'quiz'}
-                      </span>
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold leading-6 text-slate-900">
+                        {attempt.question}
+                      </p>
                     </div>
-                    <time className="text-xs text-slate-400">
-                      {new Date(attempt.answeredAt).toLocaleString([], {
-                        month: 'short',
-                        day: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                      })}
-                    </time>
-                  </div>
+                    <span className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition group-open:rotate-180">
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        aria-hidden="true"
+                        className="h-4 w-4"
+                      >
+                        <path
+                          d="M5 7.5L10 12.5L15 7.5"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
 
-                  <p className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-                    {attempt.question}
-                  </p>
+                  <div className="mt-4 space-y-3 border-t border-slate-200 pt-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span
+                          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
+                            attempt.isCorrect
+                              ? 'bg-emerald-100 text-emerald-800'
+                              : 'bg-rose-100 text-rose-800'
+                          }`}
+                        >
+                          {attempt.isCorrect ? 'Correct' : 'Missed'}
+                        </span>
+                        <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                          {getAttemptModeLabel(attempt.mode)}
+                        </span>
+                        <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                          {getAttemptTopic(attempt)}
+                        </span>
+                      </div>
+                      <time className="text-xs text-slate-400">
+                        {new Date(attempt.answeredAt).toLocaleString([], {
+                          month: 'short',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        })}
+                      </time>
+                    </div>
 
-                  <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
-                    <p>
-                      <span className="font-medium text-slate-900">
-                        Your answer:
-                      </span>{' '}
-                      {attempt.selectedOption}
-                    </p>
-                    {!attempt.isCorrect && (
+                    <div className="space-y-2 text-sm leading-6 text-slate-600">
                       <p>
                         <span className="font-medium text-slate-900">
-                          Correct answer:
+                          Your answer:
                         </span>{' '}
-                        {attempt.correctOption}
+                        {attempt.selectedOption}
                       </p>
-                    )}
-                    {attempt.explanation && (
-                      <p className="text-slate-500">{attempt.explanation}</p>
-                    )}
-                    {attempt.source && (
-                      <details className="rounded-xl border border-slate-200 bg-white px-3 py-2">
-                        <summary className="cursor-pointer list-none text-sm font-medium text-slate-900">
-                          Source evidence
-                        </summary>
-                        <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
-                          <p className="font-medium text-slate-900">
-                            {attempt.source.title}
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                              {attempt.source.category}
-                            </span>
-                            {attempt.source.subcategory && (
+                      {!attempt.isCorrect && (
+                        <p>
+                          <span className="font-medium text-slate-900">
+                            Correct answer:
+                          </span>{' '}
+                          {attempt.correctOption}
+                        </p>
+                      )}
+                      {attempt.explanation && (
+                        <p className="text-slate-500">{attempt.explanation}</p>
+                      )}
+                      {attempt.source && (
+                        <details className="rounded-xl border border-slate-200 bg-white px-3 py-2">
+                          <summary className="cursor-pointer list-none text-sm font-medium text-slate-900">
+                            Source evidence
+                          </summary>
+                          <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+                            <p className="font-medium text-slate-900">
+                              {attempt.source.title}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
                               <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                                {attempt.source.subcategory}
+                                {attempt.source.category}
                               </span>
-                            )}
-                            {attempt.source.tags.slice(0, 4).map((tag) => (
-                              <span
-                                key={tag}
-                                className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-500"
-                              >
-                                #{tag}
-                              </span>
-                            ))}
+                              {attempt.source.subcategory && (
+                                <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                                  {attempt.source.subcategory}
+                                </span>
+                              )}
+                              {attempt.source.tags.slice(0, 4).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-500"
+                                >
+                                  #{tag}
+                                </span>
+                              ))}
+                            </div>
+                            <p>{attempt.source.answer}</p>
+                            <a
+                              href={attempt.source.source.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center text-sm font-medium text-teal-700 hover:text-teal-900"
+                            >
+                              Open source entry
+                            </a>
                           </div>
-                          <p>{attempt.source.answer}</p>
-                          <a
-                            href={attempt.source.source.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center text-sm font-medium text-teal-700 hover:text-teal-900"
-                          >
-                            Open source entry
-                          </a>
-                        </div>
-                      </details>
-                    )}
+                        </details>
+                      )}
+                    </div>
                   </div>
-                </article>
+                </details>
               ))}
             </div>
           )}
