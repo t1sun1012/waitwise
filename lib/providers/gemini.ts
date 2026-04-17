@@ -271,11 +271,13 @@ async function requestGeminiContent(
   promptText: string,
   controller: AbortController
 ): Promise<GeminiResponseResult> {
-  const response = await fetch(GEMINI_ENDPOINT, {
+  const endpointUrl = new URL(GEMINI_ENDPOINT);
+  endpointUrl.searchParams.set('key', apiKey);
+
+  const response = await fetch(endpointUrl.toString(), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-goog-api-key': apiKey,
     },
     body: JSON.stringify({
       contents: [
