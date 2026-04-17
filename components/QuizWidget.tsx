@@ -195,7 +195,7 @@ export function QuizWidget({
   return (
     <div
       ref={cardRef}
-      className={`fixed z-[9999] w-72 rounded-2xl border border-gray-100 bg-white p-4 font-sans text-sm shadow-2xl ${
+      className={`fixed z-[9999] w-72 rounded-2xl border border-gray-100 bg-white p-4 font-sans text-sm text-gray-900 shadow-2xl ${
         dragging ? 'select-none' : ''
       }`}
       style={{
@@ -293,7 +293,7 @@ export function QuizWidget({
           let style =
             'rounded-lg border px-3 py-2 text-left transition-colors cursor-pointer ';
           if (!answered) {
-            style += 'border-gray-200 hover:border-indigo-400 hover:bg-indigo-50';
+            style += 'border-gray-200 text-gray-700 hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-900';
           } else if (idx === question.correctIndex) {
             style += 'border-green-400 bg-green-50 text-green-800';
           } else if (idx === selected) {
