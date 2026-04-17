@@ -66,14 +66,12 @@ export function QuizWidget({
   const [selected, setSelected] = useState<number | null>(null);
   const [position, setPosition] = useState<WidgetPosition | null>(null);
   const [dragging, setDragging] = useState(false);
-  const [isSourceOpen, setIsSourceOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<DragState | null>(null);
   const positionRef = useRef<WidgetPosition | null>(null);
 
   const answered = selected !== null;
   const correct = selected === question.correctIndex;
-  const source = question.source;
   const headerLabel =
     question.mode === 'retrieval'
       ? 'Retrieval Review'
@@ -92,12 +90,6 @@ export function QuizWidget({
     setSelected(idx);
     onAnswer(idx);
   }
-
-  useEffect(() => {
-    if (answered && !correct && source) {
-      setIsSourceOpen(true);
-    }
-  }, [answered, correct, source]);
 
   useLayoutEffect(() => {
     const card = cardRef.current;
@@ -195,7 +187,7 @@ export function QuizWidget({
   return (
     <div
       ref={cardRef}
-      className={`fixed z-[9999] w-72 rounded-2xl border border-gray-100 bg-white p-4 font-sans text-sm shadow-2xl ${
+      className={`fixed z-[9999] flex max-h-[calc(100vh-2rem)] w-72 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white p-4 font-sans text-sm shadow-2xl ${
         dragging ? 'select-none' : ''
       }`}
       style={{
@@ -227,105 +219,55 @@ export function QuizWidget({
         </button>
       </div>
 
-      <p className="font-medium text-gray-800 mb-3">{question.question}</p>
-      {question.contextNote && (
-        <p className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">
-          {question.contextNote}
-        </p>
-      )}
-      {source && (
-        <div className="mb-3 rounded-xl border border-teal-100 bg-teal-50/70 px-3 py-3">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-700">
-                Source Evidence
-              </p>
-              <p className="mt-1 text-xs font-medium leading-5 text-slate-800">
-                {source.title}
-              </p>
-            </div>
-            <button
-              type="button"
-              className="text-[11px] font-medium uppercase tracking-[0.18em] text-teal-700 hover:text-teal-900"
-              onClick={() => setIsSourceOpen((current) => !current)}
-            >
-              {isSourceOpen ? 'Hide' : 'Show'}
-            </button>
-          </div>
-
-          <div className="mt-2 flex flex-wrap gap-2">
-            <span className="rounded-full bg-white px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-              {source.category}
-            </span>
-            {source.subcategory && (
-              <span className="rounded-full bg-white px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                {source.subcategory}
-              </span>
-            )}
-            {source.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-white px-2 py-1 text-[10px] font-medium text-slate-500"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-
-          {isSourceOpen && (
-            <div className="mt-3 space-y-2 border-t border-teal-100 pt-3 text-xs leading-5 text-slate-600">
-              <p>{source.answer}</p>
-              <a
-                href={source.source.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center text-xs font-medium text-teal-700 hover:text-teal-900"
-              >
-                Open source entry
-              </a>
-            </div>
-          )}
-        </div>
-      )}
-
-      <div className="flex flex-col gap-2">
-        {question.options.map((opt, idx) => {
-          let style =
-            'rounded-lg border px-3 py-2 text-left transition-colors cursor-pointer ';
-          if (!answered) {
-            style += 'border-gray-200 hover:border-indigo-400 hover:bg-indigo-50';
-          } else if (idx === question.correctIndex) {
-            style += 'border-green-400 bg-green-50 text-green-800';
-          } else if (idx === selected) {
-            style += 'border-red-400 bg-red-50 text-red-800';
-          } else {
-            style += 'border-gray-200 text-gray-400';
-          }
-
-          return (
-            <button key={idx} className={style} onClick={() => handleSelect(idx)}>
-              {opt}
-            </button>
-          );
-        })}
-      </div>
-
-      {answered && (
-        <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3">
-          <p
-            className={`text-xs font-semibold ${
-              correct ? 'text-green-700' : 'text-red-700'
-            }`}
-          >
-            {correct ? 'Correct!' : `Wrong — answer is ${question.options[question.correctIndex]}`}
+      <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+        <p className="mb-3 font-medium text-gray-800">{question.question}</p>
+        {question.contextNote && (
+          <p className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">
+            {question.contextNote}
           </p>
-          {question.explanation && (
-            <p className="mt-2 text-xs leading-5 text-slate-600">
-              {question.explanation}
-            </p>
-          )}
+        )}
+
+        <div className="flex flex-col gap-2">
+          {question.options.map((opt, idx) => {
+            let style =
+              'cursor-pointer rounded-lg border px-3 py-2 text-left transition-colors ';
+            if (!answered) {
+              style += 'border-gray-200 hover:border-indigo-400 hover:bg-indigo-50';
+            } else if (idx === question.correctIndex) {
+              style += 'border-green-400 bg-green-50 text-green-800';
+            } else if (idx === selected) {
+              style += 'border-red-400 bg-red-50 text-red-800';
+            } else {
+              style += 'border-gray-200 text-gray-400';
+            }
+
+            return (
+              <button key={idx} className={style} onClick={() => handleSelect(idx)}>
+                {opt}
+              </button>
+            );
+          })}
         </div>
-      )}
+
+        {answered && (
+          <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3">
+            <p
+              className={`text-xs font-semibold ${
+                correct ? 'text-green-700' : 'text-red-700'
+              }`}
+            >
+              {correct
+                ? 'Correct!'
+                : `Wrong — answer is ${question.options[question.correctIndex]}`}
+            </p>
+            {question.explanation && (
+              <p className="mt-2 text-xs leading-5 text-slate-600">
+                {question.explanation}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

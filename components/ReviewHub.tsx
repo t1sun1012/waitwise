@@ -34,6 +34,7 @@ const MODE_COPY: Record<
 
 export function ReviewHub() {
   const [quizMode, setQuizModeState] = useState<QuizMode>('retrieval');
+  const [expandedMode, setExpandedMode] = useState<QuizMode | null>(null);
   const [stats, setStats] = useState<UserStats>(EMPTY_STATS);
   const [attempts, setAttempts] = useState<QuizAttempt[]>([]);
   const [isSavingMode, setIsSavingMode] = useState(false);
@@ -118,6 +119,10 @@ export function ReviewHub() {
     }
   }
 
+  function handleModeDescriptionToggle(mode: QuizMode) {
+    setExpandedMode((current) => (current === mode ? null : mode));
+  }
+
   async function handleGeminiApiKeySave() {
     setIsSavingGeminiKey(true);
     try {
@@ -158,9 +163,6 @@ export function ReviewHub() {
                 keep an eye on how much review you are stacking up.
               </p>
             </div>
-            <div className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-800">
-              {MODE_COPY[quizMode].label}
-            </div>
           </div>
         </div>
 
@@ -193,47 +195,91 @@ export function ReviewHub() {
 
         <section>
           <div className="mb-3">
-            <h2 className="text-sm font-semibold text-slate-900">Quiz Mode</h2>
-            <p className="mt-1 text-sm leading-6 text-slate-600">
-              Switch between topic-aware review and pure math practice without
-              reopening the ChatGPT tab.
-            </p>
+            <h2 className="text-sm font-semibold text-slate-900">
+              Change Quiz Mode
+            </h2>
           </div>
 
-          <div className="space-y-3">
+          <div
+            role="radiogroup"
+            aria-label="Quiz mode"
+            className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50"
+          >
             {(['retrieval', 'math'] as QuizMode[]).map((mode) => {
               const active = mode === quizMode;
+              const expanded = mode === expandedMode;
               return (
-                <button
+                <div
                   key={mode}
-                  type="button"
-                  onClick={() => void handleModeChange(mode)}
-                  disabled={isSavingMode && active}
-                  className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
-                    active
-                      ? 'border-teal-500 bg-teal-50 shadow-[0_12px_30px_-24px_rgba(13,148,136,0.85)]'
-                      : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white'
-                  }`}
+                  className={
+                    mode === 'math' ? 'border-t border-slate-200' : undefined
+                  }
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <div className="text-sm font-semibold text-slate-900">
-                        {MODE_COPY[mode].label}
+                  <div
+                    className={`flex items-center gap-3 px-4 py-4 transition ${
+                      active ? 'bg-teal-50' : 'bg-slate-50'
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => void handleModeChange(mode)}
+                      disabled={isSavingMode && active}
+                      className="flex min-w-0 flex-1 items-center gap-3 text-left"
+                    >
+                      <div
+                        className={`h-4 w-4 shrink-0 rounded-full border ${
+                          active
+                            ? 'border-teal-600 bg-teal-600 shadow-[0_0_0_3px_rgba(20,184,166,0.18)]'
+                            : 'border-slate-300 bg-white'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-slate-900">
+                          {MODE_COPY[mode].label}
+                        </div>
                       </div>
-                      <p className="mt-1 text-sm leading-6 text-slate-600">
-                        {MODE_COPY[mode].description}
-                      </p>
-                    </div>
-                    <div
-                      className={`mt-1 h-4 w-4 rounded-full border ${
-                        active
-                          ? 'border-teal-600 bg-teal-600 shadow-[0_0_0_3px_rgba(20,184,166,0.18)]'
-                          : 'border-slate-300 bg-white'
-                      }`}
-                      aria-hidden="true"
-                    />
+                    </button>
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      aria-controls={`quiz-mode-description-${mode}`}
+                      aria-label={`${
+                        expanded ? 'Hide' : 'Show'
+                      } ${MODE_COPY[mode].label} description`}
+                      onClick={() => handleModeDescriptionToggle(mode)}
+                      className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
+                    >
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        aria-hidden="true"
+                        className={`h-4 w-4 transition-transform ${
+                          expanded ? 'rotate-180' : ''
+                        }`}
+                      >
+                        <path
+                          d="M5 7.5L10 12.5L15 7.5"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
                   </div>
-                </button>
+
+                  {expanded && (
+                    <div
+                      id={`quiz-mode-description-${mode}`}
+                      className="border-t border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-600"
+                    >
+                      {MODE_COPY[mode].description}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
