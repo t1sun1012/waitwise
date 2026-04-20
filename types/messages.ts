@@ -1,6 +1,13 @@
 import type { ConversationContext, CorpusSource } from './rag';
 
-export type QuizMode = 'retrieval' | 'math';
+export type QuizMode = 'retrieval' | 'math' | 'general';
+export type QuizProvider = 'gemini' | 'openai' | 'anthropic';
+export type QuizQuestionType =
+  | 'concept_check'
+  | 'application'
+  | 'misconception'
+  | 'category'
+  | 'history';
 
 export interface QuizSource {
   id: string;
@@ -20,6 +27,8 @@ export interface QuizQuestion {
   options: string[];
   correctIndex: number;
   mode?: QuizMode;
+  topic?: string;
+  questionType?: QuizQuestionType;
   contextNote?: string;
   explanation?: string;
   source?: QuizSource;
@@ -37,6 +46,8 @@ export interface QuizAttempt {
   selectedOption: string;
   isCorrect: boolean;
   mode?: QuizMode;
+  topic?: string;
+  questionType?: QuizQuestionType;
   contextNote?: string;
   explanation?: string;
   source?: QuizSource;

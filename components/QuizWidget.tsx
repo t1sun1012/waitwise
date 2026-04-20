@@ -75,12 +75,16 @@ export function QuizWidget({
   const headerLabel =
     question.mode === 'retrieval'
       ? 'Retrieval Review'
+      : question.mode === 'general'
+        ? 'General Thinking'
       : question.mode === 'math'
         ? 'Math Drill'
         : 'Quick Quiz';
   const headerToneClass =
     question.mode === 'retrieval'
       ? 'text-teal-700'
+      : question.mode === 'general'
+        ? 'text-amber-700'
       : question.mode === 'math'
         ? 'text-indigo-600'
         : 'text-indigo-600';

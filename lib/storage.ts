@@ -1,7 +1,9 @@
 import type {
   QuizAttempt,
   QuizMode,
+  QuizProvider,
   QuizQuestion,
+  QuizQuestionType,
   QuizSource,
   UserStats,
 } from '../types/messages';
@@ -13,8 +15,19 @@ const DEFAULT_STATS: UserStats = {
   streak: 0,
 };
 const DEFAULT_QUIZ_MODE: QuizMode = 'retrieval';
+const DEFAULT_QUIZ_PROVIDER: QuizProvider = 'gemini';
 const MAX_QUIZ_ATTEMPTS = 100;
-const GEMINI_API_KEY_STORAGE_KEY = 'geminiApiKey';
+const LEGACY_GEMINI_API_KEY_STORAGE_KEY = 'geminiApiKey';
+const PROVIDER_API_KEY_STORAGE_KEY = 'providerApiKey';
+const QUIZ_PROVIDER_STORAGE_KEY = 'quizProvider';
+const QUIZ_QUESTION_TYPES: QuizQuestionType[] = [
+  'concept_check',
+  'application',
+  'misconception',
+  'category',
+  'history',
+];
+const QUIZ_PROVIDERS: QuizProvider[] = ['gemini', 'openai', 'anthropic'];
 
 export interface WidgetPosition {
   top: number;
@@ -34,7 +47,21 @@ function isWidgetPosition(value: unknown): value is WidgetPosition {
 }
 
 function isQuizMode(value: unknown): value is QuizMode {
-  return value === 'retrieval' || value === 'math';
+  return value === 'retrieval' || value === 'math' || value === 'general';
+}
+
+function isQuizProvider(value: unknown): value is QuizProvider {
+  return (
+    typeof value === 'string' &&
+    QUIZ_PROVIDERS.includes(value as QuizProvider)
+  );
+}
+
+function isQuizQuestionType(value: unknown): value is QuizQuestionType {
+  return (
+    typeof value === 'string' &&
+    QUIZ_QUESTION_TYPES.includes(value as QuizQuestionType)
+  );
 }
 
 function isQuizSource(value: unknown): value is QuizSource {
@@ -69,6 +96,9 @@ function isQuizQuestion(value: unknown): value is QuizQuestion {
     Array.isArray(candidate.options) &&
     candidate.options.every((option) => typeof option === 'string') &&
     typeof candidate.correctIndex === 'number' &&
+    (candidate.topic === undefined || typeof candidate.topic === 'string') &&
+    (candidate.questionType === undefined ||
+      isQuizQuestionType(candidate.questionType)) &&
     (candidate.source === undefined || isQuizSource(candidate.source))
   );
 }
@@ -89,6 +119,9 @@ function isQuizAttempt(value: unknown): value is QuizAttempt {
     typeof candidate.selectedIndex === 'number' &&
     typeof candidate.selectedOption === 'string' &&
     typeof candidate.isCorrect === 'boolean' &&
+    (candidate.topic === undefined || typeof candidate.topic === 'string') &&
+    (candidate.questionType === undefined ||
+      isQuizQuestionType(candidate.questionType)) &&
     (candidate.source === undefined || isQuizSource(candidate.source))
   );
 }
@@ -125,6 +158,8 @@ function buildQuizAttempt(
     selectedOption,
     isCorrect,
     mode: question.mode,
+    topic: question.topic,
+    questionType: question.questionType,
     contextNote: question.contextNote,
     explanation: question.explanation,
     source: question.source
@@ -179,10 +214,22 @@ export async function getQuizMode(): Promise<QuizMode> {
   return isQuizMode(result.quizMode) ? result.quizMode : DEFAULT_QUIZ_MODE;
 }
 
-export async function getGeminiApiKey(): Promise<string> {
-  const result = await chrome.storage.local.get(GEMINI_API_KEY_STORAGE_KEY);
-  return typeof result[GEMINI_API_KEY_STORAGE_KEY] === 'string'
-    ? result[GEMINI_API_KEY_STORAGE_KEY]
+export async function getQuizProvider(): Promise<QuizProvider> {
+  const result = await chrome.storage.local.get(QUIZ_PROVIDER_STORAGE_KEY);
+  return isQuizProvider(result[QUIZ_PROVIDER_STORAGE_KEY])
+    ? result[QUIZ_PROVIDER_STORAGE_KEY]
+    : DEFAULT_QUIZ_PROVIDER;
+}
+
+export async function getProviderApiKey(): Promise<string> {
+  const result = await chrome.storage.local.get([
+    PROVIDER_API_KEY_STORAGE_KEY,
+    LEGACY_GEMINI_API_KEY_STORAGE_KEY,
+  ]);
+  return typeof result[PROVIDER_API_KEY_STORAGE_KEY] === 'string'
+    ? result[PROVIDER_API_KEY_STORAGE_KEY]
+    : typeof result[LEGACY_GEMINI_API_KEY_STORAGE_KEY] === 'string'
+      ? result[LEGACY_GEMINI_API_KEY_STORAGE_KEY]
     : '';
 }
 
@@ -196,14 +243,22 @@ export async function setQuizMode(mode: QuizMode): Promise<void> {
   await chrome.storage.local.set({ quizMode: mode });
 }
 
-export async function setGeminiApiKey(apiKey: string): Promise<void> {
+export async function setQuizProvider(provider: QuizProvider): Promise<void> {
+  await chrome.storage.local.set({ [QUIZ_PROVIDER_STORAGE_KEY]: provider });
+}
+
+export async function setProviderApiKey(apiKey: string): Promise<void> {
   const normalized = apiKey.trim();
   if (!normalized) {
-    await chrome.storage.local.remove(GEMINI_API_KEY_STORAGE_KEY);
+    await chrome.storage.local.remove([
+      PROVIDER_API_KEY_STORAGE_KEY,
+      LEGACY_GEMINI_API_KEY_STORAGE_KEY,
+    ]);
     return;
   }
 
-  await chrome.storage.local.set({ [GEMINI_API_KEY_STORAGE_KEY]: normalized });
+  await chrome.storage.local.set({ [PROVIDER_API_KEY_STORAGE_KEY]: normalized });
+  await chrome.storage.local.remove(LEGACY_GEMINI_API_KEY_STORAGE_KEY);
 }
 
 export async function recordAnswer(
