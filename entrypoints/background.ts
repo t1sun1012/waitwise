@@ -1,14 +1,10 @@
-import { mathGenerator } from '../quiz/mathGenerator';
-import {
-  hasConfidentRetrievalMatch,
-  retrievalQuizGenerator,
-} from '../quiz/retrievalGenerator';
-import { generateQuizWithGemini } from '../lib/providers/gemini';
+import { resolveQuizForMode } from '../lib/quizModeRouter';
 import { retrieveRelevantChunks } from '../lib/rag/retriever';
 import {
-  getGeminiApiKey,
+  getProviderApiKey,
   getRecentQuizSourceIds,
   getQuizMode,
+  getQuizProvider,
   recordAnswer,
   recordQuizShown,
 } from '../lib/storage';
@@ -196,36 +192,56 @@ export default defineBackground(() => {
           }
 
           await recordQuizShown();
-          let retrievalQuestion = null;
+          const [quizProvider, providerApiKey] = await Promise.all([
+            getQuizProvider(),
+            getProviderApiKey(),
+          ]);
+          const { question, fallbackReason } = await resolveQuizForMode({
+            quizMode,
+            quizProvider,
+            providerApiKey,
+            retrievedChunks,
+            retrievalContext: message.retrievalContext,
+            currentPrompt: message.currentPrompt,
+            recentUserPrompts: message.recentUserPrompts,
+            recentSourceIds,
+          });
 
-          if (quizMode === 'retrieval') {
-            const geminiApiKey = await getGeminiApiKey();
-            const hasConfidentMatch = hasConfidentRetrievalMatch(retrievedChunks);
-
-            if (!geminiApiKey) {
-              console.log(
-                '[wAItwise] Gemini API key not set, using local retrieval fallback'
-              );
-            } else if (!hasConfidentMatch) {
-              console.log(
-                '[wAItwise] Retrieval match not confident enough for Gemini, using local fallback'
-              );
-            } else {
-              retrievalQuestion = await generateQuizWithGemini({
-                apiKey: geminiApiKey,
-                retrievalContext: message.retrievalContext,
-                retrievedChunks,
-              });
-            }
-
-            if (!retrievalQuestion) {
-              retrievalQuestion = retrievalQuizGenerator.generate(retrievedChunks, {
-                recentSourceIds,
-              });
-            }
+          if (fallbackReason === 'retrieval-missing-api-key') {
+            console.log(
+              `[wAItwise] ${quizProvider} API key not set, using local retrieval fallback`
+            );
+          } else if (fallbackReason === 'retrieval-low-confidence') {
+            console.log(
+              `[wAItwise] Retrieval match not confident enough for ${quizProvider}, using local fallback`
+            );
+          } else if (fallbackReason === 'retrieval-provider-failed') {
+            console.log(
+              `[wAItwise] ${quizProvider} retrieval generation failed, using local retrieval fallback`
+            );
+          } else if (fallbackReason === 'general-missing-api-key') {
+            console.log(
+              `[wAItwise] General mode requires a ${quizProvider} API key, using math fallback`
+            );
+          } else if (fallbackReason === 'general-missing-prompt') {
+            console.log(
+              '[wAItwise] General mode missing current prompt, using math fallback'
+            );
+          } else if (fallbackReason === 'general-provider-failed') {
+            console.log(
+              `[wAItwise] ${quizProvider} general generation failed, using math fallback`
+            );
+          } else if (fallbackReason === 'math-missing-api-key') {
+            console.log(
+              `[wAItwise] Math mode has no ${quizProvider} API key, using local math fallback`
+            );
+          } else if (fallbackReason === 'math-provider-failed') {
+            console.log(
+              `[wAItwise] ${quizProvider} math generation failed, using local math fallback`
+            );
           }
 
-          if (quizMode === 'retrieval' && retrievalQuestion?.contextNote) {
+          if (quizMode === 'retrieval' && question.contextNote) {
             console.log(
               '[wAItwise] Retrieval quiz fallback -> random RAG question',
               retrievedChunks[0]
@@ -238,12 +254,8 @@ export default defineBackground(() => {
             );
           }
 
-          const question =
-            quizMode === 'retrieval'
-              ? retrievalQuestion ?? mathGenerator.generate()
-              : mathGenerator.generate();
-
           console.log('[wAItwise] Active quiz mode:', quizMode);
+          console.log('[wAItwise] Active quiz provider:', quizProvider);
           sendResponse({ question, retrievedChunks });
           break;
         }

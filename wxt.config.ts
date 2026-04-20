@@ -13,6 +13,8 @@ export default defineConfig({
       'https://chatgpt.com/*',
       'https://chat.openai.com/*',
       'https://generativelanguage.googleapis.com/*',
+      'https://api.openai.com/*',
+      'https://api.anthropic.com/*',
     ],
   },
 });

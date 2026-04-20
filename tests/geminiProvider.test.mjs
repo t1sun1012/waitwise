@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import os from 'node:os';
+import { mkdtempSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test, { before } from 'node:test';
@@ -10,17 +11,21 @@ const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
-const outDir = path.join(repoRoot, '.tmp-gemini-provider-tests');
+const outDir = mkdtempSync(
+  path.join(os.tmpdir(), 'waitwise-gemini-provider-tests-')
+);
 
-let buildGeminiPromptText;
-let buildQuizQuestionFromGeminiOutput;
+let buildGeneralGeminiPromptText;
+let buildGeneralQuizQuestionFromGeminiOutput;
+let buildRetrievalGeminiPromptText;
+let buildRetrievalQuizQuestionFromGeminiOutput;
 let extractGeminiDebugMeta;
 let extractGeminiText;
 let extractJsonPayload;
-let normalizeGeminiGeneratedQuiz;
+let normalizeGeneralGeminiGeneratedQuiz;
+let normalizeRetrievalGeminiGeneratedQuiz;
 
 function compileGeminiProviderModules() {
-  mkdirSync(outDir, { recursive: true });
   writeFileSync(
     path.join(outDir, 'package.json'),
     JSON.stringify({ type: 'commonjs' }, null, 2)
@@ -72,13 +77,20 @@ function compileGeminiProviderModules() {
 
   const providerModule = require(path.join(outDir, 'lib/providers/gemini.js'));
 
-  buildGeminiPromptText = providerModule.buildGeminiPromptText;
-  buildQuizQuestionFromGeminiOutput =
-    providerModule.buildQuizQuestionFromGeminiOutput;
+  buildGeneralGeminiPromptText = providerModule.buildGeneralGeminiPromptText;
+  buildGeneralQuizQuestionFromGeminiOutput =
+    providerModule.buildGeneralQuizQuestionFromGeminiOutput;
+  buildRetrievalGeminiPromptText =
+    providerModule.buildRetrievalGeminiPromptText;
+  buildRetrievalQuizQuestionFromGeminiOutput =
+    providerModule.buildRetrievalQuizQuestionFromGeminiOutput;
   extractGeminiDebugMeta = providerModule.extractGeminiDebugMeta;
   extractGeminiText = providerModule.extractGeminiText;
   extractJsonPayload = providerModule.extractJsonPayload;
-  normalizeGeminiGeneratedQuiz = providerModule.normalizeGeminiGeneratedQuiz;
+  normalizeGeneralGeminiGeneratedQuiz =
+    providerModule.normalizeGeneralGeminiGeneratedQuiz;
+  normalizeRetrievalGeminiGeneratedQuiz =
+    providerModule.normalizeRetrievalGeminiGeneratedQuiz;
 }
 
 before(() => {
@@ -110,8 +122,8 @@ function createRankedChunk(id = 'python_flask_benefits_q13') {
   };
 }
 
-test('buildGeminiPromptText includes topic context and source ids', () => {
-  const prompt = buildGeminiPromptText({
+test('buildRetrievalGeminiPromptText includes topic context and source ids', () => {
+  const prompt = buildRetrievalGeminiPromptText({
     retrievalContext: {
       currentUserPrompt: 'what is flask?',
       previousUserPrompts: [],
@@ -132,6 +144,33 @@ test('buildGeminiPromptText includes topic context and source ids', () => {
   assert.match(prompt, /python_flask_benefits_q13/);
   assert.match(prompt, /Return raw JSON only/i);
   assert.match(prompt, /Question under 14 words/i);
+});
+
+test('buildGeneralGeminiPromptText stays anchored to the current prompt', () => {
+  const prompt = buildGeneralGeminiPromptText({
+    currentPrompt: 'Why do eclipses happen?',
+    recentUserPrompts: ['Explain tides simply.'],
+  });
+
+  assert.match(prompt, /Input prompt: Why do eclipses happen\?/i);
+  assert.doesNotMatch(prompt, /Recent user context for disambiguation/i);
+  assert.match(prompt, /"mode":"general"/i);
+  assert.match(prompt, /questionType/i);
+});
+
+test('buildGeneralGeminiPromptText uses recent user prompts only for vague follow-ups', () => {
+  const prompt = buildGeneralGeminiPromptText({
+    currentPrompt: 'Why?',
+    recentUserPrompts: [
+      'What is photosynthesis?',
+      'Why do plants need sunlight?',
+    ],
+  });
+
+  assert.match(prompt, /Input prompt: Why\?/i);
+  assert.match(prompt, /Recent user context for disambiguation:/i);
+  assert.match(prompt, /What is photosynthesis\?/i);
+  assert.match(prompt, /Why do plants need sunlight\?/i);
 });
 
 test('extractGeminiText returns the first text part', () => {
@@ -164,8 +203,8 @@ test('extractGeminiDebugMeta returns finish reason and token counts', () => {
   });
 });
 
-test('normalizeGeminiGeneratedQuiz accepts valid payloads', () => {
-  const payload = normalizeGeminiGeneratedQuiz({
+test('normalizeRetrievalGeminiGeneratedQuiz accepts valid payloads', () => {
+  const payload = normalizeRetrievalGeminiGeneratedQuiz({
     topic: ' python ',
     question: ' What is Flask? ',
     options: [' A framework ', 'A DB', 'A package manager', 'A shell'],
@@ -181,6 +220,28 @@ test('normalizeGeminiGeneratedQuiz accepts valid payloads', () => {
     correctIndex: 0,
     explanation: 'Flask is a web framework.',
     sourceId: 'python_flask_benefits_q13',
+  });
+});
+
+test('normalizeGeneralGeminiGeneratedQuiz accepts valid payloads', () => {
+  const payload = normalizeGeneralGeminiGeneratedQuiz({
+    mode: 'general',
+    topic: ' astronomy ',
+    questionType: 'concept_check',
+    question: ' Why do eclipses happen? ',
+    options: ['Orbital alignment', 'Cloud cover', 'Air pressure', 'Magnetism'],
+    correctIndex: 0,
+    explanation: ' Eclipses happen when celestial bodies align. ',
+  });
+
+  assert.deepEqual(payload, {
+    mode: 'general',
+    topic: 'astronomy',
+    questionType: 'concept_check',
+    question: 'Why do eclipses happen?',
+    options: ['Orbital alignment', 'Cloud cover', 'Air pressure', 'Magnetism'],
+    correctIndex: 0,
+    explanation: 'Eclipses happen when celestial bodies align.',
   });
 });
 
@@ -206,8 +267,8 @@ test('extractJsonPayload unwraps fenced JSON blocks', () => {
   );
 });
 
-test('normalizeGeminiGeneratedQuiz rejects invalid option counts', () => {
-  const payload = normalizeGeminiGeneratedQuiz({
+test('normalizeRetrievalGeminiGeneratedQuiz rejects invalid option counts', () => {
+  const payload = normalizeRetrievalGeminiGeneratedQuiz({
     topic: 'python',
     question: 'What is Flask?',
     options: ['A framework', 'A DB', 'A package manager'],
@@ -219,9 +280,23 @@ test('normalizeGeminiGeneratedQuiz rejects invalid option counts', () => {
   assert.equal(payload, null);
 });
 
-test('buildQuizQuestionFromGeminiOutput resolves source metadata', () => {
+test('normalizeGeneralGeminiGeneratedQuiz rejects invalid question types', () => {
+  const payload = normalizeGeneralGeminiGeneratedQuiz({
+    mode: 'general',
+    topic: 'astronomy',
+    questionType: 'trivia',
+    question: 'Why do eclipses happen?',
+    options: ['Orbital alignment', 'Cloud cover', 'Air pressure', 'Magnetism'],
+    correctIndex: 0,
+    explanation: 'Because they align.',
+  });
+
+  assert.equal(payload, null);
+});
+
+test('buildRetrievalQuizQuestionFromGeminiOutput resolves source metadata', () => {
   const rankedChunk = createRankedChunk();
-  const question = buildQuizQuestionFromGeminiOutput(
+  const question = buildRetrievalQuizQuestionFromGeminiOutput(
     {
       topic: 'python',
       question: 'Which statement best describes Flask?',
@@ -235,7 +310,25 @@ test('buildQuizQuestionFromGeminiOutput resolves source metadata', () => {
 
   assert.ok(question);
   assert.equal(question.mode, 'retrieval');
+  assert.equal(question.topic, 'python');
   assert.equal(question.source.id, rankedChunk.chunk.id);
   assert.equal(question.source.title, rankedChunk.chunk.title);
   assert.equal(question.source.source.url, rankedChunk.chunk.source.url);
+});
+
+test('buildGeneralQuizQuestionFromGeminiOutput creates a source-free general question', () => {
+  const question = buildGeneralQuizQuestionFromGeminiOutput({
+    mode: 'general',
+    topic: 'astronomy',
+    questionType: 'concept_check',
+    question: 'Why do eclipses happen?',
+    options: ['Orbital alignment', 'Cloud cover', 'Air pressure', 'Magnetism'],
+    correctIndex: 0,
+    explanation: 'Eclipses happen when celestial bodies align.',
+  });
+
+  assert.equal(question.mode, 'general');
+  assert.equal(question.topic, 'astronomy');
+  assert.equal(question.questionType, 'concept_check');
+  assert.equal(question.source, undefined);
 });

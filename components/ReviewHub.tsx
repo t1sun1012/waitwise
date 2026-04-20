@@ -1,13 +1,21 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-  getGeminiApiKey,
+  getProviderApiKey,
   getQuizAttempts,
   getQuizMode,
+  getQuizProvider,
   getStats,
-  setGeminiApiKey,
+  setProviderApiKey,
   setQuizMode,
+  setQuizProvider,
 } from '../lib/storage';
-import type { QuizAttempt, QuizMode, UserStats } from '../types/messages';
+import type {
+  QuizAttempt,
+  QuizMode,
+  QuizProvider,
+  QuizQuestionType,
+  UserStats,
+} from '../types/messages';
 
 const EMPTY_STATS: UserStats = {
   quizzesShown: 0,
@@ -23,12 +31,56 @@ const MODE_COPY: Record<
   retrieval: {
     label: 'Retrieval Review',
     description:
-      'Use the current prompt plus recent assistant replies to surface a relevant review question. If nothing relevant is found, show a random review question from the RAG database instead.',
+      'Use WaitWise retrieval plus your active provider to surface a grounded review question. If nothing relevant is found, show a fallback review question from the RAG database instead.',
+  },
+  general: {
+    label: 'General Thinking',
+    description:
+      'Use your current prompt to generate one broader thinking-extension quiz. This mode stays close to your topic, but it can zoom out into adjacent ideas when that helps the question feel thoughtful.',
   },
   math: {
     label: 'Math Drill',
     description:
-      'Show quick arithmetic practice while ChatGPT is generating. Best when you want a clean, topic-agnostic wait-state quiz.',
+      'Show quick arithmetic practice while ChatGPT is generating. If your active provider is configured, WaitWise will try provider-backed math first and fall back to a local drill when needed.',
+  },
+};
+
+const PROVIDER_COPY: Record<
+  QuizProvider,
+  {
+    label: string;
+    shortLabel: string;
+    placeholder: string;
+    description: string;
+    helper: string;
+  }
+> = {
+  gemini: {
+    label: 'Google Gemini',
+    shortLabel: 'Gemini',
+    placeholder: 'Paste your Gemini API key',
+    description:
+      'Use Gemini as the active quiz engine for Retrieval Review, General Thinking, and Math Drill.',
+    helper:
+      'This key stays on your machine. WaitWise stores only one active provider key at a time.',
+  },
+  openai: {
+    label: 'OpenAI',
+    shortLabel: 'OpenAI',
+    placeholder: 'Paste your OpenAI API key',
+    description:
+      'Use OpenAI as the active quiz engine for Retrieval Review, General Thinking, and Math Drill.',
+    helper:
+      'Switching providers keeps one local key slot, so replacing this key will overwrite the current active provider key.',
+  },
+  anthropic: {
+    label: 'Anthropic',
+    shortLabel: 'Anthropic',
+    placeholder: 'Paste your Anthropic API key',
+    description:
+      'Use Anthropic as the active quiz engine for Retrieval Review, General Thinking, and Math Drill.',
+    helper:
+      'WaitWise keeps this key in local extension storage only. There is no shared backend secret in this flow.',
   },
 };
 
@@ -48,17 +100,31 @@ const SORT_OPTIONS: Array<{ value: AttemptSortOrder; label: string }> = [
 ];
 
 function getAttemptTopic(attempt: QuizAttempt): string {
+  if (attempt.topic) return attempt.topic;
   if (attempt.source?.subcategory) return attempt.source.subcategory;
   if (attempt.source?.category) return attempt.source.category;
   if (attempt.mode === 'retrieval') return 'Retrieval Review';
+  if (attempt.mode === 'general') return 'General Thinking';
   if (attempt.mode === 'math') return 'Math Drill';
   return 'Quiz';
 }
 
 function getAttemptModeLabel(mode: QuizMode | undefined): string {
   if (mode === 'retrieval') return 'Retrieval Review';
+  if (mode === 'general') return 'General Thinking';
   if (mode === 'math') return 'Math Drill';
   return 'Quiz';
+}
+
+function formatQuestionType(
+  questionType: QuizQuestionType | undefined
+): string | null {
+  if (!questionType) return null;
+
+  return questionType
+    .split('_')
+    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+    .join(' ');
 }
 
 export function ReviewHub() {
@@ -67,29 +133,40 @@ export function ReviewHub() {
   const [stats, setStats] = useState<UserStats>(EMPTY_STATS);
   const [attempts, setAttempts] = useState<QuizAttempt[]>([]);
   const [isSavingMode, setIsSavingMode] = useState(false);
-  const [geminiApiKey, setGeminiApiKeyState] = useState('');
-  const [geminiApiKeyDraft, setGeminiApiKeyDraft] = useState('');
-  const [isSavingGeminiKey, setIsSavingGeminiKey] = useState(false);
-  const [isGeminiKeyVisible, setIsGeminiKeyVisible] = useState(false);
-  const [isGeminiSectionOpen, setIsGeminiSectionOpen] = useState(true);
+  const [quizProvider, setQuizProviderState] = useState<QuizProvider>('gemini');
+  const [quizProviderDraft, setQuizProviderDraft] = useState<QuizProvider>('gemini');
+  const [providerApiKey, setProviderApiKeyState] = useState('');
+  const [providerApiKeyDraft, setProviderApiKeyDraft] = useState('');
+  const [isSavingProviderSettings, setIsSavingProviderSettings] = useState(false);
+  const [isProviderKeyVisible, setIsProviderKeyVisible] = useState(false);
+  const [isProviderSectionOpen, setIsProviderSectionOpen] = useState(true);
   const [attemptSortOrder, setAttemptSortOrder] =
     useState<AttemptSortOrder>('newest');
 
   useEffect(() => {
     async function loadState() {
-      const [savedMode, savedStats, savedAttempts, savedGeminiApiKey] = await Promise.all([
+      const [
+        savedMode,
+        savedStats,
+        savedAttempts,
+        savedQuizProvider,
+        savedProviderApiKey,
+      ] = await Promise.all([
         getQuizMode(),
         getStats(),
         getQuizAttempts(),
-        getGeminiApiKey(),
+        getQuizProvider(),
+        getProviderApiKey(),
       ]);
 
       setQuizModeState(savedMode);
       setStats(savedStats);
       setAttempts(savedAttempts);
-      setGeminiApiKeyState(savedGeminiApiKey);
-      setGeminiApiKeyDraft(savedGeminiApiKey);
-      setIsGeminiSectionOpen(savedGeminiApiKey.trim().length === 0);
+      setQuizProviderState(savedQuizProvider);
+      setQuizProviderDraft(savedQuizProvider);
+      setProviderApiKeyState(savedProviderApiKey);
+      setProviderApiKeyDraft(savedProviderApiKey);
+      setIsProviderSectionOpen(savedProviderApiKey.trim().length === 0);
     }
 
     void loadState();
@@ -101,7 +178,11 @@ export function ReviewHub() {
       if (areaName !== 'local') return;
 
       const nextQuizMode = changes.quizMode?.newValue;
-      if (nextQuizMode === 'retrieval' || nextQuizMode === 'math') {
+      if (
+        nextQuizMode === 'retrieval' ||
+        nextQuizMode === 'general' ||
+        nextQuizMode === 'math'
+      ) {
         setQuizModeState(nextQuizMode);
       }
 
@@ -115,17 +196,27 @@ export function ReviewHub() {
         setAttempts(nextAttempts as QuizAttempt[]);
       }
 
-      const nextGeminiApiKey = changes.geminiApiKey?.newValue;
-      if (typeof nextGeminiApiKey === 'string') {
-        setGeminiApiKeyState(nextGeminiApiKey);
-        setGeminiApiKeyDraft(nextGeminiApiKey);
-        setIsGeminiSectionOpen(nextGeminiApiKey.trim().length === 0);
+      const nextQuizProvider = changes.quizProvider?.newValue;
+      if (
+        nextQuizProvider === 'gemini' ||
+        nextQuizProvider === 'openai' ||
+        nextQuizProvider === 'anthropic'
+      ) {
+        setQuizProviderState(nextQuizProvider);
+        setQuizProviderDraft(nextQuizProvider);
       }
 
-      if (changes.geminiApiKey && changes.geminiApiKey.newValue === undefined) {
-        setGeminiApiKeyState('');
-        setGeminiApiKeyDraft('');
-        setIsGeminiSectionOpen(true);
+      const nextProviderApiKey = changes.providerApiKey?.newValue;
+      if (typeof nextProviderApiKey === 'string') {
+        setProviderApiKeyState(nextProviderApiKey);
+        setProviderApiKeyDraft(nextProviderApiKey);
+        setIsProviderSectionOpen(nextProviderApiKey.trim().length === 0);
+      }
+
+      if (changes.providerApiKey && changes.providerApiKey.newValue === undefined) {
+        setProviderApiKeyState('');
+        setProviderApiKeyDraft('');
+        setIsProviderSectionOpen(true);
       }
     }
 
@@ -138,8 +229,12 @@ export function ReviewHub() {
     return `${Math.round((stats.correctAnswers / stats.quizzesAnswered) * 100)}%`;
   }, [stats.correctAnswers, stats.quizzesAnswered]);
 
-  const hasStoredGeminiApiKey = geminiApiKey.trim().length > 0;
-  const geminiKeyHasChanges = geminiApiKeyDraft.trim() !== geminiApiKey.trim();
+  const hasStoredProviderApiKey = providerApiKey.trim().length > 0;
+  const providerSettingsHaveChanges =
+    quizProviderDraft !== quizProvider ||
+    providerApiKeyDraft.trim() !== providerApiKey.trim();
+  const activeProviderCopy = PROVIDER_COPY[quizProviderDraft];
+
   const sortedAttempts = useMemo(() => {
     const nextAttempts = [...attempts];
 
@@ -203,28 +298,32 @@ export function ReviewHub() {
     setExpandedMode((current) => (current === mode ? null : mode));
   }
 
-  async function handleGeminiApiKeySave() {
-    setIsSavingGeminiKey(true);
+  async function handleProviderSettingsSave() {
+    setIsSavingProviderSettings(true);
     try {
-      const normalized = geminiApiKeyDraft.trim();
-      await setGeminiApiKey(normalized);
-      setGeminiApiKeyState(normalized);
-      setGeminiApiKeyDraft(normalized);
-      setIsGeminiSectionOpen(normalized.length === 0);
+      const normalizedApiKey = providerApiKeyDraft.trim();
+      await Promise.all([
+        setQuizProvider(quizProviderDraft),
+        setProviderApiKey(normalizedApiKey),
+      ]);
+      setQuizProviderState(quizProviderDraft);
+      setProviderApiKeyState(normalizedApiKey);
+      setProviderApiKeyDraft(normalizedApiKey);
+      setIsProviderSectionOpen(normalizedApiKey.length === 0);
     } finally {
-      setIsSavingGeminiKey(false);
+      setIsSavingProviderSettings(false);
     }
   }
 
-  async function handleGeminiApiKeyClear() {
-    setIsSavingGeminiKey(true);
+  async function handleProviderApiKeyClear() {
+    setIsSavingProviderSettings(true);
     try {
-      await setGeminiApiKey('');
-      setGeminiApiKeyState('');
-      setGeminiApiKeyDraft('');
-      setIsGeminiSectionOpen(true);
+      await setProviderApiKey('');
+      setProviderApiKeyState('');
+      setProviderApiKeyDraft('');
+      setIsProviderSectionOpen(true);
     } finally {
-      setIsSavingGeminiKey(false);
+      setIsSavingProviderSettings(false);
     }
   }
 
@@ -287,15 +386,13 @@ export function ReviewHub() {
             aria-label="Quiz mode"
             className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50"
           >
-            {(['retrieval', 'math'] as QuizMode[]).map((mode) => {
+            {(['retrieval', 'general', 'math'] as QuizMode[]).map((mode, index) => {
               const active = mode === quizMode;
               const expanded = mode === expandedMode;
               return (
                 <div
                   key={mode}
-                  className={
-                    mode === 'math' ? 'border-t border-slate-200' : undefined
-                  }
+                  className={index > 0 ? 'border-t border-slate-200' : undefined}
                 >
                   <div
                     className={`flex items-center gap-3 px-4 py-4 transition ${
@@ -371,24 +468,23 @@ export function ReviewHub() {
           <div className="mb-3 flex items-start justify-between gap-3">
             <div>
               <h2 className="text-sm font-semibold text-slate-900">
-                Gemini API Key
+                Quiz API Provider
               </h2>
-              {(!hasStoredGeminiApiKey || isGeminiSectionOpen) && (
+              {(!hasStoredProviderApiKey || isProviderSectionOpen) && (
                 <p className="mt-1 text-sm leading-6 text-slate-600">
-                  Enter your own Gemini API key here. WaitWise stores it only in this
-                  browser&apos;s extension storage so you can edit it later in the
-                  review hub.
+                  Choose one API-backed provider for quiz generation and save one
+                  local key for it.
                 </p>
               )}
             </div>
             <button
               type="button"
-              aria-expanded={isGeminiSectionOpen}
-              aria-controls="gemini-api-key-panel"
+              aria-expanded={isProviderSectionOpen}
+              aria-controls="provider-settings-panel"
               aria-label={`${
-                isGeminiSectionOpen ? 'Hide' : 'Show'
-              } Gemini API key settings`}
-              onClick={() => setIsGeminiSectionOpen((current) => !current)}
+                isProviderSectionOpen ? 'Hide' : 'Show'
+              } provider settings`}
+              onClick={() => setIsProviderSectionOpen((current) => !current)}
               className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
             >
               <svg
@@ -396,7 +492,7 @@ export function ReviewHub() {
                 fill="none"
                 aria-hidden="true"
                 className={`h-4 w-4 transition-transform ${
-                  isGeminiSectionOpen ? 'rotate-180' : ''
+                  isProviderSectionOpen ? 'rotate-180' : ''
                 }`}
               >
                 <path
@@ -410,70 +506,90 @@ export function ReviewHub() {
             </button>
           </div>
 
-          {isGeminiSectionOpen && (
+          {isProviderSectionOpen && (
             <div
-              id="gemini-api-key-panel"
+              id="provider-settings-panel"
               className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
             >
-              <div className="mb-3 flex items-center justify-between gap-3">
+              <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="text-xs uppercase tracking-[0.2em] text-slate-400">
                   Local-only setting
                 </div>
                 <div
                   className={`rounded-full px-2.5 py-1 text-[11px] font-medium ${
-                    hasStoredGeminiApiKey
+                    hasStoredProviderApiKey
                       ? 'bg-emerald-100 text-emerald-800'
                       : 'bg-slate-200 text-slate-600'
                   }`}
                 >
-                  {hasStoredGeminiApiKey ? 'Saved locally' : 'Not set'}
+                  {hasStoredProviderApiKey ? 'Saved locally' : 'Not set'}
                 </div>
               </div>
 
               <label className="block text-sm font-medium text-slate-900">
+                Provider
+              </label>
+              <select
+                value={quizProviderDraft}
+                onChange={(event) =>
+                  setQuizProviderDraft(event.target.value as QuizProvider)
+                }
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
+              >
+                {(['gemini', 'openai', 'anthropic'] as QuizProvider[]).map((provider) => (
+                  <option key={provider} value={provider}>
+                    {PROVIDER_COPY[provider].label}
+                  </option>
+                ))}
+              </select>
+
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {activeProviderCopy.description}
+              </p>
+
+              <label className="mt-4 block text-sm font-medium text-slate-900">
                 API key
               </label>
               <div className="mt-2 flex gap-2">
                 <input
-                  type={isGeminiKeyVisible ? 'text' : 'password'}
-                  value={geminiApiKeyDraft}
-                  onChange={(event) => setGeminiApiKeyDraft(event.target.value)}
-                  placeholder="Paste your Gemini API key"
+                  type={isProviderKeyVisible ? 'text' : 'password'}
+                  value={providerApiKeyDraft}
+                  onChange={(event) => setProviderApiKeyDraft(event.target.value)}
+                  placeholder={activeProviderCopy.placeholder}
                   autoComplete="off"
                   spellCheck={false}
                   className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-100"
                 />
                 <button
                   type="button"
-                  onClick={() => setIsGeminiKeyVisible((current) => !current)}
+                  onClick={() => setIsProviderKeyVisible((current) => !current)}
                   className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 transition hover:border-slate-300 hover:text-slate-700"
                 >
-                  {isGeminiKeyVisible ? 'Hide' : 'Show'}
+                  {isProviderKeyVisible ? 'Hide' : 'Show'}
                 </button>
               </div>
 
               <p className="mt-3 text-xs leading-5 text-slate-500">
-                This key stays on your machine. WaitWise does not need a shared
-                backend key for this flow.
+                {activeProviderCopy.helper}
               </p>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => void handleGeminiApiKeySave()}
-                  disabled={isSavingGeminiKey || !geminiKeyHasChanges}
+                  onClick={() => void handleProviderSettingsSave()}
+                  disabled={isSavingProviderSettings || !providerSettingsHaveChanges}
                   className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
-                    isSavingGeminiKey || !geminiKeyHasChanges
+                    isSavingProviderSettings || !providerSettingsHaveChanges
                       ? 'cursor-not-allowed bg-slate-200 text-slate-500'
                       : 'bg-teal-600 text-white hover:bg-teal-700'
                   }`}
                 >
-                  {isSavingGeminiKey ? 'Saving...' : 'Save key'}
+                  {isSavingProviderSettings ? 'Saving...' : 'Save provider'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => void handleGeminiApiKeyClear()}
-                  disabled={isSavingGeminiKey && !hasStoredGeminiApiKey}
+                  onClick={() => void handleProviderApiKeyClear()}
+                  disabled={isSavingProviderSettings && !hasStoredProviderApiKey}
                   className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
                 >
                   Remove key
@@ -572,6 +688,11 @@ export function ReviewHub() {
                         <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
                           {getAttemptTopic(attempt)}
                         </span>
+                        {formatQuestionType(attempt.questionType) && (
+                          <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                            {formatQuestionType(attempt.questionType)}
+                          </span>
+                        )}
                       </div>
                       <time className="text-xs text-slate-400">
                         {new Date(attempt.answeredAt).toLocaleString([], {
