@@ -1,5 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import type { WidgetPosition } from '../lib/storage';
+import { applyCorrectAnswer, applySkip, applyWrongAnswer } from '../lib/petEngine';
+import { getPetState, setPetState, type WidgetPosition } from '../lib/storage';
+import type { PetState } from '../types/pet';
 import type { QuizQuestion } from '../types/messages';
 
 interface Props {
@@ -32,10 +34,7 @@ function clampAxis(value: number, size: number, viewport: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
-function clampPosition(
-  position: WidgetPosition,
-  size: WidgetSize
-): WidgetPosition {
+function clampPosition(position: WidgetPosition, size: WidgetSize): WidgetPosition {
   return {
     left: clampAxis(position.left, size.width, window.innerWidth),
     top: clampAxis(position.top, size.height, window.innerHeight),
@@ -66,6 +65,8 @@ export function QuizWidget({
   const [selected, setSelected] = useState<number | null>(null);
   const [position, setPosition] = useState<WidgetPosition | null>(null);
   const [dragging, setDragging] = useState(false);
+  const [petState, setPetStateLocal] = useState<PetState | null>(null);
+
   const cardRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<DragState | null>(null);
   const positionRef = useRef<WidgetPosition | null>(null);
@@ -73,41 +74,48 @@ export function QuizWidget({
   const answered = selected !== null;
   const correct = selected === question.correctIndex;
   const headerLabel =
-    question.mode === 'retrieval'
-      ? 'Retrieval Review'
-      : question.mode === 'general'
-        ? 'General Thinking'
-      : question.mode === 'math'
-        ? 'Math Drill'
-        : 'Quick Quiz';
+    question.mode === 'retrieval' ? 'Retrieval Review'
+    : question.mode === 'general' ? 'General Thinking'
+    : question.mode === 'math' ? 'Math Drill'
+    : 'Quick Quiz';
   const headerToneClass =
-    question.mode === 'retrieval'
-      ? 'text-teal-700'
-      : question.mode === 'general'
-        ? 'text-amber-700'
-      : question.mode === 'math'
-        ? 'text-indigo-600'
-        : 'text-indigo-600';
+    question.mode === 'retrieval' ? 'text-teal-700'
+    : question.mode === 'general' ? 'text-amber-700'
+    : 'text-indigo-600';
+
+  useEffect(() => {
+    getPetState().then((ps) => setPetStateLocal(ps));
+  }, []);
 
   function handleSelect(idx: number) {
-    if (answered) return;
+    if (answered || !petState) return;
     setSelected(idx);
     onAnswer(idx);
+    const isCorrect = idx === question.correctIndex;
+    const updated = isCorrect ? applyCorrectAnswer(petState) : applyWrongAnswer(petState);
+    setPetStateLocal(updated);
+    void setPetState(updated);
+  }
+
+  function handleSkip() {
+    if (petState) {
+      const updated = applySkip(petState);
+      setPetStateLocal(updated);
+      void setPetState(updated);
+    }
+    onSkip();
   }
 
   useLayoutEffect(() => {
     const card = cardRef.current;
     if (!card) return;
-
     const rect = card.getBoundingClientRect();
     const size = { width: rect.width, height: rect.height };
     const nextPosition = initialPosition
       ? clampPosition(initialPosition, size)
       : getDefaultPosition(size);
-
     setPosition(nextPosition);
     positionRef.current = nextPosition;
-
     if (initialPosition && !positionsMatch(nextPosition, initialPosition)) {
       onPositionCommitted(nextPosition);
     }
@@ -118,19 +126,13 @@ export function QuizWidget({
       const card = cardRef.current;
       const currentPosition = positionRef.current;
       if (!card || !currentPosition) return;
-
       const rect = card.getBoundingClientRect();
-      const clamped = clampPosition(currentPosition, {
-        width: rect.width,
-        height: rect.height,
-      });
-
+      const clamped = clampPosition(currentPosition, { width: rect.width, height: rect.height });
       if (positionsMatch(clamped, currentPosition)) return;
       setPosition(clamped);
       positionRef.current = clamped;
       onPositionCommitted(clamped);
     }
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [onPositionCommitted]);
@@ -138,26 +140,19 @@ export function QuizWidget({
   function finishDrag(pointerTarget: HTMLDivElement) {
     const dragState = dragRef.current;
     if (!dragState) return;
-
     if (pointerTarget.hasPointerCapture(dragState.pointerId)) {
       pointerTarget.releasePointerCapture(dragState.pointerId);
     }
-
     dragRef.current = null;
     setDragging(false);
-
-    if (positionRef.current) {
-      onPositionCommitted(positionRef.current);
-    }
+    if (positionRef.current) onPositionCommitted(positionRef.current);
   }
 
   function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
     if (event.button !== 0 || !position) return;
     if (event.target instanceof Element && event.target.closest('button')) return;
-
     const card = cardRef.current;
     if (!card) return;
-
     dragRef.current = {
       pointerId: event.pointerId,
       startLeft: position.left,
@@ -174,7 +169,6 @@ export function QuizWidget({
     const dragState = dragRef.current;
     const card = cardRef.current;
     if (!dragState || dragState.pointerId !== event.pointerId || !card) return;
-
     const rect = card.getBoundingClientRect();
     const nextPosition = clampPosition(
       {
@@ -183,7 +177,6 @@ export function QuizWidget({
       },
       { width: rect.width, height: rect.height }
     );
-
     setPosition(nextPosition);
     positionRef.current = nextPosition;
   }
@@ -200,6 +193,7 @@ export function QuizWidget({
         visibility: position ? 'visible' : 'hidden',
       }}
     >
+      {/* ── Header (drag handle) ── */}
       <div
         className={`mb-3 flex items-center justify-between touch-none ${
           dragging ? 'cursor-grabbing' : 'cursor-grab'
@@ -209,13 +203,11 @@ export function QuizWidget({
         onPointerUp={(event) => finishDrag(event.currentTarget)}
         onPointerCancel={(event) => finishDrag(event.currentTarget)}
       >
-        <span
-          className={`text-xs font-semibold uppercase tracking-wide ${headerToneClass}`}
-        >
+        <span className={`text-xs font-semibold uppercase tracking-wide ${headerToneClass}`}>
           {headerLabel}
         </span>
         <button
-          onClick={onSkip}
+          onClick={handleSkip}
           className="cursor-pointer text-lg leading-none text-gray-400 hover:text-gray-600"
           aria-label="Dismiss"
         >
@@ -223,8 +215,10 @@ export function QuizWidget({
         </button>
       </div>
 
+      {/* ── Quiz content ── */}
       <div className="min-h-0 flex-1 overflow-y-auto pr-1">
         <p className="mb-3 font-medium text-gray-800">{question.question}</p>
+
         {question.contextNote && (
           <p className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">
             {question.contextNote}
@@ -233,8 +227,7 @@ export function QuizWidget({
 
         <div className="flex flex-col gap-2">
           {question.options.map((opt, idx) => {
-            let style =
-              'cursor-pointer rounded-lg border px-3 py-2 text-left transition-colors ';
+            let style = 'cursor-pointer rounded-lg border px-3 py-2 text-left transition-colors ';
             if (!answered) {
               style += 'border-gray-200 hover:border-indigo-400 hover:bg-indigo-50';
             } else if (idx === question.correctIndex) {
@@ -244,7 +237,6 @@ export function QuizWidget({
             } else {
               style += 'border-gray-200 text-gray-400';
             }
-
             return (
               <button key={idx} className={style} onClick={() => handleSelect(idx)}>
                 {opt}
@@ -255,19 +247,13 @@ export function QuizWidget({
 
         {answered && (
           <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3">
-            <p
-              className={`text-xs font-semibold ${
-                correct ? 'text-green-700' : 'text-red-700'
-              }`}
-            >
+            <p className={`text-xs font-semibold ${correct ? 'text-green-700' : 'text-red-700'}`}>
               {correct
                 ? 'Correct!'
-                : `Wrong — answer is ${question.options[question.correctIndex]}`}
+                : `Wrong — the answer is "${question.options[question.correctIndex]}"`}
             </p>
             {question.explanation && (
-              <p className="mt-2 text-xs leading-5 text-slate-600">
-                {question.explanation}
-              </p>
+              <p className="mt-2 text-xs leading-5 text-slate-600">{question.explanation}</p>
             )}
           </div>
         )}

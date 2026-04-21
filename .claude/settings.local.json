@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Read(//mnt/c/Users/rushi/Documents/**)",
+      "Bash(node_modules/.bin/tsc --noEmit)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\rushi\\\\Documents\\\\waitwise\"; $tsc = \"C:\\\\Users\\\\rushi\\\\Documents\\\\waitwise\\\\node_modules\\\\.bin\\\\tsc.cmd\"; $output = & $tsc --noEmit 2>&1; $output | Select-Object -First 60)"
+    ]
+  }
+}
