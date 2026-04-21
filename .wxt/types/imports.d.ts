@@ -5,8 +5,9 @@ declare global {
   const InvalidMatchPattern: typeof import('wxt/sandbox')['InvalidMatchPattern']
   const MatchPattern: typeof import('wxt/sandbox')['MatchPattern']
   const MigrationError: typeof import('wxt/storage')['MigrationError']
-  const QuizWidget: typeof import('/Users/t1sun-mac/waitwise/components/QuizWidget')['QuizWidget']
-  const ReviewHub: typeof import('/Users/t1sun-mac/waitwise/components/ReviewHub')['ReviewHub']
+  const PetDisplay: typeof import('/mnt/c/Users/Rushi/Documents/waitwise/components/PetDisplay')['PetDisplay']
+  const QuizWidget: typeof import('/mnt/c/Users/Rushi/Documents/waitwise/components/QuizWidget')['QuizWidget']
+  const ReviewHub: typeof import('/mnt/c/Users/Rushi/Documents/waitwise/components/ReviewHub')['ReviewHub']
   const browser: typeof import('wxt/browser/chrome')['browser']
   const createIframeUi: typeof import('wxt/client')['createIframeUi']
   const createIntegratedUi: typeof import('wxt/client')['createIntegratedUi']
@@ -28,4 +29,10 @@ declare global {
   const useReducer: typeof import('react')['useReducer']
   const useRef: typeof import('react')['useRef']
   const useState: typeof import('react')['useState']
+}
+// for type re-export
+declare global {
+  // @ts-ignore
+  export type { PetAnimationType } from '/mnt/c/Users/Rushi/Documents/waitwise/components/PetDisplay'
+  import('/mnt/c/Users/Rushi/Documents/waitwise/components/PetDisplay')
 }

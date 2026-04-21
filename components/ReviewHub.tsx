@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   getProviderApiKey,
   getQuizAttempts,
   getQuizMode,
   getQuizProvider,
   getStats,
+  getPetState,
   setProviderApiKey,
   setQuizMode,
   setQuizProvider,
@@ -16,6 +17,9 @@ import type {
   QuizQuestionType,
   UserStats,
 } from '../types/messages';
+import type { PetState } from '../types/pet';
+import { hydratePetState } from '../lib/petEngine';
+import { PetDisplay } from './PetDisplay';
 
 const EMPTY_STATS: UserStats = {
   quizzesShown: 0,
@@ -142,6 +146,9 @@ export function ReviewHub() {
   const [isProviderSectionOpen, setIsProviderSectionOpen] = useState(true);
   const [attemptSortOrder, setAttemptSortOrder] =
     useState<AttemptSortOrder>('newest');
+  const [petState, setPetState] = useState<PetState | null>(null);
+  const petAnimKeyRef = useRef(0);
+  const [petAnimKey, setPetAnimKey] = useState(0);
 
   useEffect(() => {
     async function loadState() {
@@ -151,12 +158,14 @@ export function ReviewHub() {
         savedAttempts,
         savedQuizProvider,
         savedProviderApiKey,
+        savedPetState,
       ] = await Promise.all([
         getQuizMode(),
         getStats(),
         getQuizAttempts(),
         getQuizProvider(),
         getProviderApiKey(),
+        getPetState(),
       ]);
 
       setQuizModeState(savedMode);
@@ -167,6 +176,7 @@ export function ReviewHub() {
       setProviderApiKeyState(savedProviderApiKey);
       setProviderApiKeyDraft(savedProviderApiKey);
       setIsProviderSectionOpen(savedProviderApiKey.trim().length === 0);
+      setPetState(savedPetState);
     }
 
     void loadState();
@@ -217,6 +227,13 @@ export function ReviewHub() {
         setProviderApiKeyState('');
         setProviderApiKeyDraft('');
         setIsProviderSectionOpen(true);
+      }
+
+      if (changes.petState) {
+        const nextPet = hydratePetState(changes.petState.newValue);
+        setPetState(nextPet);
+        petAnimKeyRef.current += 1;
+        setPetAnimKey(petAnimKeyRef.current);
       }
     }
 
@@ -346,6 +363,16 @@ export function ReviewHub() {
             </div>
           </div>
         </div>
+
+        {petState && (
+          <section className="mb-5 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+            <PetDisplay
+              petState={petState}
+              animationType="idle"
+              animKey={petAnimKey}
+            />
+          </section>
+        )}
 
         <section className="mb-5 grid grid-cols-2 gap-3">
           <div className="rounded-2xl bg-slate-950 px-4 py-3 text-slate-50">

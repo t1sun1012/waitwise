@@ -7,6 +7,8 @@ import type {
   QuizSource,
   UserStats,
 } from '../types/messages';
+import { hydratePetState } from './petEngine';
+import type { PetState } from '../types/pet';
 
 const DEFAULT_STATS: UserStats = {
   quizzesShown: 0,
@@ -290,4 +292,13 @@ export async function recordQuizShown(): Promise<void> {
   await chrome.storage.local.set({
     stats: { ...stats, quizzesShown: stats.quizzesShown + 1 },
   });
+}
+
+export async function getPetState(): Promise<PetState> {
+  const result = await chrome.storage.local.get('petState');
+  return hydratePetState(result.petState);
+}
+
+export async function setPetState(petState: PetState): Promise<void> {
+  await chrome.storage.local.set({ petState });
 }
