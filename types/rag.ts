@@ -2,7 +2,10 @@ export interface CorpusSource {
   repo: string;
   path: string;
   url: string;
+  pageId?: string;
 }
+
+export type CorpusChunkType = 'question-answer' | 'note' | 'topic-only';
 
 export type ConversationIntent =
   | 'compare'
@@ -28,6 +31,7 @@ export interface RetrievedChunk {
   corpus: string;
   category: string;
   subcategory?: string;
+  chunkType?: CorpusChunkType;
   title: string;
   question: string;
   answer: string;

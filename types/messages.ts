@@ -1,4 +1,4 @@
-import type { ConversationContext, CorpusSource } from './rag';
+import type { ConversationContext, CorpusChunkType, CorpusSource } from './rag';
 
 export type QuizMode = 'retrieval' | 'math' | 'general';
 export type QuizProvider = 'gemini' | 'openai' | 'anthropic';
@@ -14,6 +14,7 @@ export interface QuizSource {
   corpus: string;
   category: string;
   subcategory?: string;
+  chunkType?: CorpusChunkType;
   title: string;
   question: string;
   answer: string;

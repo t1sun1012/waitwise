@@ -204,6 +204,7 @@ function buildSourceSummary(retrievedChunks: RankedRetrievedChunk[]): string {
       sourceId: result.chunk.id,
       category: result.chunk.category,
       subcategory: result.chunk.subcategory ?? null,
+      chunkType: result.chunk.chunkType ?? 'note',
       title: result.chunk.title,
       answer: clampPromptText(result.chunk.answer),
       tags: result.chunk.tags.slice(0, 4),
@@ -231,7 +232,8 @@ export function buildRetrievalPromptText(
 
   return [
     'Generate one grounded technical interview multiple-choice quiz for WaitWise.',
-    'Use only the retrieved chunk as truth.',
+    'Use retrieved chunks as the source evidence.',
+    'If a chunk is topic-only, use its title and tags as the topic anchor and write a conceptual quiz about that topic.',
     'Return raw JSON only.',
     'No markdown. No prose. No prefix or suffix.',
     'Question under 14 words.',
@@ -558,6 +560,7 @@ function buildQuizSource(chunk: RankedRetrievedChunk['chunk']): QuizSource {
     question: chunk.question,
     answer: chunk.answer,
     tags: [...chunk.tags],
+    chunkType: chunk.chunkType,
     source: { ...chunk.source },
   };
 }
