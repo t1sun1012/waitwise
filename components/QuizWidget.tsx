@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { applyCorrectAnswer, applySkip, applyWrongAnswer } from '../lib/petEngine';
-import { getPetState, setPetState, type WidgetPosition } from '../lib/storage';
+import { getPetState, getTheme, setPetState, type WidgetPosition } from '../lib/storage';
 import type { PetState } from '../types/pet';
 import type { QuizQuestion } from '../types/messages';
 
@@ -66,6 +66,7 @@ export function QuizWidget({
   const [position, setPosition] = useState<WidgetPosition | null>(null);
   const [dragging, setDragging] = useState(false);
   const [petState, setPetStateLocal] = useState<PetState | null>(null);
+  const [isDark, setIsDark] = useState(false);
 
   const cardRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<DragState | null>(null);
@@ -85,6 +86,14 @@ export function QuizWidget({
 
   useEffect(() => {
     getPetState().then((ps) => setPetStateLocal(ps));
+    getTheme().then((t) => setIsDark(t === 'dark'));
+
+    function onStorageChange(changes: Record<string, chrome.storage.StorageChange>, area: string) {
+      if (area !== 'local') return;
+      if (changes.theme) setIsDark(changes.theme.newValue === 'dark');
+    }
+    chrome.storage.onChanged.addListener(onStorageChange);
+    return () => chrome.storage.onChanged.removeListener(onStorageChange);
   }, []);
 
   function handleSelect(idx: number) {
@@ -184,9 +193,9 @@ export function QuizWidget({
   return (
     <div
       ref={cardRef}
-      className={`fixed z-[9999] flex max-h-[calc(100vh-2rem)] w-72 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white p-4 font-sans text-sm shadow-2xl ${
+      className={`fixed z-[9999] flex max-h-[calc(100vh-2rem)] w-72 flex-col overflow-hidden rounded-2xl border p-4 font-sans text-sm shadow-2xl ${
         dragging ? 'select-none' : ''
-      }`}
+      } ${isDark ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-100 bg-white text-gray-900'}`}
       style={{
         top: position?.top ?? 0,
         left: position?.left ?? 0,
@@ -208,7 +217,7 @@ export function QuizWidget({
         </span>
         <button
           onClick={handleSkip}
-          className="cursor-pointer text-lg leading-none text-gray-400 hover:text-gray-600"
+          className={`cursor-pointer text-lg leading-none ${isDark ? 'text-gray-500 hover:text-gray-300' : 'text-gray-400 hover:text-gray-600'}`}
           aria-label="Dismiss"
         >
           ×
@@ -217,10 +226,10 @@ export function QuizWidget({
 
       {/* ── Quiz content ── */}
       <div className="min-h-0 flex-1 overflow-y-auto pr-1">
-        <p className="mb-3 font-medium text-gray-800">{question.question}</p>
+        <p className={`mb-3 font-medium ${isDark ? 'text-gray-100' : 'text-gray-800'}`}>{question.question}</p>
 
         {question.contextNote && (
-          <p className="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">
+          <p className={`mb-3 rounded-xl border px-3 py-2 text-xs leading-5 ${isDark ? 'border-amber-700 bg-amber-900/40 text-amber-200' : 'border-amber-200 bg-amber-50 text-amber-900'}`}>
             {question.contextNote}
           </p>
         )}
@@ -229,13 +238,19 @@ export function QuizWidget({
           {question.options.map((opt, idx) => {
             let style = 'cursor-pointer rounded-lg border px-3 py-2 text-left transition-colors ';
             if (!answered) {
-              style += 'border-gray-200 hover:border-indigo-400 hover:bg-indigo-50';
+              style += isDark
+                ? 'border-gray-600 text-gray-200 hover:border-indigo-400 hover:bg-indigo-900/40'
+                : 'border-gray-200 hover:border-indigo-400 hover:bg-indigo-50';
             } else if (idx === question.correctIndex) {
-              style += 'border-green-400 bg-green-50 text-green-800';
+              style += isDark
+                ? 'border-green-500 bg-green-900/40 text-green-300'
+                : 'border-green-400 bg-green-50 text-green-800';
             } else if (idx === selected) {
-              style += 'border-red-400 bg-red-50 text-red-800';
+              style += isDark
+                ? 'border-red-500 bg-red-900/40 text-red-300'
+                : 'border-red-400 bg-red-50 text-red-800';
             } else {
-              style += 'border-gray-200 text-gray-400';
+              style += isDark ? 'border-gray-700 text-gray-500' : 'border-gray-200 text-gray-400';
             }
             return (
               <button key={idx} className={style} onClick={() => handleSelect(idx)}>
@@ -246,14 +261,14 @@ export function QuizWidget({
         </div>
 
         {answered && (
-          <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3">
-            <p className={`text-xs font-semibold ${correct ? 'text-green-700' : 'text-red-700'}`}>
+          <div className={`mt-3 rounded-xl border px-3 py-3 ${isDark ? 'border-gray-600 bg-gray-700' : 'border-slate-200 bg-slate-50'}`}>
+            <p className={`text-xs font-semibold ${correct ? 'text-green-500' : 'text-red-500'}`}>
               {correct
                 ? 'Correct!'
                 : `Wrong — the answer is "${question.options[question.correctIndex]}"`}
             </p>
             {question.explanation && (
-              <p className="mt-2 text-xs leading-5 text-slate-600">{question.explanation}</p>
+              <p className={`mt-2 text-xs leading-5 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>{question.explanation}</p>
             )}
           </div>
         )}

@@ -9,7 +9,16 @@ interface Props {
   animationType: PetAnimationType;
   animKey: number;
   xpGained?: number;
+  isDark?: boolean;
 }
+
+const INFO_ITEMS = [
+  { icon: '🍖', label: 'Hunger', desc: 'Fills on answers (+22 correct, +6 wrong), drains slowly over time.' },
+  { icon: '⭐', label: 'XP', desc: '+15 for correct answers, +5 for wrong. XP never goes down.' },
+  { icon: '📈', label: 'Level Up', desc: 'Earn enough XP and Wiz levels up — each level needs a little more.' },
+  { icon: '🎭', label: 'Moods', desc: 'Full hunger = happy. 3 correct in a row = excited. Low hunger = sad.' },
+  { icon: '🥚', label: 'Stages', desc: 'Egg → Baby (Lv.3) → Child (Lv.6) → Teen (Lv.11) → Adult (Lv.21).' },
+];
 
 const BODY_COLOR: Record<PetMood, string> = {
   excited: '#FCD34D',
@@ -73,14 +82,10 @@ const PET_ANIMATIONS = `
 function EggBody() {
   return (
     <>
-      {/* shell */}
       <ellipse cx="50" cy="56" rx="32" ry="37" fill="#FEF3C7" stroke="#FCD34D" strokeWidth="2" />
-      {/* highlight */}
       <ellipse cx="38" cy="40" rx="9" ry="6" fill="white" opacity="0.35" />
-      {/* crack marks */}
       <polyline points="44,24 47,34 41,40" stroke="#FCD34D" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       <polyline points="56,28 59,38 53,44" stroke="#FCD34D" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      {/* tiny peeking eyes */}
       <circle cx="42" cy="56" r="3.5" fill="#1E293B" />
       <circle cx="43.4" cy="54.6" r="1.2" fill="white" />
       <circle cx="58" cy="56" r="3.5" fill="#1E293B" />
@@ -103,10 +108,8 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
 
   return (
     <>
-      {/* shadow under body */}
       <ellipse cx="50" cy="91" rx="28" ry="5" fill={shadow} opacity="0.2" />
 
-      {/* Wings for adult stage */}
       {stage === 'adult' && (
         <>
           <path d="M18,52 Q2,28 18,18 Q22,42 26,52Z" fill="#A78BFA" opacity="0.75" />
@@ -114,15 +117,12 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
         </>
       )}
 
-      {/* Main body blob */}
       <path
         d="M50,12 C72,12 88,28 88,50 C88,74 72,88 50,88 C28,88 12,74 12,50 C12,28 28,12 50,12Z"
         fill={fill}
       />
-      {/* body highlight */}
       <ellipse cx="36" cy="33" rx="11" ry="7" fill="white" opacity="0.28" />
 
-      {/* Cheek blush (happy/excited) */}
       {isHappy && (
         <>
           <circle cx="23" cy="62" r="8" fill="#FDA4AF" opacity="0.45" />
@@ -130,7 +130,6 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
         </>
       )}
 
-      {/* Ears for child+ */}
       {(stage === 'child' || stage === 'teen' || stage === 'adult') && (
         <>
           <circle cx="22" cy="28" r="9" fill={fill} />
@@ -140,7 +139,6 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
         </>
       )}
 
-      {/* Crown for teen/adult */}
       {(stage === 'teen' || stage === 'adult') && (
         <>
           <path d="M30,18 L36,6 L46,14 L50,4 L54,14 L64,6 L70,18Z" fill="#FCD34D" />
@@ -151,25 +149,21 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
         </>
       )}
 
-      {/* Eyes */}
       {isSleeping ? (
         <>
           <path d="M30,51 Q36,57 42,51" stroke="#1E293B" strokeWidth="2.5" fill="none" strokeLinecap="round" />
           <path d="M58,51 Q64,57 70,51" stroke="#1E293B" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-          {/* ZZZ */}
           <text x="72" y="38" fontSize="9" fill="#8B5CF6" opacity="0.8" fontWeight="bold">z</text>
           <text x="79" y="28" fontSize="11" fill="#8B5CF6" opacity="0.9" fontWeight="bold">z</text>
           <text x="87" y="18" fontSize="13" fill="#8B5CF6" fontWeight="bold">Z</text>
         </>
       ) : isHappy ? (
         <>
-          {/* Happy/excited — crescent eyes */}
           <path d="M29,51 Q35,43 41,51" stroke="#1E293B" strokeWidth="2.8" fill="none" strokeLinecap="round" />
           <path d="M59,51 Q65,43 71,51" stroke="#1E293B" strokeWidth="2.8" fill="none" strokeLinecap="round" />
         </>
       ) : isSad ? (
         <>
-          {/* Sad — normal eyes with worried brows */}
           <circle cx="35" cy="51" r="5.5" fill="#1E293B" />
           <circle cx="37.2" cy="48.8" r="1.8" fill="white" />
           <circle cx="65" cy="51" r="5.5" fill="#1E293B" />
@@ -179,7 +173,6 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
         </>
       ) : (
         <>
-          {/* Neutral — normal round eyes */}
           <circle cx="35" cy="50" r="5.5" fill="#1E293B" />
           <circle cx="37.2" cy="47.8" r="1.8" fill="white" />
           <circle cx="65" cy="50" r="5.5" fill="#1E293B" />
@@ -187,7 +180,6 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
         </>
       )}
 
-      {/* Mouth */}
       {mood === 'excited' ? (
         <>
           <path d="M32,65 Q50,80 68,65" stroke="#1E293B" strokeWidth="2.5" fill="none" strokeLinecap="round" />
@@ -200,14 +192,14 @@ function CreatureBody({ mood, stage }: CreatureBodyProps) {
       ) : mood === 'sad' ? (
         <path d="M36,70 Q50,60 64,70" stroke="#1E293B" strokeWidth="2.5" fill="none" strokeLinecap="round" />
       ) : (
-        /* sleeping */
         <path d="M40,65 Q50,68 60,65" stroke="#1E293B" strokeWidth="2" fill="none" strokeLinecap="round" />
       )}
     </>
   );
 }
 
-export function PetDisplay({ petState, animationType, animKey, xpGained }: Props) {
+export function PetDisplay({ petState, animationType, animKey, xpGained, isDark }: Props) {
+  const [showInfo, setShowInfo] = useState(false);
   const stage = getStage(petState.level);
   const { percent } = getXpProgress(petState);
   const isEgg = stage === 'egg';
@@ -229,85 +221,118 @@ export function PetDisplay({ petState, animationType, animKey, xpGained }: Props
     : petState.mood === 'sad' ? '#64748B'
     : '#7C3AED';
 
-  // Stage label
   const stageLabel = isEgg ? 'Egg' : stage.charAt(0).toUpperCase() + stage.slice(1);
 
   return (
-    <div className="relative flex items-center gap-2 select-none">
+    <div className="relative select-none">
       <style>{PET_ANIMATIONS}</style>
 
-      {/* Pet character */}
-      <div className="relative flex-shrink-0" style={{ width: 52, height: 52 }}>
-        <svg
-          key={animKey}
-          className={animClass}
-          viewBox="0 0 100 100"
-          style={{ width: 52, height: 52, display: 'block', overflow: 'visible' }}
-        >
-          {isEgg ? <EggBody /> : <CreatureBody mood={petState.mood} stage={stage} />}
-        </svg>
-
-        {/* Sparkles overlay on celebrate */}
-        {showSparkles && (
+      <div className="flex items-center gap-2">
+        {/* Pet character */}
+        <div className="relative flex-shrink-0" style={{ width: 52, height: 52 }}>
           <svg
-            key={`sparkle-${animKey}`}
+            key={animKey}
+            className={animClass}
             viewBox="0 0 100 100"
-            style={{ position: 'absolute', inset: 0, width: 52, height: 52, pointerEvents: 'none', overflow: 'visible' }}
+            style={{ width: 52, height: 52, display: 'block', overflow: 'visible' }}
           >
-            <text className="sparkle" x="0" y="30" fontSize="14" fill="#FCD34D" style={{ animationDelay: '0ms' }}>✦</text>
-            <text className="sparkle" x="80" y="20" fontSize="11" fill="#FCD34D" style={{ animationDelay: '100ms' }}>✦</text>
-            <text className="sparkle" x="88" y="65" fontSize="9" fill="#FCD34D" style={{ animationDelay: '200ms' }}>✦</text>
+            {isEgg ? <EggBody /> : <CreatureBody mood={petState.mood} stage={stage} />}
           </svg>
-        )}
-      </div>
 
-      {/* Info column */}
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        {/* Name + level */}
-        <div className="flex items-center gap-1.5">
-          <span className="text-xs font-bold text-gray-700 leading-none">Wiz</span>
-          <span
-            className="rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none text-white"
-            style={{ backgroundColor: progressColor }}
-          >
-            Lv.{petState.level} {stageLabel}
-          </span>
-
-          {/* XP gained pop-up */}
-          {showXpLabel && (
-            <span
-              key={`xp-${animKey}`}
-              className="xp-label text-[10px] font-bold leading-none"
-              style={{ color: animationType === 'celebrate' ? '#10B981' : '#64748B' }}
+          {showSparkles && (
+            <svg
+              key={`sparkle-${animKey}`}
+              viewBox="0 0 100 100"
+              style={{ position: 'absolute', inset: 0, width: 52, height: 52, pointerEvents: 'none', overflow: 'visible' }}
             >
-              {animationType === 'celebrate' ? `+${xpGained} XP` : '...'}
-            </span>
+              <text className="sparkle" x="0" y="30" fontSize="14" fill="#FCD34D" style={{ animationDelay: '0ms' }}>✦</text>
+              <text className="sparkle" x="80" y="20" fontSize="11" fill="#FCD34D" style={{ animationDelay: '100ms' }}>✦</text>
+              <text className="sparkle" x="88" y="65" fontSize="9" fill="#FCD34D" style={{ animationDelay: '200ms' }}>✦</text>
+            </svg>
           )}
         </div>
 
-        {/* XP progress bar */}
-        <div className="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden">
-          <div
-            className="h-full rounded-full transition-all duration-700"
-            style={{ width: `${percent}%`, backgroundColor: progressColor }}
-          />
-        </div>
+        {/* Info column */}
+        <div className="flex min-w-0 flex-1 flex-col gap-1">
+          {/* Name + level + ? button */}
+          <div className="flex items-center gap-1.5">
+            <span className={`text-xs font-bold leading-none ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Wiz</span>
+            <span
+              className="rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none text-white"
+              style={{ backgroundColor: progressColor }}
+            >
+              Lv.{petState.level} {stageLabel}
+            </span>
 
-        {/* Hunger dots */}
-        <div className="flex items-center gap-0.5">
-          {Array.from({ length: 5 }).map((_, i) => {
-            const filled = (petState.hunger / 100) * 5 > i;
-            return (
-              <div
-                key={i}
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ backgroundColor: filled ? '#FDA4AF' : '#E5E7EB' }}
-              />
-            );
-          })}
-          <span className="ml-1 text-[9px] text-gray-400 leading-none">hunger</span>
+            {showXpLabel && (
+              <span
+                key={`xp-${animKey}`}
+                className="xp-label text-[10px] font-bold leading-none"
+                style={{ color: animationType === 'celebrate' ? '#10B981' : '#64748B' }}
+              >
+                {animationType === 'celebrate' ? `+${xpGained} XP` : '...'}
+              </span>
+            )}
+
+            {/* Info toggle button */}
+            <button
+              onClick={() => setShowInfo((v) => !v)}
+              className={`ml-auto flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full border text-[9px] font-bold leading-none transition-colors ${
+                showInfo
+                  ? 'border-violet-400 bg-violet-100 text-violet-600'
+                  : isDark
+                    ? 'border-gray-600 bg-gray-700 text-gray-400 hover:border-gray-500 hover:text-gray-300'
+                    : 'border-gray-300 bg-white text-gray-400 hover:border-gray-400 hover:text-gray-600'
+              }`}
+              aria-label="How Wiz works"
+            >
+              ?
+            </button>
+          </div>
+
+          {/* XP progress bar */}
+          <div className={`h-1.5 w-full rounded-full overflow-hidden ${isDark ? 'bg-gray-600' : 'bg-gray-100'}`}>
+            <div
+              className="h-full rounded-full transition-all duration-700"
+              style={{ width: `${percent}%`, backgroundColor: progressColor }}
+            />
+          </div>
+
+          {/* Hunger dots */}
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => {
+              const filled = (petState.hunger / 100) * 5 > i;
+              return (
+                <div
+                  key={i}
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: filled ? '#FDA4AF' : isDark ? '#4B5563' : '#E5E7EB' }}
+                />
+              );
+            })}
+            <span className={`ml-1 text-[9px] leading-none ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>hunger</span>
+          </div>
         </div>
       </div>
+
+      {/* Info panel */}
+      {showInfo && (
+        <div className={`mt-2 rounded-xl border p-2.5 ${isDark ? 'border-gray-600 bg-gray-800' : 'border-slate-200 bg-slate-50'}`}>
+          <p className={`mb-1.5 text-[10px] font-semibold uppercase tracking-wide ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>
+            How Wiz works
+          </p>
+          <div className="flex flex-col gap-1">
+            {INFO_ITEMS.map((item) => (
+              <div key={item.label} className="flex items-start gap-1.5">
+                <span className="text-[11px] leading-4 flex-shrink-0">{item.icon}</span>
+                <p className={`text-[10px] leading-4 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
+                  <span className="font-semibold">{item.label}:</span> {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
