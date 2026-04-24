@@ -77,83 +77,91 @@ before(() => {
   compileRetrieverModules();
 });
 
-test('returns the Flask chunk for a Flask web app query', () => {
-  const results = retrieveRelevantChunks('Help me build a Flask web app in Python');
+test('returns the Naive Bayes chunk for conditional independence queries', () => {
+  const results = retrieveRelevantChunks(
+    'How does Naive Bayes make predictions with conditional independence?'
+  );
 
   assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'python_flask_benefits_q13');
+  assert.equal(
+    results[0].chunk.id,
+    'write-a-naive-bayes-classifier-from-scratch-e5b05317b537822e9f35815219802d43'
+  );
   assert.ok(
     results[0].signals.some((signal) =>
-      signal.value.toLowerCase().includes('flask')
+      signal.value.toLowerCase().includes('bayes')
     )
   );
 });
 
-test('returns the lists vs tuples chunk for tuple comparison queries', () => {
+test('returns the vanishing gradient chunk for deep network gradient queries', () => {
   const results = retrieveRelevantChunks(
-    'What is the difference between a Python list and tuple?'
+    'What causes vanishing gradients in deep neural networks?'
   );
 
   assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'python_lists_vs_tuples_q5');
+  assert.equal(
+    results[0].chunk.id,
+    'vanishing-gradient-00505317b53783dda3ba81abc8efc3de'
+  );
 });
 
-test('returns the SQL BETWEEN versus IN chunk for matching operator queries', () => {
+test('returns the logistic regression chunk for sigmoid classification queries', () => {
   const results = retrieveRelevantChunks(
-    'In SQL, what is the difference between BETWEEN and IN operators?'
+    'How does logistic regression use sigmoid for classification?'
   );
 
   assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'sql_between_vs_in_q3');
+  assert.match(results[0].chunk.id, /logistic-regression/);
   assert.ok(
-    results[0].signals.some((signal) => signal.kind === 'category')
+    results[0].signals.some((signal) => signal.value === 'logistic-regression')
   );
 });
 
-test('returns the ROC curve chunk for ROC and AUC evaluation queries', () => {
+test('returns the PCA chunk for dimensionality reduction queries', () => {
   const results = retrieveRelevantChunks(
-    'When should I use an ROC curve and AUC for model evaluation?'
+    'How does PCA reduce dimensionality?'
   );
 
   assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'ml_roc_curve_q19');
+  assert.equal(
+    results[0].chunk.id,
+    'difference-between-lda-and-pca-for-dimensionality-reduction-cf105317b537829ea923815818e9d040'
+  );
 });
 
-test('returns the long-tailed distribution chunk for heavy-tail questions', () => {
+test('returns the RAG chunk for retrieval augmented generation queries', () => {
   const results = retrieveRelevantChunks(
-    'Why do long tailed distributions matter for classification problems?'
+    'What is retrieval augmented generation RAG?'
   );
 
   assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'stats_long_tailed_distribution_q6');
+  assert.equal(
+    results[0].chunk.id,
+    'retrieval-augmented-generation-26f05317b537827aa89b811c664ca039'
+  );
 });
 
-test('returns the unfair coin Bayes chunk for posterior coin-flip questions', () => {
+test('returns a Transformer chunk for attention queries', () => {
   const results = retrieveRelevantChunks(
-    'How do you use Bayes theorem to infer whether a coin is unfair after five tails?'
+    'How does a transformer use attention?'
   );
 
   assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'prob_unfair_coin_bayes_q8');
-});
-
-test('returns the autoencoder chunk for encoder decoder representation questions', () => {
-  const results = retrieveRelevantChunks(
-    'What is an autoencoder with an encoder, bottleneck, and decoder?'
-  );
-
-  assert.ok(results.length > 0);
-  assert.equal(results[0].chunk.id, 'dl_autoencoders_q1');
+  assert.match(results[0].chunk.id, /transformer/);
 });
 
 test('respects topK and minScore options', () => {
-  const results = retrieveRelevantChunks('flask python framework', {
+  const results = retrieveRelevantChunks('retrieval augmented generation rag', {
     topK: 1,
     minScore: 5,
   });
 
   assert.equal(results.length, 1);
-  assert.equal(results[0].chunk.id, 'python_flask_benefits_q13');
+  assert.equal(
+    results[0].chunk.id,
+    'retrieval-augmented-generation-26f05317b537827aa89b811c664ca039'
+  );
 });
 
 test('returns an empty list for empty or unrelated queries', () => {

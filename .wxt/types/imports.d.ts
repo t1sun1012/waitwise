@@ -5,9 +5,9 @@ declare global {
   const InvalidMatchPattern: typeof import('wxt/sandbox')['InvalidMatchPattern']
   const MatchPattern: typeof import('wxt/sandbox')['MatchPattern']
   const MigrationError: typeof import('wxt/storage')['MigrationError']
-  const PetDisplay: typeof import('/Users/laurent/Desktop/EC327/waitwise/components/PetDisplay')['PetDisplay']
-  const QuizWidget: typeof import('/Users/laurent/Desktop/EC327/waitwise/components/QuizWidget')['QuizWidget']
-  const ReviewHub: typeof import('/Users/laurent/Desktop/EC327/waitwise/components/ReviewHub')['ReviewHub']
+  const PetDisplay: typeof import('/Users/t1sun-mac/waitwise/components/PetDisplay')['PetDisplay']
+  const QuizWidget: typeof import('/Users/t1sun-mac/waitwise/components/QuizWidget')['QuizWidget']
+  const ReviewHub: typeof import('/Users/t1sun-mac/waitwise/components/ReviewHub')['ReviewHub']
   const browser: typeof import('wxt/browser/chrome')['browser']
   const createIframeUi: typeof import('wxt/client')['createIframeUi']
   const createIntegratedUi: typeof import('wxt/client')['createIntegratedUi']
@@ -33,6 +33,6 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { PetAnimationType } from '/Users/laurent/Desktop/EC327/waitwise/components/PetDisplay'
-  import('/Users/laurent/Desktop/EC327/waitwise/components/PetDisplay')
+  export type { PetAnimationType } from '/Users/t1sun-mac/waitwise/components/PetDisplay'
+  import('/Users/t1sun-mac/waitwise/components/PetDisplay')
 }

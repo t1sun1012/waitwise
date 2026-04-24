@@ -90,12 +90,16 @@ before(() => {
 
 function buildRetrievedChunks() {
   const corpus = getRagCorpus();
-  const flaskChunk = corpus.find((chunk) => chunk.id === 'python_flask_benefits_q13');
-  const listsChunk = corpus.find((chunk) => chunk.id === 'python_lists_vs_tuples_q5');
+  const logisticRegressionChunk = corpus.find(
+    (chunk) => chunk.id === 'logistic-regression-b0505317b53782db9c9001fe8426a708'
+  );
+  const mseChunk = corpus.find(
+    (chunk) => chunk.id === 'why-mse-doesnt-work-with-logistic-regression-10205317b53783c0b0f0018e51ab456f'
+  );
 
   return [
-    { chunk: flaskChunk, score: 20, signals: [] },
-    { chunk: listsChunk, score: 8, signals: [] },
+    { chunk: logisticRegressionChunk, score: 20, signals: [] },
+    { chunk: mseChunk, score: 8, signals: [] },
   ];
 }
 
@@ -175,14 +179,14 @@ test('retrieval mode still returns retrieval quizzes when provider generation su
       providerApiKey: 'test-key',
       retrievedChunks,
       retrievalContext: {
-        currentUserPrompt: 'What is Flask?',
+        currentUserPrompt: 'What is logistic regression?',
         previousUserPrompts: [],
         recentAssistantReplies: [],
         intent: 'define',
-        entities: ['flask'],
-        relatedConcepts: ['python'],
-        summary: 'define flask',
-        retrievalQueries: ['flask python web framework'],
+        entities: ['logistic regression'],
+        relatedConcepts: ['classification', 'sigmoid'],
+        summary: 'define logistic regression',
+        retrievalQueries: ['logistic regression sigmoid classification'],
       },
     },
     {
@@ -190,12 +194,12 @@ test('retrieval mode still returns retrieval quizzes when provider generation su
         observedProvider = params.provider;
         return {
           id: 'retrieval-1',
-          question: 'What is Flask?',
-          options: ['A framework', 'A database', 'A shell', 'A package manager'],
+          question: 'What is logistic regression?',
+          options: ['A classifier', 'A database', 'A shell', 'A package manager'],
           correctIndex: 0,
           mode: 'retrieval',
-          topic: 'python',
-          explanation: 'Flask is a web framework.',
+          topic: 'machine learning',
+          explanation: 'Logistic regression models class probabilities.',
           source: {
             ...retrievedChunks[0].chunk,
             tags: [...retrievedChunks[0].chunk.tags],

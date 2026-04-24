@@ -115,10 +115,10 @@ test('falls back to earlier user topics when the current prompt is vague', () =>
 
   assert.equal(conversationContext.intent, 'explain');
   assert.ok(
-    conversationContext.entities.some((entity) => /logistic regression/i.test(entity))
+    conversationContext.entities.some((entity) => /logistic/i.test(entity))
   );
   assert.ok(
-    conversationContext.relatedConcepts.some((concept) => /classification|roc curve/i.test(concept))
+    conversationContext.relatedConcepts.some((concept) => /logistic regression|classification|auc/i.test(concept))
   );
 });
 

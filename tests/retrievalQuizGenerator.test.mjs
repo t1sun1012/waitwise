@@ -82,29 +82,29 @@ before(() => {
 });
 
 test('builds a retrieval-backed quiz from the top ranked chunk', () => {
-  const [flaskChunk] = getRagCorpus().filter(
-    (chunk) => chunk.id === 'python_flask_benefits_q13'
+  const [logisticRegressionChunk] = getRagCorpus().filter(
+    (chunk) => chunk.id === 'logistic-regression-b0505317b53782db9c9001fe8426a708'
   );
-  const [listsChunk] = getRagCorpus().filter(
-    (chunk) => chunk.id === 'python_lists_vs_tuples_q5'
+  const [mseChunk] = getRagCorpus().filter(
+    (chunk) => chunk.id === 'why-mse-doesnt-work-with-logistic-regression-10205317b53783c0b0f0018e51ab456f'
   );
 
   const question = retrievalQuizGenerator.generate([
-    { chunk: flaskChunk, score: 12, signals: [] },
-    { chunk: listsChunk, score: 4, signals: [] },
+    { chunk: logisticRegressionChunk, score: 12, signals: [] },
+    { chunk: mseChunk, score: 4, signals: [] },
   ]);
 
   assert.ok(question);
-  assert.match(question.question, /flask/i);
+  assert.match(question.question, /logistic regression/i);
   assert.equal(question.options.length, 4);
   assert.ok(question.correctIndex >= 0 && question.correctIndex < question.options.length);
-  assert.match(question.options[question.correctIndex], /web framework|microframework/i);
+  assert.match(question.options[question.correctIndex], /classification|probability|sigmoid/i);
   assert.equal(question.mode, 'retrieval');
-  assert.equal(question.source.id, flaskChunk.id);
-  assert.equal(question.source.title, flaskChunk.title);
-  assert.equal(question.source.answer, flaskChunk.answer);
-  assert.equal(question.source.source.repo, flaskChunk.source.repo);
-  assert.equal(question.explanation, flaskChunk.answer);
+  assert.equal(question.source.id, logisticRegressionChunk.id);
+  assert.equal(question.source.title, logisticRegressionChunk.title);
+  assert.equal(question.source.answer, logisticRegressionChunk.answer);
+  assert.equal(question.source.source.repo, logisticRegressionChunk.source.repo);
+  assert.equal(question.explanation, logisticRegressionChunk.answer);
 });
 
 test('falls back to a random RAG question when there is no retrieved chunk', () => {
@@ -119,16 +119,16 @@ test('falls back to a random RAG question when there is no retrieved chunk', () 
 });
 
 test('falls back to a random RAG question when the top retrieval result is not confident enough', () => {
-  const [flaskChunk] = getRagCorpus().filter(
-    (chunk) => chunk.id === 'python_flask_benefits_q13'
+  const [logisticRegressionChunk] = getRagCorpus().filter(
+    (chunk) => chunk.id === 'logistic-regression-b0505317b53782db9c9001fe8426a708'
   );
-  const [listsChunk] = getRagCorpus().filter(
-    (chunk) => chunk.id === 'python_lists_vs_tuples_q5'
+  const [mseChunk] = getRagCorpus().filter(
+    (chunk) => chunk.id === 'why-mse-doesnt-work-with-logistic-regression-10205317b53783c0b0f0018e51ab456f'
   );
 
   const question = retrievalQuizGenerator.generate([
-    { chunk: flaskChunk, score: 11, signals: [] },
-    { chunk: listsChunk, score: 8, signals: [] },
+    { chunk: logisticRegressionChunk, score: 11, signals: [] },
+    { chunk: mseChunk, score: 8, signals: [] },
   ]);
 
   assert.ok(question);
