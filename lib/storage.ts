@@ -302,3 +302,12 @@ export async function getPetState(): Promise<PetState> {
 export async function setPetState(petState: PetState): Promise<void> {
   await chrome.storage.local.set({ petState });
 }
+
+export async function getTheme(): Promise<'light' | 'dark'> {
+  const result = await chrome.storage.local.get('theme');
+  return result.theme === 'dark' ? 'dark' : 'light';
+}
+
+export async function setTheme(theme: 'light' | 'dark'): Promise<void> {
+  await chrome.storage.local.set({ theme });
+}
