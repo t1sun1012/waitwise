@@ -103,6 +103,8 @@ const SORT_OPTIONS: Array<{ value: AttemptSortOrder; label: string }> = [
   { value: 'topic', label: 'Sorted by topic' },
 ];
 
+const MODE_SECTION_ORDER: QuizMode[] = ['retrieval', 'general', 'math'];
+
 function getAttemptTopic(attempt: QuizAttempt): string {
   if (attempt.topic) return attempt.topic;
   if (attempt.source?.subcategory) return attempt.source.subcategory;
@@ -129,6 +131,56 @@ function formatQuestionType(
     .split('_')
     .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
     .join(' ');
+}
+
+function sortAttempts(
+  attempts: QuizAttempt[],
+  sortOrder: AttemptSortOrder
+): QuizAttempt[] {
+  const nextAttempts = [...attempts];
+
+  switch (sortOrder) {
+    case 'oldest':
+      nextAttempts.sort((left, right) => left.answeredAt - right.answeredAt);
+      break;
+    case 'correct-first':
+      nextAttempts.sort((left, right) => {
+        if (left.isCorrect !== right.isCorrect) {
+          return Number(right.isCorrect) - Number(left.isCorrect);
+        }
+
+        return right.answeredAt - left.answeredAt;
+      });
+      break;
+    case 'incorrect-first':
+      nextAttempts.sort((left, right) => {
+        if (left.isCorrect !== right.isCorrect) {
+          return Number(left.isCorrect) - Number(right.isCorrect);
+        }
+
+        return right.answeredAt - left.answeredAt;
+      });
+      break;
+    case 'topic':
+      nextAttempts.sort((left, right) => {
+        const topicComparison = getAttemptTopic(left).localeCompare(
+          getAttemptTopic(right)
+        );
+
+        if (topicComparison !== 0) {
+          return topicComparison;
+        }
+
+        return right.answeredAt - left.answeredAt;
+      });
+      break;
+    case 'newest':
+    default:
+      nextAttempts.sort((left, right) => right.answeredAt - left.answeredAt);
+      break;
+  }
+
+  return nextAttempts;
 }
 
 export function ReviewHub() {
@@ -252,51 +304,37 @@ export function ReviewHub() {
     providerApiKeyDraft.trim() !== providerApiKey.trim();
   const activeProviderCopy = PROVIDER_COPY[quizProviderDraft];
 
-  const sortedAttempts = useMemo(() => {
-    const nextAttempts = [...attempts];
+  const groupedAttempts = useMemo(() => {
+    const attemptsByMode = new Map<QuizMode | 'other', QuizAttempt[]>();
 
-    switch (attemptSortOrder) {
-      case 'oldest':
-        nextAttempts.sort((left, right) => left.answeredAt - right.answeredAt);
-        break;
-      case 'correct-first':
-        nextAttempts.sort((left, right) => {
-          if (left.isCorrect !== right.isCorrect) {
-            return Number(right.isCorrect) - Number(left.isCorrect);
-          }
+    attempts.forEach((attempt) => {
+      const mode =
+        attempt.mode === 'retrieval' ||
+        attempt.mode === 'general' ||
+        attempt.mode === 'math'
+          ? attempt.mode
+          : 'other';
+      const existing = attemptsByMode.get(mode) ?? [];
+      existing.push(attempt);
+      attemptsByMode.set(mode, existing);
+    });
 
-          return right.answeredAt - left.answeredAt;
-        });
-        break;
-      case 'incorrect-first':
-        nextAttempts.sort((left, right) => {
-          if (left.isCorrect !== right.isCorrect) {
-            return Number(left.isCorrect) - Number(right.isCorrect);
-          }
+    const orderedGroups = MODE_SECTION_ORDER.map((mode) => ({
+      mode,
+      label: MODE_COPY[mode].label,
+      attempts: sortAttempts(attemptsByMode.get(mode) ?? [], attemptSortOrder),
+    })).filter((group) => group.attempts.length > 0);
 
-          return right.answeredAt - left.answeredAt;
-        });
-        break;
-      case 'topic':
-        nextAttempts.sort((left, right) => {
-          const topicComparison = getAttemptTopic(left).localeCompare(
-            getAttemptTopic(right)
-          );
-
-          if (topicComparison !== 0) {
-            return topicComparison;
-          }
-
-          return right.answeredAt - left.answeredAt;
-        });
-        break;
-      case 'newest':
-      default:
-        nextAttempts.sort((left, right) => right.answeredAt - left.answeredAt);
-        break;
+    const otherAttempts = attemptsByMode.get('other') ?? [];
+    if (otherAttempts.length > 0) {
+      orderedGroups.push({
+        mode: 'other',
+        label: 'Other Quizzes',
+        attempts: sortAttempts(otherAttempts, attemptSortOrder),
+      });
     }
 
-    return nextAttempts;
+    return orderedGroups;
   }, [attemptSortOrder, attempts]);
 
   async function handleModeChange(nextMode: QuizMode) {
@@ -657,140 +695,156 @@ export function ReviewHub() {
             </label>
           </div>
 
-          {sortedAttempts.length === 0 ? (
+          {groupedAttempts.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-4 text-sm text-slate-500">
               No answered quizzes yet. Answer one in ChatGPT and it will show up
               here.
             </div>
           ) : (
             <div className="space-y-3">
-              {sortedAttempts.map((attempt) => (
-                <details
-                  key={attempt.id}
-                  className={`group rounded-2xl border px-4 py-4 ${
-                    attempt.isCorrect
-                      ? 'border-emerald-200 bg-emerald-50/70'
-                      : 'border-rose-200 bg-rose-50/70'
-                  }`}
+              {groupedAttempts.map((group) => (
+                <section
+                  key={group.mode}
+                  className="rounded-2xl border border-slate-200 bg-slate-50/70 p-3"
                 >
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold leading-6 text-slate-900">
-                        {attempt.question}
-                      </p>
-                    </div>
-                    <span className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition group-open:rotate-180">
-                      <svg
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        aria-hidden="true"
-                        className="h-4 w-4"
-                      >
-                        <path
-                          d="M5 7.5L10 12.5L15 7.5"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                  <div className="mb-3 flex items-center justify-between gap-3 px-1">
+                    <h3 className="text-sm font-semibold text-slate-900">
+                      {group.label}
+                    </h3>
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                      {group.attempts.length}{' '}
+                      {group.attempts.length === 1 ? 'question' : 'questions'}
                     </span>
-                  </summary>
+                  </div>
 
-                  <div className="mt-4 space-y-3 border-t border-slate-200 pt-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span
-                          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
-                            attempt.isCorrect
-                              ? 'bg-emerald-100 text-emerald-800'
-                              : 'bg-rose-100 text-rose-800'
-                          }`}
-                        >
-                          {attempt.isCorrect ? 'Correct' : 'Missed'}
-                        </span>
-                        <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                          {getAttemptModeLabel(attempt.mode)}
-                        </span>
-                        <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                          {getAttemptTopic(attempt)}
-                        </span>
-                        {formatQuestionType(attempt.questionType) && (
-                          <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                            {formatQuestionType(attempt.questionType)}
-                          </span>
-                        )}
-                      </div>
-                      <time className="text-xs text-slate-400">
-                        {new Date(attempt.answeredAt).toLocaleString([], {
-                          month: 'short',
-                          day: 'numeric',
-                          hour: 'numeric',
-                          minute: '2-digit',
-                        })}
-                      </time>
-                    </div>
-
-                    <div className="space-y-2 text-sm leading-6 text-slate-600">
-                      <p>
-                        <span className="font-medium text-slate-900">
-                          Your answer:
-                        </span>{' '}
-                        {attempt.selectedOption}
-                      </p>
-                      {!attempt.isCorrect && (
-                        <p>
-                          <span className="font-medium text-slate-900">
-                            Correct answer:
-                          </span>{' '}
-                          {attempt.correctOption}
-                        </p>
-                      )}
-                      {attempt.explanation && (
-                        <p className="text-slate-500">{attempt.explanation}</p>
-                      )}
-                      {attempt.source && (
-                        <details className="rounded-xl border border-slate-200 bg-white px-3 py-2">
-                          <summary className="cursor-pointer list-none text-sm font-medium text-slate-900">
-                            Source evidence
-                          </summary>
-                          <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
-                            <p className="font-medium text-slate-900">
-                              {attempt.source.title}
+                  <div className="space-y-3">
+                    {group.attempts.map((attempt) => (
+                      <details
+                        key={attempt.id}
+                        className={`group rounded-2xl border px-4 py-4 ${
+                          attempt.isCorrect
+                            ? 'border-emerald-200 bg-emerald-50/70'
+                            : 'border-rose-200 bg-rose-50/70'
+                        }`}
+                      >
+                        <summary className="flex cursor-pointer list-none items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="text-sm font-semibold leading-6 text-slate-900">
+                              {attempt.question}
                             </p>
-                            <div className="flex flex-wrap gap-2">
-                              <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                                {attempt.source.category}
+                          </div>
+                          <span className="rounded-full border border-slate-200 bg-white p-2 text-slate-500 transition group-open:rotate-180">
+                            <svg
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              aria-hidden="true"
+                              className="h-4 w-4"
+                            >
+                              <path
+                                d="M5 7.5L10 12.5L15 7.5"
+                                stroke="currentColor"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
+                        </summary>
+
+                        <div className="mt-4 space-y-3 border-t border-slate-200 pt-4">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span
+                                className={`rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
+                                  attempt.isCorrect
+                                    ? 'bg-emerald-100 text-emerald-800'
+                                    : 'bg-rose-100 text-rose-800'
+                                }`}
+                              >
+                                {attempt.isCorrect ? 'Correct' : 'Missed'}
                               </span>
-                              {attempt.source.subcategory && (
-                                <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
-                                  {attempt.source.subcategory}
+                              <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                                {getAttemptTopic(attempt)}
+                              </span>
+                              {formatQuestionType(attempt.questionType) && (
+                                <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                                  {formatQuestionType(attempt.questionType)}
                                 </span>
                               )}
-                              {attempt.source.tags.slice(0, 4).map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-500"
-                                >
-                                  #{tag}
-                                </span>
-                              ))}
                             </div>
-                            <p>{attempt.source.answer}</p>
-                            <a
-                              href={attempt.source.source.url}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center text-sm font-medium text-teal-700 hover:text-teal-900"
-                            >
-                              Open source entry
-                            </a>
+                            <time className="text-xs text-slate-400">
+                              {new Date(attempt.answeredAt).toLocaleString([], {
+                                month: 'short',
+                                day: 'numeric',
+                                hour: 'numeric',
+                                minute: '2-digit',
+                              })}
+                            </time>
                           </div>
-                        </details>
-                      )}
-                    </div>
+
+                          <div className="space-y-2 text-sm leading-6 text-slate-600">
+                            <p>
+                              <span className="font-medium text-slate-900">
+                                Your answer:
+                              </span>{' '}
+                              {attempt.selectedOption}
+                            </p>
+                            {!attempt.isCorrect && (
+                              <p>
+                                <span className="font-medium text-slate-900">
+                                  Correct answer:
+                                </span>{' '}
+                                {attempt.correctOption}
+                              </p>
+                            )}
+                            {attempt.explanation && (
+                              <p className="text-slate-500">{attempt.explanation}</p>
+                            )}
+                            {attempt.source && (
+                              <details className="rounded-xl border border-slate-200 bg-white px-3 py-2">
+                                <summary className="cursor-pointer list-none text-sm font-medium text-slate-900">
+                                  Source evidence
+                                </summary>
+                                <div className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
+                                  <p className="font-medium text-slate-900">
+                                    {attempt.source.title}
+                                  </p>
+                                  <div className="flex flex-wrap gap-2">
+                                    <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                                      {attempt.source.category}
+                                    </span>
+                                    {attempt.source.subcategory && (
+                                      <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
+                                        {attempt.source.subcategory}
+                                      </span>
+                                    )}
+                                    {attempt.source.tags.slice(0, 4).map((tag) => (
+                                      <span
+                                        key={tag}
+                                        className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-medium text-slate-500"
+                                      >
+                                        #{tag}
+                                      </span>
+                                    ))}
+                                  </div>
+                                  <p>{attempt.source.answer}</p>
+                                  <a
+                                    href={attempt.source.source.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center text-sm font-medium text-teal-700 hover:text-teal-900"
+                                  >
+                                    Open source entry
+                                  </a>
+                                </div>
+                              </details>
+                            )}
+                          </div>
+                        </div>
+                      </details>
+                    ))}
                   </div>
-                </details>
+                </section>
               ))}
             </div>
           )}
