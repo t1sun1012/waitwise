@@ -13,6 +13,8 @@ const TITLE_TOKEN_WEIGHT = 3;
 const TEXT_TOKEN_WEIGHT = 1;
 const MAX_TITLE_TOKEN_MATCHES = 3;
 const MAX_TEXT_TOKEN_MATCHES = 8;
+const MIN_CONFIDENT_PRIMARY_SCORE = 12;
+const MIN_CONFIDENT_SCORE_GAP = 5;
 
 const STOPWORDS = new Set([
   'a',
@@ -145,10 +147,10 @@ function buildSignalsForChunk(
     });
   }
 
-  const textOverlap = intersection(
-    uniqueTokens(`${chunk.question} ${chunk.text}`),
-    queryTokens
-  ).slice(0, MAX_TEXT_TOKEN_MATCHES);
+  const textOverlap = intersection(uniqueTokens(chunk.text), queryTokens).slice(
+    0,
+    MAX_TEXT_TOKEN_MATCHES
+  );
   for (const token of textOverlap) {
     signals.push({
       kind: 'text-token',
@@ -194,4 +196,16 @@ export function retrieveRelevantChunks(
       return left.chunk.id.localeCompare(right.chunk.id);
     })
     .slice(0, topK);
+}
+
+export function hasConfidentRetrievalMatch(
+  retrievedChunks: RankedRetrievedChunk[]
+): boolean {
+  if (retrievedChunks.length === 0) return false;
+
+  const [primary, secondary] = retrievedChunks;
+  if (primary.score < MIN_CONFIDENT_PRIMARY_SCORE) return false;
+  if (!secondary) return true;
+
+  return primary.score - secondary.score >= MIN_CONFIDENT_SCORE_GAP;
 }

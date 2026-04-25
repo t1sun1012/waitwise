@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import os from 'node:os';
+import { mkdtempSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test, { before } from 'node:test';
@@ -10,12 +11,11 @@ const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
-const outDir = path.join(repoRoot, '.tmp-retriever-tests');
+const outDir = mkdtempSync(path.join(os.tmpdir(), 'waitwise-retriever-tests-'));
 
 let retrieveRelevantChunks;
 
 function compileRetrieverModules() {
-  mkdirSync(outDir, { recursive: true });
   writeFileSync(
     path.join(outDir, 'package.json'),
     JSON.stringify({ type: 'commonjs' }, null, 2)

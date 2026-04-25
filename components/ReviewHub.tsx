@@ -34,7 +34,7 @@ const MODE_COPY: Record<QuizMode, { label: string; description: string }> = {
   retrieval: {
     label: 'Retrieval Review',
     description:
-      'Use WaitWise retrieval plus your active provider to surface a grounded review question. If nothing relevant is found, show a fallback review question from the RAG database instead.',
+      'Use WaitWise retrieval plus your active provider to generate a grounded review question from a Notion topic. If nothing relevant is found, generate from a random review topic instead.',
   },
   general: {
     label: 'General Thinking',
@@ -679,7 +679,7 @@ export function ReviewHub() {
                             {attempt.source && (
                               <details className={`rounded-xl border px-3 py-2 ${isDark ? 'border-gray-600 bg-gray-800' : 'border-slate-200 bg-white'}`}>
                                 <summary className={`cursor-pointer list-none text-sm font-medium ${isDark ? 'text-slate-300' : 'text-slate-900'}`}>
-                                  Source evidence
+                                  Source topic
                                 </summary>
                                 <div className={`mt-3 space-y-2 text-sm leading-6 ${isDark ? 'text-gray-400' : 'text-slate-600'}`}>
                                   <p className={`font-medium ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>{attempt.source.title}</p>
@@ -698,7 +698,7 @@ export function ReviewHub() {
                                       </span>
                                     ))}
                                   </div>
-                                  <p>{attempt.source.answer}</p>
+                                  <p>{attempt.source.topicSummary}</p>
                                   <a
                                     href={attempt.source.source.url}
                                     target="_blank"

@@ -7,8 +7,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-29",
     "title": "01 ML system design introduction - bytebytego",
-    "question": "Generate a technical interview quiz about 01 ML system design introduction - bytebytego.",
-    "answer": "Topic index entry for 01 ML system design introduction - bytebytego under System design. Open the source database for the original Notion notes.",
     "tags": [
       "system-design",
       "ml-system-design",
@@ -40,7 +38,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=c9be577e1ff94e01b091aeed4a55da87&pm=s",
       "pageId": "7b805317b53783558eec8148fba0716f",
       "publicPageId": "c9be577e1ff94e01b091aeed4a55da87"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about 01 ML system design introduction - bytebytego.",
+    "topicSummary": "Topic index entry for 01 ML system design introduction - bytebytego under System design. Open the source database for the original Notion notes."
   },
   {
     "id": "1x1-convolutional-filter-38105317b53782a586a701214b2a9e3b",
@@ -50,8 +50,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "1x1 convolutional filter",
-    "question": "Generate a technical interview quiz about 1x1 convolutional filter.",
-    "answer": "Topic index entry for 1x1 convolutional filter under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -77,7 +75,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b8874bb7df44406eac566f62328308a4&pm=s",
       "pageId": "38105317b53782a586a701214b2a9e3b",
       "publicPageId": "b8874bb7df44406eac566f62328308a4"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about 1x1 convolutional filter.",
+    "topicSummary": "Topic index entry for 1x1 convolutional filter under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "a-b-testing-in-ads-c0405317b5378398a38f810ba355e003",
@@ -87,8 +87,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "A/B Testing in Ads",
-    "question": "Generate a technical interview quiz about A/B Testing in Ads.",
-    "answer": "Topic index entry for A/B Testing in Ads under System design. Open the source database for the original Notion notes.",
     "tags": [
       "system-design",
       "ml-system-design",
@@ -112,7 +110,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=4256c7248d2e497fb33d4705062425e0&pm=s",
       "pageId": "c0405317b5378398a38f810ba355e003",
       "publicPageId": "4256c7248d2e497fb33d4705062425e0"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about A/B Testing in Ads.",
+    "topicSummary": "Topic index entry for A/B Testing in Ads under System design. Open the source database for the original Notion notes."
   },
   {
     "id": "accuracy-f4f05317b5378391a50481bd2d1c36b3",
@@ -122,8 +122,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Accuracy",
-    "question": "Generate a technical interview quiz about Accuracy.",
-    "answer": "Topic index entry for Accuracy under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "metrics",
@@ -151,7 +149,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=6389fe50b0f34e0a9f01373abe7fe1f5&pm=s",
       "pageId": "f4f05317b5378391a50481bd2d1c36b3",
       "publicPageId": "6389fe50b0f34e0a9f01373abe7fe1f5"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Accuracy.",
+    "topicSummary": "Topic index entry for Accuracy under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "activation-functions-d2a05317b53782b2b56501836b1bea73",
@@ -161,8 +161,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-28",
     "title": "Activation functions",
-    "question": "Generate a technical interview quiz about Activation functions.",
-    "answer": "Topic index entry for Activation functions under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -184,7 +182,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=da30a0d9b2af405baeaf2118a3b27fc0&pm=s",
       "pageId": "d2a05317b53782b2b56501836b1bea73",
       "publicPageId": "da30a0d9b2af405baeaf2118a3b27fc0"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Activation functions.",
+    "topicSummary": "Topic index entry for Activation functions under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "active-function-0e805317b53782d096cb81d297ef3a4c",
@@ -194,8 +194,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-21",
     "title": "Active function",
-    "question": "Generate a technical interview quiz about Active function.",
-    "answer": "Topic index entry for Active function under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -219,7 +217,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a29d2c71710941118f9cf482fead283d&pm=s",
       "pageId": "0e805317b53782d096cb81d297ef3a4c",
       "publicPageId": "a29d2c71710941118f9cf482fead283d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Active function.",
+    "topicSummary": "Topic index entry for Active function under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "adam-optimizer-eef05317b537830faf32012bc2999329",
@@ -229,8 +229,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Adam optimizer",
-    "question": "Generate a technical interview quiz about Adam optimizer.",
-    "answer": "Topic index entry for Adam optimizer under Training. Open the source database for the original Notion notes.",
     "tags": [
       "training",
       "optimization",
@@ -256,7 +254,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e6115d8e61034de3807340d5718c6c65&pm=s",
       "pageId": "eef05317b537830faf32012bc2999329",
       "publicPageId": "e6115d8e61034de3807340d5718c6c65"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Adam optimizer.",
+    "topicSummary": "Topic index entry for Adam optimizer under Training. Open the source database for the original Notion notes."
   },
   {
     "id": "albef-blip-blip2-e2305317b53782f6a23c81b5c72607b2",
@@ -266,8 +266,6 @@
     "chunkType": "topic",
     "createdAt": "2024-03-01",
     "title": "AlBEF - BLIP - BLIP2",
-    "question": "Generate a technical interview quiz about AlBEF - BLIP - BLIP2.",
-    "answer": "Topic index entry for AlBEF - BLIP - BLIP2 under GENAI. Open the source database for the original Notion notes.",
     "tags": [
       "genai",
       "vision-language",
@@ -301,7 +299,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=8d1b37b5b5ec47c8b19580a0c9d6adcb&pm=s",
       "pageId": "e2305317b53782f6a23c81b5c72607b2",
       "publicPageId": "8d1b37b5b5ec47c8b19580a0c9d6adcb"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about AlBEF - BLIP - BLIP2.",
+    "topicSummary": "Topic index entry for AlBEF - BLIP - BLIP2 under GENAI. Open the source database for the original Notion notes."
   },
   {
     "id": "attribute-16005317b537823fbaeb019b17aefe95",
@@ -310,8 +310,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Attribute",
-    "question": "Generate a technical interview quiz about Attribute.",
-    "answer": "Topic index entry for Attribute under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "neural-networks",
@@ -331,7 +329,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=6f9f54ff59d74783907673cb66168b20&pm=s",
       "pageId": "16005317b537823fbaeb019b17aefe95",
       "publicPageId": "6f9f54ff59d74783907673cb66168b20"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Attribute.",
+    "topicSummary": "Topic index entry for Attribute under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "autoencoder-7c505317b53783bcae22012475473444",
@@ -341,8 +341,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-04",
     "title": "Autoencoder",
-    "question": "Generate a technical interview quiz about Autoencoder.",
-    "answer": "Topic index entry for Autoencoder under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -364,7 +362,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=bb71988700ed4de7afdaf85ef683e5f8&pm=s",
       "pageId": "7c505317b53783bcae22012475473444",
       "publicPageId": "bb71988700ed4de7afdaf85ef683e5f8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Autoencoder.",
+    "topicSummary": "Topic index entry for Autoencoder under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "batch-gradient-descent-and-stochastic-gradient-descent-b4205317b53783018b9881478f64703c",
@@ -374,8 +374,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-18",
     "title": "Batch Gradient Descent and Stochastic Gradient Descent",
-    "question": "Generate a technical interview quiz about Batch Gradient Descent and Stochastic Gradient Descent.",
-    "answer": "Topic index entry for Batch Gradient Descent and Stochastic Gradient Descent under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -405,7 +403,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=dc6801e86c584960ae537ed7961ac28d&pm=s",
       "pageId": "b4205317b53783018b9881478f64703c",
       "publicPageId": "dc6801e86c584960ae537ed7961ac28d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Batch Gradient Descent and Stochastic Gradient Descent.",
+    "topicSummary": "Topic index entry for Batch Gradient Descent and Stochastic Gradient Descent under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "batch-norm-mini-batch-layer-norm-4e105317b53783e3a5650138a944dd43",
@@ -415,8 +415,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Batch norm, mini-batch, layer norm",
-    "question": "Generate a technical interview quiz about Batch norm, mini-batch, layer norm.",
-    "answer": "Topic index entry for Batch norm, mini-batch, layer norm under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "regularization",
@@ -448,7 +446,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=4a2b35cd0f6646948488ae6f45c36ad9&pm=s",
       "pageId": "4e105317b53783e3a5650138a944dd43",
       "publicPageId": "4a2b35cd0f6646948488ae6f45c36ad9"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Batch norm, mini-batch, layer norm.",
+    "topicSummary": "Topic index entry for Batch norm, mini-batch, layer norm under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "bayes-theorem-how-to-interpret-bayes-rule-7f905317b53782ba903581eb15f779f4",
@@ -458,8 +458,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Bayes’ Theorem How to interpret Bayes rule",
-    "question": "Generate a technical interview quiz about Bayes’ Theorem How to interpret Bayes rule.",
-    "answer": "Topic index entry for Bayes’ Theorem How to interpret Bayes rule under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "probability",
@@ -492,7 +490,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=86600ede20584898a7fa69dc8749ab52&pm=s",
       "pageId": "7f905317b53782ba903581eb15f779f4",
       "publicPageId": "86600ede20584898a7fa69dc8749ab52"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Bayes’ Theorem How to interpret Bayes rule.",
+    "topicSummary": "Topic index entry for Bayes’ Theorem How to interpret Bayes rule under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "bert-c0905317b537825d8c700113d877e23a",
@@ -502,8 +502,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-28",
     "title": "BERT",
-    "question": "Generate a technical interview quiz about BERT.",
-    "answer": "Topic index entry for BERT under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "sequence-modeling",
@@ -529,7 +527,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=188cfdd3227b42e4b4f011a47f75f310&pm=s",
       "pageId": "c0905317b537825d8c700113d877e23a",
       "publicPageId": "188cfdd3227b42e4b4f011a47f75f310"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about BERT.",
+    "topicSummary": "Topic index entry for BERT under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "bias-metric-32605317b5378207a6f901cf83b0647d",
@@ -538,8 +538,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Bias metric",
-    "question": "Generate a technical interview quiz about Bias metric.",
-    "answer": "Topic index entry for Bias metric under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -571,7 +569,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=bdfdd3fc9b474cefa1ce9da7e9ec80af&pm=s",
       "pageId": "32605317b5378207a6f901cf83b0647d",
       "publicPageId": "bdfdd3fc9b474cefa1ce9da7e9ec80af"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Bias metric.",
+    "topicSummary": "Topic index entry for Bias metric under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "bias-variance-tradeoff-01205317b53783d99153012a72d049a7",
@@ -581,8 +581,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-11",
     "title": "Bias-Variance Tradeoff",
-    "question": "Generate a technical interview quiz about Bias-Variance Tradeoff.",
-    "answer": "Topic index entry for Bias-Variance Tradeoff under Regularization. Open the source database for the original Notion notes.",
     "tags": [
       "regularization",
       "overfitting",
@@ -612,7 +610,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2ac5c68badc0454ea02e749089896dca&pm=s",
       "pageId": "01205317b53783d99153012a72d049a7",
       "publicPageId": "2ac5c68badc0454ea02e749089896dca"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Bias-Variance Tradeoff.",
+    "topicSummary": "Topic index entry for Bias-Variance Tradeoff under Regularization. Open the source database for the original Notion notes."
   },
   {
     "id": "calculate-convolution-layer-output-size-a8605317b5378319a5cd81c244dd5892",
@@ -622,8 +622,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-24",
     "title": "calculate convolution layer output size",
-    "question": "Generate a technical interview quiz about calculate convolution layer output size.",
-    "answer": "Topic index entry for calculate convolution layer output size under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -653,7 +651,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=26c6ae0af0884a29920ed4187a3ebf32&pm=s",
       "pageId": "a8605317b5378319a5cd81c244dd5892",
       "publicPageId": "26c6ae0af0884a29920ed4187a3ebf32"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about calculate convolution layer output size.",
+    "topicSummary": "Topic index entry for calculate convolution layer output size under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "cnns-in-segmentation-b5e05317b53783d3b3e401f3dae3ac4d",
@@ -663,8 +663,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "CNNs in segmentation",
-    "question": "Generate a technical interview quiz about CNNs in segmentation.",
-    "answer": "Topic index entry for CNNs in segmentation under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -688,7 +686,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9ab30833fef2415dabe42871da13f3c4&pm=s",
       "pageId": "b5e05317b53783d3b3e401f3dae3ac4d",
       "publicPageId": "9ab30833fef2415dabe42871da13f3c4"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about CNNs in segmentation.",
+    "topicSummary": "Topic index entry for CNNs in segmentation under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "cnns-translation-invariant-9ad05317b5378349b9008146c3cda7d1",
@@ -698,8 +698,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-10",
     "title": "CNNs translation invariant",
-    "question": "Generate a technical interview quiz about CNNs translation invariant.",
-    "answer": "Topic index entry for CNNs translation invariant under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -725,7 +723,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=66b935ebb109466b9231f027e058349f&pm=s",
       "pageId": "9ad05317b5378349b9008146c3cda7d1",
       "publicPageId": "66b935ebb109466b9231f027e058349f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about CNNs translation invariant.",
+    "topicSummary": "Topic index entry for CNNs translation invariant under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "common-resampling-use-cases-6ee05317b537820d9d7d818df3127e8c",
@@ -735,8 +735,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "Common Resampling Use Cases",
-    "question": "Generate a technical interview quiz about Common Resampling Use Cases.",
-    "answer": "Topic index entry for Common Resampling Use Cases under Training. Open the source database for the original Notion notes.",
     "tags": [
       "training",
       "optimization",
@@ -766,7 +764,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=6818be62e50440f19c36940bccb78eba&pm=s",
       "pageId": "6ee05317b537820d9d7d818df3127e8c",
       "publicPageId": "6818be62e50440f19c36940bccb78eba"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Common Resampling Use Cases.",
+    "topicSummary": "Topic index entry for Common Resampling Use Cases under Training. Open the source database for the original Notion notes."
   },
   {
     "id": "compare-cnn-and-transformer-16005317b537826c821d816189fdf730",
@@ -776,8 +776,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-24",
     "title": "Compare CNN and Transformer",
-    "question": "Generate a technical interview quiz about Compare CNN and Transformer.",
-    "answer": "Topic index entry for Compare CNN and Transformer under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "computer-vision",
@@ -811,7 +809,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=c9adca9af66c49aab3895ad05e7e31fe&pm=s",
       "pageId": "16005317b537826c821d816189fdf730",
       "publicPageId": "c9adca9af66c49aab3895ad05e7e31fe"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Compare CNN and Transformer.",
+    "topicSummary": "Topic index entry for Compare CNN and Transformer under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "compare-rnn-lstm-with-transformer-96c05317b53782b5bb8801cd455de0d9",
@@ -821,8 +821,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "Compare RNN,LSTM with transformer",
-    "question": "Generate a technical interview quiz about Compare RNN,LSTM with transformer.",
-    "answer": "Topic index entry for Compare RNN,LSTM with transformer under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "sequence-modeling",
@@ -854,7 +852,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=18f254f5d7ab49d2962472f0a7100e98&pm=s",
       "pageId": "96c05317b53782b5bb8801cd455de0d9",
       "publicPageId": "18f254f5d7ab49d2962472f0a7100e98"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Compare RNN,LSTM with transformer.",
+    "topicSummary": "Topic index entry for Compare RNN,LSTM with transformer under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "compare-two-classifiers-25f05317b53782bd9edf818113499488",
@@ -864,8 +864,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Compare two classifiers",
-    "question": "Generate a technical interview quiz about Compare two classifiers.",
-    "answer": "Topic index entry for Compare two classifiers under System design. Open the source database for the original Notion notes.",
     "tags": [
       "system-design",
       "ml-system-design",
@@ -897,7 +895,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=123e599ffce140bd933591ed02c5cad4&pm=s",
       "pageId": "25f05317b53782bd9edf818113499488",
       "publicPageId": "123e599ffce140bd933591ed02c5cad4"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Compare two classifiers.",
+    "topicSummary": "Topic index entry for Compare two classifiers under System design. Open the source database for the original Notion notes."
   },
   {
     "id": "conditional-random-fields-crfs-68a05317b5378308814081438c5bf221",
@@ -906,8 +906,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-20",
     "title": "Conditional Random Fields (CRFs)",
-    "question": "Generate a technical interview quiz about Conditional Random Fields (CRFs).",
-    "answer": "Topic index entry for Conditional Random Fields (CRFs) under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -935,7 +933,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=d17c9dfcc29c46ad95b600819075624f&pm=s",
       "pageId": "68a05317b5378308814081438c5bf221",
       "publicPageId": "d17c9dfcc29c46ad95b600819075624f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Conditional Random Fields (CRFs).",
+    "topicSummary": "Topic index entry for Conditional Random Fields (CRFs) under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "confidence-interval-dab05317b537832f9e890129c3115df3",
@@ -944,8 +944,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "confidence interval",
-    "question": "Generate a technical interview quiz about confidence interval.",
-    "answer": "Topic index entry for confidence interval under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -969,7 +967,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9a5cea4bafca4410bc9ec859cef58542&pm=s",
       "pageId": "dab05317b537832f9e890129c3115df3",
       "publicPageId": "9a5cea4bafca4410bc9ec859cef58542"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about confidence interval.",
+    "topicSummary": "Topic index entry for confidence interval under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "confusion-matrix-62c05317b5378235b2b4812800d5ddd5",
@@ -979,8 +979,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Confusion matrix",
-    "question": "Generate a technical interview quiz about Confusion matrix.",
-    "answer": "Topic index entry for Confusion matrix under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -1004,7 +1002,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=3cc5792c6e404fe7ac6d5807378de65c&pm=s",
       "pageId": "62c05317b5378235b2b4812800d5ddd5",
       "publicPageId": "3cc5792c6e404fe7ac6d5807378de65c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Confusion matrix.",
+    "topicSummary": "Topic index entry for Confusion matrix under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "connected-component-labeling-66505317b53782bb9e1801eb3350ab37",
@@ -1014,8 +1014,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-18",
     "title": "Connected Component Labeling",
-    "question": "Generate a technical interview quiz about Connected Component Labeling.",
-    "answer": "Topic index entry for Connected Component Labeling under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -1041,7 +1039,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0f474a21c5b24528b956573124cbffa0&pm=s",
       "pageId": "66505317b53782bb9e1801eb3350ab37",
       "publicPageId": "0f474a21c5b24528b956573124cbffa0"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Connected Component Labeling.",
+    "topicSummary": "Topic index entry for Connected Component Labeling under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "convolution-kernel-feature-map-dimension-32805317b537831c9dad81602a7a5d4a",
@@ -1051,8 +1051,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Convolution / Kernel / Feature map dimension",
-    "question": "Generate a technical interview quiz about Convolution / Kernel / Feature map dimension.",
-    "answer": "Topic index entry for Convolution / Kernel / Feature map dimension under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -1082,7 +1080,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=4f67882006794662b6a088c77ac28c14&pm=s",
       "pageId": "32805317b537831c9dad81602a7a5d4a",
       "publicPageId": "4f67882006794662b6a088c77ac28c14"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Convolution / Kernel / Feature map dimension.",
+    "topicSummary": "Topic index entry for Convolution / Kernel / Feature map dimension under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "covariance-matrix-20205317b53783e0b8f581fed55d214e",
@@ -1092,8 +1092,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "covariance matrix",
-    "question": "Generate a technical interview quiz about covariance matrix.",
-    "answer": "Topic index entry for covariance matrix under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -1125,7 +1123,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=da734939cc094910b8aab5a8f8038a73&pm=s",
       "pageId": "20205317b53783e0b8f581fed55d214e",
       "publicPageId": "da734939cc094910b8aab5a8f8038a73"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about covariance matrix.",
+    "topicSummary": "Topic index entry for covariance matrix under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "create-a-function-to-compute-an-integral-image-and-create-another-function-to-get-area-sums-from-the-integral-image-4b905317b53782b2812e815592fd3d84",
@@ -1135,8 +1135,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-18",
     "title": "Create a function to compute an integral image, and create another function to get area sums from the integral image",
-    "question": "Generate a technical interview quiz about Create a function to compute an integral image, and create another function to get area sums from the integral image.",
-    "answer": "Topic index entry for Create a function to compute an integral image, and create another function to get area sums from the integral image under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -1171,7 +1169,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=ee9dc27aff6040109943742f29edd1a8&pm=s",
       "pageId": "4b905317b53782b2812e815592fd3d84",
       "publicPageId": "ee9dc27aff6040109943742f29edd1a8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Create a function to compute an integral image, and create another function to get area sums from the integral image.",
+    "topicSummary": "Topic index entry for Create a function to compute an integral image, and create another function to get area sums from the integral image under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "cross-validation-stratified-cross-validation-5a505317b537831d8143011b87d2c0c5",
@@ -1180,8 +1180,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Cross Validation / Stratified cross-validation",
-    "question": "Generate a technical interview quiz about Cross Validation / Stratified cross-validation.",
-    "answer": "Topic index entry for Cross Validation / Stratified cross-validation under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -1213,7 +1211,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=36260559c9c0462fa4850ac272930960&pm=s",
       "pageId": "5a505317b537831d8143011b87d2c0c5",
       "publicPageId": "36260559c9c0462fa4850ac272930960"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Cross Validation / Stratified cross-validation.",
+    "topicSummary": "Topic index entry for Cross Validation / Stratified cross-validation under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "cv-framework-description-in-chinese-7e305317b53783a5acdd01e9a6eadfaf",
@@ -1223,8 +1223,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "CV Framework description in Chinese",
-    "question": "Generate a technical interview quiz about CV Framework description in Chinese.",
-    "answer": "Topic index entry for CV Framework description in Chinese under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -1248,7 +1246,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=8be428a612424a15a5e2a8ac93c5a646&pm=s",
       "pageId": "7e305317b53783a5acdd01e9a6eadfaf",
       "publicPageId": "8be428a612424a15a5e2a8ac93c5a646"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about CV Framework description in Chinese.",
+    "topicSummary": "Topic index entry for CV Framework description in Chinese under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "dall-e-bb805317b537833d9528010ea86b4907",
@@ -1257,8 +1257,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-28",
     "title": "DALL·E",
-    "question": "Generate a technical interview quiz about DALL·E.",
-    "answer": "Topic index entry for DALL·E under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "neural-networks",
@@ -1284,7 +1282,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b4006e223613461a8cfef18c2eacdefc&pm=s",
       "pageId": "bb805317b537833d9528010ea86b4907",
       "publicPageId": "b4006e223613461a8cfef18c2eacdefc"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about DALL·E.",
+    "topicSummary": "Topic index entry for DALL·E under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "data-augmentation-33305317b537827886ea81b651a80321",
@@ -1294,8 +1294,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-06",
     "title": "data augmentation",
-    "question": "Generate a technical interview quiz about data augmentation.",
-    "answer": "Topic index entry for data augmentation under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -1319,7 +1317,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=1fa53c1f0fe6457398fff8ec8893caea&pm=s",
       "pageId": "33305317b537827886ea81b651a80321",
       "publicPageId": "1fa53c1f0fe6457398fff8ec8893caea"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about data augmentation.",
+    "topicSummary": "Topic index entry for data augmentation under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "data-drift-detection-importance-of-data-drift-detection-c8e05317b53783099f9d01343734e017",
@@ -1329,8 +1329,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-24",
     "title": "Data Drift Detection | Importance of Data Drift Detection",
-    "question": "Generate a technical interview quiz about Data Drift Detection | Importance of Data Drift Detection.",
-    "answer": "Topic index entry for Data Drift Detection | Importance of Data Drift Detection under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -1358,7 +1356,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=afa5d362aefb4cb29adbc6946406343b&pm=s",
       "pageId": "c8e05317b53783099f9d01343734e017",
       "publicPageId": "afa5d362aefb4cb29adbc6946406343b"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Data Drift Detection | Importance of Data Drift Detection.",
+    "topicSummary": "Topic index entry for Data Drift Detection | Importance of Data Drift Detection under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "data-generation-strategy-99a05317b5378337b39601e192327008",
@@ -1368,8 +1368,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "Data Generation Strategy",
-    "question": "Generate a technical interview quiz about Data Generation Strategy.",
-    "answer": "Topic index entry for Data Generation Strategy under Training. Open the source database for the original Notion notes.",
     "tags": [
       "training",
       "optimization",
@@ -1399,7 +1397,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e2cca7ca722142b08c90b5ea216207f6&pm=s",
       "pageId": "99a05317b5378337b39601e192327008",
       "publicPageId": "e2cca7ca722142b08c90b5ea216207f6"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Data Generation Strategy.",
+    "topicSummary": "Topic index entry for Data Generation Strategy under Training. Open the source database for the original Notion notes."
   },
   {
     "id": "data-normalization-98f05317b53783c9a3b581488233f2fb",
@@ -1409,8 +1409,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-06",
     "title": "data normalization",
-    "question": "Generate a technical interview quiz about data normalization.",
-    "answer": "Topic index entry for data normalization under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -1434,7 +1432,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=488be35783d94326af1aca43a5f4a7d4&pm=s",
       "pageId": "98f05317b53783c9a3b581488233f2fb",
       "publicPageId": "488be35783d94326af1aca43a5f4a7d4"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about data normalization.",
+    "topicSummary": "Topic index entry for data normalization under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "data-partitioning-31105317b537835c86dc013e765f9581",
@@ -1444,8 +1444,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "Data Partitioning",
-    "question": "Generate a technical interview quiz about Data Partitioning.",
-    "answer": "Topic index entry for Data Partitioning under Training. Open the source database for the original Notion notes.",
     "tags": [
       "training",
       "optimization",
@@ -1473,7 +1471,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9e6067106d3e42f6814dfbc4ddd5ef68&pm=s",
       "pageId": "31105317b537835c86dc013e765f9581",
       "publicPageId": "9e6067106d3e42f6814dfbc4ddd5ef68"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Data Partitioning.",
+    "topicSummary": "Topic index entry for Data Partitioning under Training. Open the source database for the original Notion notes."
   },
   {
     "id": "data-visualization-libraries-5ba05317b53783368ed281065db6616f",
@@ -1483,8 +1483,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "data visualization libraries",
-    "question": "Generate a technical interview quiz about data visualization libraries.",
-    "answer": "Topic index entry for data visualization libraries under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -1510,7 +1508,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=91b1efd85be14e05a81b2ee4fd4af9d0&pm=s",
       "pageId": "5ba05317b53783368ed281065db6616f",
       "publicPageId": "91b1efd85be14e05a81b2ee4fd4af9d0"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about data visualization libraries.",
+    "topicSummary": "Topic index entry for data visualization libraries under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "deep-learning-6bf05317b5378318bceb8192d882c580",
@@ -1519,8 +1519,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-02",
     "title": "Deep learning",
-    "question": "Generate a technical interview quiz about Deep learning.",
-    "answer": "Topic index entry for Deep learning under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "neural-networks",
@@ -1542,7 +1540,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=7dc3fbc0783649cfac32bb8688c65c1c&pm=s",
       "pageId": "6bf05317b5378318bceb8192d882c580",
       "publicPageId": "7dc3fbc0783649cfac32bb8688c65c1c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Deep learning.",
+    "topicSummary": "Topic index entry for Deep learning under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "difference-between-lda-and-pca-for-dimensionality-reduction-cf105317b537829ea923815818e9d040",
@@ -1552,8 +1552,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "difference between LDA and PCA for dimensionality reduction",
-    "question": "Generate a technical interview quiz about difference between LDA and PCA for dimensionality reduction.",
-    "answer": "Topic index entry for difference between LDA and PCA for dimensionality reduction under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "dimensionality-reduction",
@@ -1589,7 +1587,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=917c6ea9fb764b58b5ba0c9ffe75b373&pm=s",
       "pageId": "cf105317b537829ea923815818e9d040",
       "publicPageId": "917c6ea9fb764b58b5ba0c9ffe75b373"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about difference between LDA and PCA for dimensionality reduction.",
+    "topicSummary": "Topic index entry for difference between LDA and PCA for dimensionality reduction under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "difference-between-t-sne-and-umap-for-dimensionality-reduction-47705317b53782dfa8550124f8f6622b",
@@ -1599,8 +1599,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "difference between t-SNE and UMAP for dimensionality reduction",
-    "question": "Generate a technical interview quiz about difference between t-SNE and UMAP for dimensionality reduction.",
-    "answer": "Topic index entry for difference between t-SNE and UMAP for dimensionality reduction under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "dimensionality-reduction",
@@ -1636,7 +1634,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f692528a6c6047908b0d7b2cccd31dab&pm=s",
       "pageId": "47705317b53782dfa8550124f8f6622b",
       "publicPageId": "f692528a6c6047908b0d7b2cccd31dab"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about difference between t-SNE and UMAP for dimensionality reduction.",
+    "topicSummary": "Topic index entry for difference between t-SNE and UMAP for dimensionality reduction under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "does-nn-fit-data-better-than-logistic-regression-f8c05317b53783eaaeab01f6cf2ada09",
@@ -1646,8 +1646,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Does NN fit data better than logistic regression?",
-    "question": "Generate a technical interview quiz about Does NN fit data better than logistic regression?.",
-    "answer": "Topic index entry for Does NN fit data better than logistic regression? under System design. Open the source database for the original Notion notes.",
     "tags": [
       "system-design",
       "ml-system-design",
@@ -1683,7 +1681,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=80eef35d9d8b4a4996d7e8ddef8ed978&pm=s",
       "pageId": "f8c05317b53783eaaeab01f6cf2ada09",
       "publicPageId": "80eef35d9d8b4a4996d7e8ddef8ed978"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Does NN fit data better than logistic regression?.",
+    "topicSummary": "Topic index entry for Does NN fit data better than logistic regression? under System design. Open the source database for the original Notion notes."
   },
   {
     "id": "dropouts-5e205317b5378369aebc0121897d46de",
@@ -1693,8 +1693,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Dropouts",
-    "question": "Generate a technical interview quiz about Dropouts.",
-    "answer": "Topic index entry for Dropouts under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "regularization",
@@ -1722,7 +1720,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=daab535a42074c3184d9fe1dd7ce6e96&pm=s",
       "pageId": "5e205317b5378369aebc0121897d46de",
       "publicPageId": "daab535a42074c3184d9fe1dd7ce6e96"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Dropouts.",
+    "topicSummary": "Topic index entry for Dropouts under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "em-algorithm-36a05317b53782a1beb88110f42ae509",
@@ -1731,8 +1731,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-10",
     "title": "EM algorithm",
-    "question": "Generate a technical interview quiz about EM algorithm.",
-    "answer": "Topic index entry for EM algorithm under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -1756,7 +1754,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e188768eb5b24f8089c6006e630c14b8&pm=s",
       "pageId": "36a05317b53782a1beb88110f42ae509",
       "publicPageId": "e188768eb5b24f8089c6006e630c14b8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about EM algorithm.",
+    "topicSummary": "Topic index entry for EM algorithm under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "embedding-89f05317b5378296a8f781977fa4263b",
@@ -1766,8 +1766,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "Embedding",
-    "question": "Generate a technical interview quiz about Embedding.",
-    "answer": "Topic index entry for Embedding under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -1795,7 +1793,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=8e84a4b9e727492bb574cef24961d264&pm=s",
       "pageId": "89f05317b5378296a8f781977fa4263b",
       "publicPageId": "8e84a4b9e727492bb574cef24961d264"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Embedding.",
+    "topicSummary": "Topic index entry for Embedding under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "ensemble-boosting-bagging-50105317b5378251a8a20107eeb77c25",
@@ -1805,8 +1805,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-13",
     "title": "Ensemble boosting bagging",
-    "question": "Generate a technical interview quiz about Ensemble boosting bagging.",
-    "answer": "Topic index entry for Ensemble boosting bagging under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "ensemble-learning",
@@ -1836,7 +1834,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=94aa9ccb7b354b2497a87e3baa4d05e6&pm=s",
       "pageId": "50105317b5378251a8a20107eeb77c25",
       "publicPageId": "94aa9ccb7b354b2497a87e3baa4d05e6"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Ensemble boosting bagging.",
+    "topicSummary": "Topic index entry for Ensemble boosting bagging under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "entropy-cross-entropy-relative-entropy-loss-06905317b53782828c1081251bf147d8",
@@ -1846,8 +1846,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Entropy / Cross-Entropy / Relative-entropy loss",
-    "question": "Generate a technical interview quiz about Entropy / Cross-Entropy / Relative-entropy loss.",
-    "answer": "Topic index entry for Entropy / Cross-Entropy / Relative-entropy loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -1877,7 +1875,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=484c412fcb7e42309c846d5a35967fb8&pm=s",
       "pageId": "06905317b53782828c1081251bf147d8",
       "publicPageId": "484c412fcb7e42309c846d5a35967fb8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Entropy / Cross-Entropy / Relative-entropy loss.",
+    "topicSummary": "Topic index entry for Entropy / Cross-Entropy / Relative-entropy loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "epoch-vs-batch-vs-iteration-5be05317b5378211a52b018b178b283d",
@@ -1887,8 +1887,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-18",
     "title": "Epoch vs. Batch vs. Iteration",
-    "question": "Generate a technical interview quiz about Epoch vs. Batch vs. Iteration.",
-    "answer": "Topic index entry for Epoch vs. Batch vs. Iteration under Training. Open the source database for the original Notion notes.",
     "tags": [
       "training",
       "optimization",
@@ -1914,7 +1912,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e3c10761beaf461fa455165bf122de03&pm=s",
       "pageId": "5be05317b5378211a52b018b178b283d",
       "publicPageId": "e3c10761beaf461fa455165bf122de03"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Epoch vs. Batch vs. Iteration.",
+    "topicSummary": "Topic index entry for Epoch vs. Batch vs. Iteration under Training. Open the source database for the original Notion notes."
   },
   {
     "id": "equivariant-translation-invariant-translation-8c105317b53782629a5e81d73c7354c0",
@@ -1924,8 +1924,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "equivariant translation， invariant translation",
-    "question": "Generate a technical interview quiz about equivariant translation， invariant translation.",
-    "answer": "Topic index entry for equivariant translation， invariant translation under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -1951,7 +1949,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=854830508e9f46cd828f507f0f096070&pm=s",
       "pageId": "8c105317b53782629a5e81d73c7354c0",
       "publicPageId": "854830508e9f46cd828f507f0f096070"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about equivariant translation， invariant translation.",
+    "topicSummary": "Topic index entry for equivariant translation， invariant translation under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "exploding-gradient-fd705317b537827c9faf0171af73e7d5",
@@ -1961,8 +1961,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Exploding gradient",
-    "question": "Generate a technical interview quiz about Exploding gradient.",
-    "answer": "Topic index entry for Exploding gradient under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -1988,7 +1986,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=8dda181fb06f4fb2821866ce53fef83c&pm=s",
       "pageId": "fd705317b537827c9faf0171af73e7d5",
       "publicPageId": "8dda181fb06f4fb2821866ce53fef83c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Exploding gradient.",
+    "topicSummary": "Topic index entry for Exploding gradient under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "f-beta-score-e4805317b537832193e601c4d70a002a",
@@ -1998,8 +1998,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "F-beta Score",
-    "question": "Generate a technical interview quiz about F-beta Score.",
-    "answer": "Topic index entry for F-beta Score under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -2023,7 +2021,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0f2d583e022249dfa3081042e45c2d44&pm=s",
       "pageId": "e4805317b537832193e601c4d70a002a",
       "publicPageId": "0f2d583e022249dfa3081042e45c2d44"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about F-beta Score.",
+    "topicSummary": "Topic index entry for F-beta Score under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "f1-score-2b405317b53782caa5b101926fb6dc0a",
@@ -2033,8 +2033,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "F1 score",
-    "question": "Generate a technical interview quiz about F1 score.",
-    "answer": "Topic index entry for F1 score under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -2058,7 +2056,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=bce08f2168014e7a98885c69fdc16413&pm=s",
       "pageId": "2b405317b53782caa5b101926fb6dc0a",
       "publicPageId": "bce08f2168014e7a98885c69fdc16413"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about F1 score.",
+    "topicSummary": "Topic index entry for F1 score under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "feature-crosses-8e105317b53782f7959f012b0d0f544f",
@@ -2068,8 +2068,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "Feature Crosses",
-    "question": "Generate a technical interview quiz about Feature Crosses.",
-    "answer": "Topic index entry for Feature Crosses under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -2099,7 +2097,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=bd3f8f3ccfb545abb89db5806a6cffb6&pm=s",
       "pageId": "8e105317b53782f7959f012b0d0f544f",
       "publicPageId": "bd3f8f3ccfb545abb89db5806a6cffb6"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Feature Crosses.",
+    "topicSummary": "Topic index entry for Feature Crosses under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "feature-hashing-59905317b537821a90780174f4f06bdd",
@@ -2109,8 +2109,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "Feature Hashing",
-    "question": "Generate a technical interview quiz about Feature Hashing.",
-    "answer": "Topic index entry for Feature Hashing under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -2140,7 +2138,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a9c92ec87fca4224adbb7e6b3694b23d&pm=s",
       "pageId": "59905317b537821a90780174f4f06bdd",
       "publicPageId": "a9c92ec87fca4224adbb7e6b3694b23d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Feature Hashing.",
+    "topicSummary": "Topic index entry for Feature Hashing under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "focal-loss-a7c05317b5378270827801f50d7b91b0",
@@ -2150,8 +2150,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Focal loss",
-    "question": "Generate a technical interview quiz about Focal loss.",
-    "answer": "Topic index entry for Focal loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -2177,7 +2175,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=79fee94956bb45d6917f92336c170cc6&pm=s",
       "pageId": "a7c05317b5378270827801f50d7b91b0",
       "publicPageId": "79fee94956bb45d6917f92336c170cc6"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Focal loss.",
+    "topicSummary": "Topic index entry for Focal loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "forcast-metrics-4c905317b53782dd8d5f01c7b13fb3d6",
@@ -2187,8 +2187,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Forcast Metrics",
-    "question": "Generate a technical interview quiz about Forcast Metrics.",
-    "answer": "Topic index entry for Forcast Metrics under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -2210,7 +2208,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=ba6d4a4fa1cf45c4838ca3d0b2726322&pm=s",
       "pageId": "4c905317b53782dd8d5f01c7b13fb3d6",
       "publicPageId": "ba6d4a4fa1cf45c4838ca3d0b2726322"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Forcast Metrics.",
+    "topicSummary": "Topic index entry for Forcast Metrics under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "fourier-transform-26d05317b537839ca456813fbbcf7987",
@@ -2219,8 +2219,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Fourier transform",
-    "question": "Generate a technical interview quiz about Fourier transform.",
-    "answer": "Topic index entry for Fourier transform under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -2248,7 +2246,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=da2e1d5417e54e5182559c5d1f6d75df&pm=s",
       "pageId": "26d05317b537839ca456813fbbcf7987",
       "publicPageId": "da2e1d5417e54e5182559c5d1f6d75df"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Fourier transform.",
+    "topicSummary": "Topic index entry for Fourier transform under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "gan-94505317b53782f886fb81785dec29a4",
@@ -2258,8 +2258,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-04",
     "title": "GAN",
-    "question": "Generate a technical interview quiz about GAN.",
-    "answer": "Topic index entry for GAN under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -2287,7 +2285,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=39900207652244b29a941eac1a3e1ca9&pm=s",
       "pageId": "94505317b53782f886fb81785dec29a4",
       "publicPageId": "39900207652244b29a941eac1a3e1ca9"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about GAN.",
+    "topicSummary": "Topic index entry for GAN under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "gelu-80e05317b53782cb9e2201fa03a52189",
@@ -2297,8 +2297,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-18",
     "title": "GELU",
-    "question": "Generate a technical interview quiz about GELU.",
-    "answer": "Topic index entry for GELU under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -2318,7 +2316,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=6994f8d02a1f4359a75db9d6624c109d&pm=s",
       "pageId": "80e05317b53782cb9e2201fa03a52189",
       "publicPageId": "6994f8d02a1f4359a75db9d6624c109d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about GELU.",
+    "topicSummary": "Topic index entry for GELU under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "genai-7dd05317b53783b4801f81f6173f5018",
@@ -2327,8 +2327,6 @@
     "chunkType": "topic",
     "createdAt": "2025-05-07",
     "title": "GenAI",
-    "question": "Generate a technical interview quiz about GenAI.",
-    "answer": "Topic index entry for GenAI under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -2356,7 +2354,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=1ed46f78326f804699dcd293b44381e1&pm=s",
       "pageId": "7dd05317b53783b4801f81f6173f5018",
       "publicPageId": "1ed46f78326f804699dcd293b44381e1"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about GenAI.",
+    "topicSummary": "Topic index entry for GenAI under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "generative-model-vs-discriminative-model-f5905317b537832ab8fc81c79edcd6e9",
@@ -2365,8 +2365,6 @@
     "chunkType": "topic",
     "createdAt": "2025-05-07",
     "title": "Generative model vs Discriminative model",
-    "question": "Generate a technical interview quiz about Generative model vs Discriminative model.",
-    "answer": "Topic index entry for Generative model vs Discriminative model under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -2398,7 +2396,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=58104216392b4487b57f03e89fd1437c&pm=s",
       "pageId": "f5905317b537832ab8fc81c79edcd6e9",
       "publicPageId": "58104216392b4487b57f03e89fd1437c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Generative model vs Discriminative model.",
+    "topicSummary": "Topic index entry for Generative model vs Discriminative model under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "gradient-descent-e0a05317b537832aaa3681dae4e9d06d",
@@ -2408,8 +2408,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Gradient Descent",
-    "question": "Generate a technical interview quiz about Gradient Descent.",
-    "answer": "Topic index entry for Gradient Descent under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "optimization",
@@ -2437,7 +2435,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=10640e79368c45179af9e706b3c3ee16&pm=s",
       "pageId": "e0a05317b537832aaa3681dae4e9d06d",
       "publicPageId": "10640e79368c45179af9e706b3c3ee16"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Gradient Descent.",
+    "topicSummary": "Topic index entry for Gradient Descent under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "grid-search-and-random-search-b3405317b5378224ad5f01812c022526",
@@ -2447,8 +2447,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Grid search and random search",
-    "question": "Generate a technical interview quiz about Grid search and random search.",
-    "answer": "Topic index entry for Grid search and random search under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -2478,7 +2476,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9f91909aa98c443e8924e730e2618d4e&pm=s",
       "pageId": "b3405317b5378224ad5f01812c022526",
       "publicPageId": "9f91909aa98c443e8924e730e2618d4e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Grid search and random search.",
+    "topicSummary": "Topic index entry for Grid search and random search under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "handle-imbalance-class-distribution-cb205317b537830ab42981024460a8ee",
@@ -2488,8 +2488,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "Handle Imbalance Class Distribution",
-    "question": "Generate a technical interview quiz about Handle Imbalance Class Distribution.",
-    "answer": "Topic index entry for Handle Imbalance Class Distribution under Training. Open the source database for the original Notion notes.",
     "tags": [
       "training",
       "optimization",
@@ -2515,7 +2513,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a5ac8e645502421f894788f6c993cffb&pm=s",
       "pageId": "cb205317b537830ab42981024460a8ee",
       "publicPageId": "a5ac8e645502421f894788f6c993cffb"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Handle Imbalance Class Distribution.",
+    "topicSummary": "Topic index entry for Handle Imbalance Class Distribution under Training. Open the source database for the original Notion notes."
   },
   {
     "id": "handling-outliers-in-data-f1d05317b537821a988e8152d01f9dd6",
@@ -2525,8 +2525,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-10",
     "title": "Handling Outliers in data",
-    "question": "Generate a technical interview quiz about Handling Outliers in data.",
-    "answer": "Topic index entry for Handling Outliers in data under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -2552,7 +2550,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=71f44878873e408f84d824c46eac20ad&pm=s",
       "pageId": "f1d05317b537821a988e8152d01f9dd6",
       "publicPageId": "71f44878873e408f84d824c46eac20ad"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Handling Outliers in data.",
+    "topicSummary": "Topic index entry for Handling Outliers in data under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "hinge-loss-svm-11005317b53783698015813645f490a3",
@@ -2562,8 +2562,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Hinge loss - SVM",
-    "question": "Generate a technical interview quiz about Hinge loss - SVM.",
-    "answer": "Topic index entry for Hinge loss - SVM under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -2591,7 +2589,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=41d700da4bf3469e999bef63fd70170e&pm=s",
       "pageId": "11005317b53783698015813645f490a3",
       "publicPageId": "41d700da4bf3469e999bef63fd70170e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Hinge loss - SVM.",
+    "topicSummary": "Topic index entry for Hinge loss - SVM under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "how-do-we-measure-similarity-c8905317b53783bcb2298111c46f7643",
@@ -2601,8 +2601,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "How do we measure similarity?",
-    "question": "Generate a technical interview quiz about How do we measure similarity?.",
-    "answer": "Topic index entry for How do we measure similarity? under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -2626,7 +2624,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2f6dff9a42bb4a9282b108011467a24c&pm=s",
       "pageId": "c8905317b53783bcb2298111c46f7643",
       "publicPageId": "2f6dff9a42bb4a9282b108011467a24c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about How do we measure similarity?.",
+    "topicSummary": "Topic index entry for How do we measure similarity? under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "how-do-you-prepare-a-data-a0c05317b537832ca099012a517ecd13",
@@ -2636,8 +2636,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-11",
     "title": "How do you prepare a data?",
-    "question": "Generate a technical interview quiz about How do you prepare a data?.",
-    "answer": "Topic index entry for How do you prepare a data? under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -2661,7 +2659,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9e0ff06aa6184a09b41e0a2bef9c399c&pm=s",
       "pageId": "a0c05317b537832ca099012a517ecd13",
       "publicPageId": "9e0ff06aa6184a09b41e0a2bef9c399c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about How do you prepare a data?.",
+    "topicSummary": "Topic index entry for How do you prepare a data? under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "how-does-cbir-work-0d205317b537823ba338818a21d8ff8d",
@@ -2671,8 +2671,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-10",
     "title": "How does CBIR work",
-    "question": "Generate a technical interview quiz about How does CBIR work.",
-    "answer": "Topic index entry for How does CBIR work under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -2696,7 +2694,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a1ad811ac0604974a7289775777dd7aa&pm=s",
       "pageId": "0d205317b537823ba338818a21d8ff8d",
       "publicPageId": "a1ad811ac0604974a7289775777dd7aa"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about How does CBIR work.",
+    "topicSummary": "Topic index entry for How does CBIR work under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "how-linkedin-generates-data-for-course-recommendation-b5105317b53783f49ac181c145149ed2",
@@ -2706,8 +2706,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "How LinkedIn Generates Data for Course Recommendation",
-    "question": "Generate a technical interview quiz about How LinkedIn Generates Data for Course Recommendation.",
-    "answer": "Topic index entry for How LinkedIn Generates Data for Course Recommendation under System design. Open the source database for the original Notion notes.",
     "tags": [
       "system-design",
       "ml-system-design",
@@ -2737,7 +2735,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0c1ca6f6251349d1be880a84ca48f62e&pm=s",
       "pageId": "b5105317b53783f49ac181c145149ed2",
       "publicPageId": "0c1ca6f6251349d1be880a84ca48f62e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about How LinkedIn Generates Data for Course Recommendation.",
+    "topicSummary": "Topic index entry for How LinkedIn Generates Data for Course Recommendation under System design. Open the source database for the original Notion notes."
   },
   {
     "id": "how-to-avoid-overfitting-03d05317b53782c08f1c81a6dbdd700b",
@@ -2746,8 +2746,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "How to avoid overfitting?",
-    "question": "Generate a technical interview quiz about How to avoid overfitting?.",
-    "answer": "Topic index entry for How to avoid overfitting? under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -2779,7 +2777,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=61c690d414684337a95f7956dee77125&pm=s",
       "pageId": "03d05317b53782c08f1c81a6dbdd700b",
       "publicPageId": "61c690d414684337a95f7956dee77125"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about How to avoid overfitting?.",
+    "topicSummary": "Topic index entry for How to avoid overfitting? under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "how-to-deal-with-imbalanced-dataset-6c105317b53783f7bfe28176ae1cf4ed",
@@ -2789,8 +2789,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-06",
     "title": "How to deal with imbalanced dataset",
-    "question": "Generate a technical interview quiz about How to deal with imbalanced dataset.",
-    "answer": "Topic index entry for How to deal with imbalanced dataset under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -2816,7 +2814,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=30d73541eed447faa1dee8dcbae869fc&pm=s",
       "pageId": "6c105317b53783f7bfe28176ae1cf4ed",
       "publicPageId": "30d73541eed447faa1dee8dcbae869fc"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about How to deal with imbalanced dataset.",
+    "topicSummary": "Topic index entry for How to deal with imbalanced dataset under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "how-you-would-create-a-3d-model-of-an-object-from-imagery-and-depth-sensor-measurements-taken-at-all-angles-around-the-object-b3805317b537835c9e3481cbb7bac5da",
@@ -2826,8 +2826,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-10",
     "title": "how you would create a 3D model of an object from imagery and depth sensor measurements taken at all angles around the object",
-    "question": "Generate a technical interview quiz about how you would create a 3D model of an object from imagery and depth sensor measurements taken at all angles around the object.",
-    "answer": "Topic index entry for how you would create a 3D model of an object from imagery and depth sensor measurements taken at all angles around the object under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -2866,7 +2864,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=c4826d05d114462a8ee35b55970246fa&pm=s",
       "pageId": "b3805317b537835c9e3481cbb7bac5da",
       "publicPageId": "c4826d05d114462a8ee35b55970246fa"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about how you would create a 3D model of an object from imagery and depth sensor measurements taken at all angles around the object.",
+    "topicSummary": "Topic index entry for how you would create a 3D model of an object from imagery and depth sensor measurements taken at all angles around the object under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "huber-loss-f1a05317b53783e583328176ab0d09b0",
@@ -2876,8 +2876,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "Huber loss",
-    "question": "Generate a technical interview quiz about Huber loss.",
-    "answer": "Topic index entry for Huber loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -2903,7 +2901,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e4dcac992ad84a319a17920ec7318545&pm=s",
       "pageId": "f1a05317b53783e583328176ab0d09b0",
       "publicPageId": "e4dcac992ad84a319a17920ec7318545"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Huber loss.",
+    "topicSummary": "Topic index entry for Huber loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "initializing-weight-with-0-for-nn-b4605317b53782628b5201ef4daf912b",
@@ -2912,8 +2912,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Initializing weight with 0 for NN?",
-    "question": "Generate a technical interview quiz about Initializing weight with 0 for NN?.",
-    "answer": "Topic index entry for Initializing weight with 0 for NN? under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "neural-networks",
@@ -2935,7 +2933,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=fc375df174c9403cbf4920ad7d0bc94f&pm=s",
       "pageId": "b4605317b53782628b5201ef4daf912b",
       "publicPageId": "fc375df174c9403cbf4920ad7d0bc94f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Initializing weight with 0 for NN?.",
+    "topicSummary": "Topic index entry for Initializing weight with 0 for NN? under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "instance-based-vs-model-based-learning-c3905317b537824a9c1081daf7d9d389",
@@ -2944,8 +2944,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "Instance-Based vs Model-Based Learning",
-    "question": "Generate a technical interview quiz about Instance-Based vs Model-Based Learning.",
-    "answer": "Topic index entry for Instance-Based vs Model-Based Learning under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -2971,7 +2969,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=cdebb986304d46c6a865d91af8917580&pm=s",
       "pageId": "c3905317b537824a9c1081daf7d9d389",
       "publicPageId": "cdebb986304d46c6a865d91af8917580"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Instance-Based vs Model-Based Learning.",
+    "topicSummary": "Topic index entry for Instance-Based vs Model-Based Learning under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "iou-c5205317b5378361a92801402f6af31c",
@@ -2981,8 +2981,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-26",
     "title": "IOU",
-    "question": "Generate a technical interview quiz about IOU.",
-    "answer": "Topic index entry for IOU under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -3004,7 +3002,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f9aa00c21f8141f49ab08b360f7c9d06&pm=s",
       "pageId": "c5205317b5378361a92801402f6af31c",
       "publicPageId": "f9aa00c21f8141f49ab08b360f7c9d06"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about IOU.",
+    "topicSummary": "Topic index entry for IOU under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "k-means-59505317b53782e5a974816122708ec6",
@@ -3014,8 +3014,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "K-means",
-    "question": "Generate a technical interview quiz about K-means.",
-    "answer": "Topic index entry for K-means under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "clustering",
@@ -3043,7 +3041,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=37b80a0db6fd41c9864c57a69bd78317&pm=s",
       "pageId": "59505317b53782e5a974816122708ec6",
       "publicPageId": "37b80a0db6fd41c9864c57a69bd78317"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about K-means.",
+    "topicSummary": "Topic index entry for K-means under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "knn-b0605317b53782dd8ee701153160cdd3",
@@ -3053,8 +3053,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-27",
     "title": "KNN",
-    "question": "Generate a technical interview quiz about KNN.",
-    "answer": "Topic index entry for KNN under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "clustering",
@@ -3082,7 +3080,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b0d84e79e9224485beda969a6fcd5045&pm=s",
       "pageId": "b0605317b53782dd8ee701153160cdd3",
       "publicPageId": "b0d84e79e9224485beda969a6fcd5045"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about KNN.",
+    "topicSummary": "Topic index entry for KNN under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "knn-different-from-k-means-clustering-ab805317b5378241be7181ead5950102",
@@ -3092,8 +3092,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-18",
     "title": "KNN different from k-means clustering",
-    "question": "Generate a technical interview quiz about KNN different from k-means clustering.",
-    "answer": "Topic index entry for KNN different from k-means clustering under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "clustering",
@@ -3123,7 +3121,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f3a9282a6d2b41f2b9df198f0614a5fe&pm=s",
       "pageId": "ab805317b5378241be7181ead5950102",
       "publicPageId": "f3a9282a6d2b41f2b9df198f0614a5fe"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about KNN different from k-means clustering.",
+    "topicSummary": "Topic index entry for KNN different from k-means clustering under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "l1-loss-vs-l2-loss-90f05317b53782a5b5b801fbbeaa65bc",
@@ -3133,8 +3133,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "L1 loss vs. L2 loss",
-    "question": "Generate a technical interview quiz about L1 loss vs. L2 loss.",
-    "answer": "Topic index entry for L1 loss vs. L2 loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "regularization",
@@ -3168,7 +3166,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=069ccbe60b414844b2ee38dd24480cc7&pm=s",
       "pageId": "90f05317b53782a5b5b801fbbeaa65bc",
       "publicPageId": "069ccbe60b414844b2ee38dd24480cc7"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about L1 loss vs. L2 loss.",
+    "topicSummary": "Topic index entry for L1 loss vs. L2 loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "l1-vs-l2-regularization-d7b05317b537828a827001459b936b90",
@@ -3178,8 +3178,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "L1 VS L2 regularization",
-    "question": "Generate a technical interview quiz about L1 VS L2 regularization.",
-    "answer": "Topic index entry for L1 VS L2 regularization under Regularization. Open the source database for the original Notion notes.",
     "tags": [
       "regularization",
       "overfitting",
@@ -3203,7 +3201,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=536cac6d960142808e73e46817729b2c&pm=s",
       "pageId": "d7b05317b537828a827001459b936b90",
       "publicPageId": "536cac6d960142808e73e46817729b2c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about L1 VS L2 regularization.",
+    "topicSummary": "Topic index entry for L1 VS L2 regularization under Regularization. Open the source database for the original Notion notes."
   },
   {
     "id": "label-encoding-vs-one-hot-encoding-5d205317b5378210b11a8147ec9e88e9",
@@ -3213,8 +3213,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "Label Encoding vs. One Hot Encoding",
-    "question": "Generate a technical interview quiz about Label Encoding vs. One Hot Encoding.",
-    "answer": "Topic index entry for Label Encoding vs. One Hot Encoding under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -3248,7 +3246,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e4ec747a72704df294796d9be7ef9e1e&pm=s",
       "pageId": "5d205317b5378210b11a8147ec9e88e9",
       "publicPageId": "e4ec747a72704df294796d9be7ef9e1e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Label Encoding vs. One Hot Encoding.",
+    "topicSummary": "Topic index entry for Label Encoding vs. One Hot Encoding under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "lasso-and-ridge-4c505317b5378204944981c14742b6cd",
@@ -3258,8 +3258,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Lasso and Ridge",
-    "question": "Generate a technical interview quiz about Lasso and Ridge.",
-    "answer": "Topic index entry for Lasso and Ridge under Regularization. Open the source database for the original Notion notes.",
     "tags": [
       "regularization",
       "overfitting",
@@ -3283,7 +3281,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=4a5dee6a259e4f8d9c22915456657d38&pm=s",
       "pageId": "4c505317b5378204944981c14742b6cd",
       "publicPageId": "4a5dee6a259e4f8d9c22915456657d38"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Lasso and Ridge.",
+    "topicSummary": "Topic index entry for Lasso and Ridge under Regularization. Open the source database for the original Notion notes."
   },
   {
     "id": "learning-rate-2c905317b53782dd9437013ba904c07f",
@@ -3293,8 +3293,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Learning rate",
-    "question": "Generate a technical interview quiz about Learning rate.",
-    "answer": "Topic index entry for Learning rate under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -3322,7 +3320,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b6018f3b5a2340439e3d97ad274d686d&pm=s",
       "pageId": "2c905317b53782dd9437013ba904c07f",
       "publicPageId": "b6018f3b5a2340439e3d97ad274d686d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Learning rate.",
+    "topicSummary": "Topic index entry for Learning rate under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "linear-regression-vs-logistic-regression-3aa05317b5378314a8e3013f5c87f012",
@@ -3332,8 +3332,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-21",
     "title": "linear regression vs logistic regression",
-    "question": "Generate a technical interview quiz about linear regression vs logistic regression.",
-    "answer": "Topic index entry for linear regression vs logistic regression under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "probability",
@@ -3369,7 +3367,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=4e3a60e011034003822836ffeb837f34&pm=s",
       "pageId": "3aa05317b5378314a8e3013f5c87f012",
       "publicPageId": "4e3a60e011034003822836ffeb837f34"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about linear regression vs logistic regression.",
+    "topicSummary": "Topic index entry for linear regression vs logistic regression under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "log-loss-38b05317b5378311b6ca01b4c07e28d3",
@@ -3379,8 +3379,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "Log loss",
-    "question": "Generate a technical interview quiz about Log loss.",
-    "answer": "Topic index entry for Log loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -3406,7 +3404,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=79b6b8264ef34d6490d1fc076fb70b11&pm=s",
       "pageId": "38b05317b5378311b6ca01b4c07e28d3",
       "publicPageId": "79b6b8264ef34d6490d1fc076fb70b11"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Log loss.",
+    "topicSummary": "Topic index entry for Log loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "logistic-regression-8ad05317b5378350b71d819fb0c5a303",
@@ -3415,8 +3415,6 @@
     "subcategory": "implementation",
     "chunkType": "topic",
     "title": "Logistic Regression",
-    "question": "Generate a technical interview quiz about Logistic Regression.",
-    "answer": "Topic index entry for Logistic Regression under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -3448,7 +3446,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=28ba3673163f46b18f202726825446df&pm=s",
       "pageId": "8ad05317b5378350b71d819fb0c5a303",
       "publicPageId": "28ba3673163f46b18f202726825446df"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Logistic Regression.",
+    "topicSummary": "Topic index entry for Logistic Regression under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "logistic-regression-b0505317b53782db9c9001fe8426a708",
@@ -3458,8 +3458,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Logistic Regression",
-    "question": "Generate a technical interview quiz about Logistic Regression.",
-    "answer": "Topic index entry for Logistic Regression under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "probability",
@@ -3491,7 +3489,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=6dd81e53955a435a8cd05ba72bff8f68&pm=s",
       "pageId": "b0505317b53782db9c9001fe8426a708",
       "publicPageId": "6dd81e53955a435a8cd05ba72bff8f68"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Logistic Regression.",
+    "topicSummary": "Topic index entry for Logistic Regression under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "loss-becomes-inf-or-nan-reason-af505317b53782d29c18012e4bed5162",
@@ -3501,8 +3501,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "Loss becomes Inf or NaN - reason",
-    "question": "Generate a technical interview quiz about Loss becomes Inf or NaN - reason.",
-    "answer": "Topic index entry for Loss becomes Inf or NaN - reason under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -3534,7 +3532,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=33dc6bf90e184061a2e336e710efba2e&pm=s",
       "pageId": "af505317b53782d29c18012e4bed5162",
       "publicPageId": "33dc6bf90e184061a2e336e710efba2e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Loss becomes Inf or NaN - reason.",
+    "topicSummary": "Topic index entry for Loss becomes Inf or NaN - reason under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "loss-functions-78405317b537820b9dac0174b0f414c9",
@@ -3544,8 +3544,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-18",
     "title": "Loss Functions",
-    "question": "Generate a technical interview quiz about Loss Functions.",
-    "answer": "Topic index entry for Loss Functions under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -3571,7 +3569,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=207d095668be4f56bdfa324fa90b2a96&pm=s",
       "pageId": "78405317b537820b9dac0174b0f414c9",
       "publicPageId": "207d095668be4f56bdfa324fa90b2a96"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Loss Functions.",
+    "topicSummary": "Topic index entry for Loss Functions under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "lstm-7b805317b53782adb95f0137b34ad9fb",
@@ -3581,8 +3581,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-04",
     "title": "LSTM",
-    "question": "Generate a technical interview quiz about LSTM.",
-    "answer": "Topic index entry for LSTM under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -3610,7 +3608,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=25272cb0ee4249f3a89c41ff262fda38&pm=s",
       "pageId": "7b805317b53782adb95f0137b34ad9fb",
       "publicPageId": "25272cb0ee4249f3a89c41ff262fda38"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about LSTM.",
+    "topicSummary": "Topic index entry for LSTM under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "max-pooling-cnn-ecc05317b5378298873581cc46d988fe",
@@ -3620,8 +3620,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "max-pooling CNN",
-    "question": "Generate a technical interview quiz about max-pooling CNN.",
-    "answer": "Topic index entry for max-pooling CNN under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -3643,7 +3641,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=1a969c571a4d41899460a388a270b1e4&pm=s",
       "pageId": "ecc05317b5378298873581cc46d988fe",
       "publicPageId": "1a969c571a4d41899460a388a270b1e4"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about max-pooling CNN.",
+    "topicSummary": "Topic index entry for max-pooling CNN under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "maximum-likelihood-estimation-mle-when-find-the-mean-and-standard-diviation-of-a-group-of-models-85205317b53782678d9d01728455fcbd",
@@ -3653,8 +3653,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "Maximum Likelihood Estimation (MLE) - when find the mean and standard diviation of a group of models",
-    "question": "Generate a technical interview quiz about Maximum Likelihood Estimation (MLE) - when find the mean and standard diviation of a group of models.",
-    "answer": "Topic index entry for Maximum Likelihood Estimation (MLE) - when find the mean and standard diviation of a group of models under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "probability",
@@ -3694,7 +3692,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=88aaa0abe1634753852fb65cd9ddf48f&pm=s",
       "pageId": "85205317b53782678d9d01728455fcbd",
       "publicPageId": "88aaa0abe1634753852fb65cd9ddf48f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Maximum Likelihood Estimation (MLE) - when find the mean and standard diviation of a group of models.",
+    "topicSummary": "Topic index entry for Maximum Likelihood Estimation (MLE) - when find the mean and standard diviation of a group of models under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "mean-encoding-05605317b5378333861c01060291ebbf",
@@ -3704,8 +3704,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "Mean encoding",
-    "question": "Generate a technical interview quiz about Mean encoding.",
-    "answer": "Topic index entry for Mean encoding under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -3735,7 +3733,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2805e59a1b1d4592bb74623ffc79f290&pm=s",
       "pageId": "05605317b5378333861c01060291ebbf",
       "publicPageId": "2805e59a1b1d4592bb74623ffc79f290"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Mean encoding.",
+    "topicSummary": "Topic index entry for Mean encoding under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "mean-square-error-and-mean-absolute-error-4fd05317b5378261bffd81540842dc1c",
@@ -3745,8 +3745,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-19",
     "title": "Mean square error and mean absolute error",
-    "question": "Generate a technical interview quiz about Mean square error and mean absolute error.",
-    "answer": "Topic index entry for Mean square error and mean absolute error under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -3778,7 +3776,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=91cb879caed74db5962c8e907aa29559&pm=s",
       "pageId": "4fd05317b5378261bffd81540842dc1c",
       "publicPageId": "91cb879caed74db5962c8e907aa29559"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Mean square error and mean absolute error.",
+    "topicSummary": "Topic index entry for Mean square error and mean absolute error under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "model-accuracy-or-model-performance-6f705317b537836ca00f8128ce242642",
@@ -3788,8 +3788,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "model accuracy or model performance",
-    "question": "Generate a technical interview quiz about model accuracy or model performance.",
-    "answer": "Topic index entry for model accuracy or model performance under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "metrics",
@@ -3821,7 +3819,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=88871f3b253e471c898ce4e283b81396&pm=s",
       "pageId": "6f705317b537836ca00f8128ce242642",
       "publicPageId": "88871f3b253e471c898ce4e283b81396"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about model accuracy or model performance.",
+    "topicSummary": "Topic index entry for model accuracy or model performance under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "momentum-a5a05317b537828da0a08160c881cf3b",
@@ -3831,8 +3831,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-18",
     "title": "Momentum",
-    "question": "Generate a technical interview quiz about Momentum.",
-    "answer": "Topic index entry for Momentum under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -3858,7 +3856,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=82357540cc1a42ff86435a81965dd900&pm=s",
       "pageId": "a5a05317b537828da0a08160c881cf3b",
       "publicPageId": "82357540cc1a42ff86435a81965dd900"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Momentum.",
+    "topicSummary": "Topic index entry for Momentum under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "multimodal-text-image-cb205317b53782d98cb38167814d59c8",
@@ -3868,8 +3868,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-28",
     "title": "MultiModal (Text-Image)",
-    "question": "Generate a technical interview quiz about MultiModal (Text-Image).",
-    "answer": "Topic index entry for MultiModal (Text-Image) under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "vision-language",
@@ -3897,7 +3895,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=930d966b8db74c93b6ebab178ef40d77&pm=s",
       "pageId": "cb205317b53782d98cb38167814d59c8",
       "publicPageId": "930d966b8db74c93b6ebab178ef40d77"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about MultiModal (Text-Image).",
+    "topicSummary": "Topic index entry for MultiModal (Text-Image) under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "multimodal-09e05317b5378309899181420aba65e0",
@@ -3907,8 +3907,6 @@
     "chunkType": "topic",
     "createdAt": "2024-03-01",
     "title": "MultiModal",
-    "question": "Generate a technical interview quiz about MultiModal.",
-    "answer": "Topic index entry for MultiModal under GENAI. Open the source database for the original Notion notes.",
     "tags": [
       "genai",
       "vision-language",
@@ -3938,7 +3936,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=3c28e12a5ea14b778622c22b97b02554&pm=s",
       "pageId": "09e05317b5378309899181420aba65e0",
       "publicPageId": "3c28e12a5ea14b778622c22b97b02554"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about MultiModal.",
+    "topicSummary": "Topic index entry for MultiModal under GENAI. Open the source database for the original Notion notes."
   },
   {
     "id": "naive-bayes-4e405317b537834fa33d812930cf8f8e",
@@ -3948,8 +3948,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Naive Bayes",
-    "question": "Generate a technical interview quiz about Naive Bayes.",
-    "answer": "Topic index entry for Naive Bayes under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "probability",
@@ -3979,7 +3977,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=afba67741b394404b8a6424e5aee880e&pm=s",
       "pageId": "4e405317b537834fa33d812930cf8f8e",
       "publicPageId": "afba67741b394404b8a6424e5aee880e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Naive Bayes.",
+    "topicSummary": "Topic index entry for Naive Bayes under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "non-maximal-suppression-f9005317b5378361926a0176c797b144",
@@ -3989,8 +3989,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "non maximal suppression",
-    "question": "Generate a technical interview quiz about non maximal suppression.",
-    "answer": "Topic index entry for non maximal suppression under CV. Open the source database for the original Notion notes.",
     "tags": [
       "cv",
       "computer-vision",
@@ -4016,7 +4014,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=fdaadb80a53a42ad90b19a0b1ebef7f3&pm=s",
       "pageId": "f9005317b5378361926a0176c797b144",
       "publicPageId": "fdaadb80a53a42ad90b19a0b1ebef7f3"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about non maximal suppression.",
+    "topicSummary": "Topic index entry for non maximal suppression under CV. Open the source database for the original Notion notes."
   },
   {
     "id": "normalized-cross-entropy-ccd05317b537835fa89f019c9e6a5f3b",
@@ -4026,8 +4026,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Normalized Cross Entropy",
-    "question": "Generate a technical interview quiz about Normalized Cross Entropy.",
-    "answer": "Topic index entry for Normalized Cross Entropy under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -4059,7 +4057,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a5be9496203145b1a2e9e52f5c071ad2&pm=s",
       "pageId": "ccd05317b537835fa89f019c9e6a5f3b",
       "publicPageId": "a5be9496203145b1a2e9e52f5c071ad2"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Normalized Cross Entropy.",
+    "topicSummary": "Topic index entry for Normalized Cross Entropy under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "numeric-features-d6805317b5378295aff60156798456bb",
@@ -4069,8 +4069,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "Numeric Features",
-    "question": "Generate a technical interview quiz about Numeric Features.",
-    "answer": "Topic index entry for Numeric Features under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -4100,7 +4098,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=6b45453f1689467e998c9b47ccf055a8&pm=s",
       "pageId": "d6805317b5378295aff60156798456bb",
       "publicPageId": "6b45453f1689467e998c9b47ccf055a8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Numeric Features.",
+    "topicSummary": "Topic index entry for Numeric Features under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "one-important-feature-missing-from-a-trained-model-what-can-we-do-e7205317b53782cda77b8121f7daa221",
@@ -4110,8 +4110,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-24",
     "title": "one important feature missing from a trained model, what can we do?",
-    "question": "Generate a technical interview quiz about one important feature missing from a trained model, what can we do?.",
-    "answer": "Topic index entry for one important feature missing from a trained model, what can we do? under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -4143,7 +4141,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=8830a6469e674855a28a8423799b5318&pm=s",
       "pageId": "e7205317b53782cda77b8121f7daa221",
       "publicPageId": "8830a6469e674855a28a8423799b5318"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about one important feature missing from a trained model, what can we do?.",
+    "topicSummary": "Topic index entry for one important feature missing from a trained model, what can we do? under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "one-hot-encoding-1ce05317b537832dacd5817b1daaeb54",
@@ -4153,8 +4153,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "One-hot encoding",
-    "question": "Generate a technical interview quiz about One-hot encoding.",
-    "answer": "Topic index entry for One-hot encoding under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "feature-engineering",
@@ -4184,7 +4182,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=ac7ea9524e704fbb8a1bcae3a58a5e34&pm=s",
       "pageId": "1ce05317b537832dacd5817b1daaeb54",
       "publicPageId": "ac7ea9524e704fbb8a1bcae3a58a5e34"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about One-hot encoding.",
+    "topicSummary": "Topic index entry for One-hot encoding under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "parallel-implementation-49d05317b53782f98659810fbda866b7",
@@ -4194,8 +4194,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-21",
     "title": "parallel implementation",
-    "question": "Generate a technical interview quiz about parallel implementation.",
-    "answer": "Topic index entry for parallel implementation under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -4219,7 +4217,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=83f55e10514e4d29bb28027db9a1c5ea&pm=s",
       "pageId": "49d05317b53782f98659810fbda866b7",
       "publicPageId": "83f55e10514e4d29bb28027db9a1c5ea"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about parallel implementation.",
+    "topicSummary": "Topic index entry for parallel implementation under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "parameter-calculation-79405317b537824a81b681b1a190d912",
@@ -4229,8 +4229,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Parameter calculation",
-    "question": "Generate a technical interview quiz about Parameter calculation.",
-    "answer": "Topic index entry for Parameter calculation under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -4254,7 +4252,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=7751e4c072e04701b628ee67457de2e1&pm=s",
       "pageId": "79405317b537824a81b681b1a190d912",
       "publicPageId": "7751e4c072e04701b628ee67457de2e1"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Parameter calculation.",
+    "topicSummary": "Topic index entry for Parameter calculation under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "partition-88505317b537822e8fdb818addf1f305",
@@ -4263,8 +4263,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Partition",
-    "question": "Generate a technical interview quiz about Partition.",
-    "answer": "Topic index entry for Partition under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -4292,7 +4290,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=899e0641cab6452b802fd0efd25ee68f&pm=s",
       "pageId": "88505317b537822e8fdb818addf1f305",
       "publicPageId": "899e0641cab6452b802fd0efd25ee68f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Partition.",
+    "topicSummary": "Topic index entry for Partition under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "pca-principal-components-analysis-49f05317b53783c1b40881817b22a4dd",
@@ -4302,8 +4302,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "PCA - Principal Components Analysis",
-    "question": "Generate a technical interview quiz about PCA - Principal Components Analysis.",
-    "answer": "Topic index entry for PCA - Principal Components Analysis under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "dimensionality-reduction",
@@ -4336,7 +4334,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=fefe31cd867542fd825287712ae7c2a9&pm=s",
       "pageId": "49f05317b53783c1b40881817b22a4dd",
       "publicPageId": "fefe31cd867542fd825287712ae7c2a9"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about PCA - Principal Components Analysis.",
+    "topicSummary": "Topic index entry for PCA - Principal Components Analysis under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "pca-fc705317b537836488b4016de95de0be",
@@ -4345,8 +4345,6 @@
     "subcategory": "dimensionality-reduction",
     "chunkType": "topic",
     "title": "PCA",
-    "question": "Generate a technical interview quiz about PCA.",
-    "answer": "Topic index entry for PCA under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "dimensionality-reduction",
@@ -4374,7 +4372,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b2407d37d6ec424f92be386f1067dc14&pm=s",
       "pageId": "fc705317b537836488b4016de95de0be",
       "publicPageId": "b2407d37d6ec424f92be386f1067dc14"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about PCA.",
+    "topicSummary": "Topic index entry for PCA under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "pca-t-sne-and-umap-e6505317b5378388b97e019e0deb0741",
@@ -4384,8 +4384,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "PCA, t-SNE, and UMAP",
-    "question": "Generate a technical interview quiz about PCA, t-SNE, and UMAP.",
-    "answer": "Topic index entry for PCA, t-SNE, and UMAP under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "dimensionality-reduction",
@@ -4417,7 +4415,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=97629b401b064e8fa911e77bd47321ce&pm=s",
       "pageId": "e6505317b5378388b97e019e0deb0741",
       "publicPageId": "97629b401b064e8fa911e77bd47321ce"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about PCA, t-SNE, and UMAP.",
+    "topicSummary": "Topic index entry for PCA, t-SNE, and UMAP under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "precision-and-recall-e9e05317b53782d08df581336ea50e1e",
@@ -4427,8 +4427,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Precision and recall",
-    "question": "Generate a technical interview quiz about Precision and recall.",
-    "answer": "Topic index entry for Precision and recall under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -4452,7 +4450,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0939011427b24053a2602e8065602fe2&pm=s",
       "pageId": "e9e05317b53782d08df581336ea50e1e",
       "publicPageId": "0939011427b24053a2602e8065602fe2"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Precision and recall.",
+    "topicSummary": "Topic index entry for Precision and recall under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "probability-vs-maximum-likelihood-32f05317b5378327bfa001a4fa8b20d4",
@@ -4462,8 +4462,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "probability vs maximum likelihood",
-    "question": "Generate a technical interview quiz about probability vs maximum likelihood.",
-    "answer": "Topic index entry for probability vs maximum likelihood under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "probability",
@@ -4493,7 +4491,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2ef377a09e994710829d9dc25245e8ad&pm=s",
       "pageId": "32f05317b5378327bfa001a4fa8b20d4",
       "publicPageId": "2ef377a09e994710829d9dc25245e8ad"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about probability vs maximum likelihood.",
+    "topicSummary": "Topic index entry for probability vs maximum likelihood under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "python-library-38805317b5378239ab2281a603d23a7e",
@@ -4503,8 +4503,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-14",
     "title": "Python Library",
-    "question": "Generate a technical interview quiz about Python Library.",
-    "answer": "Topic index entry for Python Library under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -4528,7 +4526,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=06131d8301a347789732391be6c0148e&pm=s",
       "pageId": "38805317b5378239ab2281a603d23a7e",
       "publicPageId": "06131d8301a347789732391be6c0148e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Python Library.",
+    "topicSummary": "Topic index entry for Python Library under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "pytorch-cheatsheet-81505317b537821182e081d8828456d2",
@@ -4538,8 +4538,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-06",
     "title": "PyTorch Cheatsheet",
-    "question": "Generate a technical interview quiz about PyTorch Cheatsheet.",
-    "answer": "Topic index entry for PyTorch Cheatsheet under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -4565,7 +4563,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=37e08a687b684933b0ae5b082bc0b60a&pm=s",
       "pageId": "81505317b537821182e081d8828456d2",
       "publicPageId": "37e08a687b684933b0ae5b082bc0b60a"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about PyTorch Cheatsheet.",
+    "topicSummary": "Topic index entry for PyTorch Cheatsheet under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "pytorch-cnn-37f05317b5378365afbc81d609f4596d",
@@ -4575,8 +4575,6 @@
     "chunkType": "topic",
     "createdAt": "2022-06-07",
     "title": "Pytorch CNN",
-    "question": "Generate a technical interview quiz about Pytorch CNN.",
-    "answer": "Topic index entry for Pytorch CNN under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "computer-vision",
@@ -4608,7 +4606,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2efd34fc2d824710aa0f9b5633ef9e22&pm=s",
       "pageId": "37f05317b5378365afbc81d609f4596d",
       "publicPageId": "2efd34fc2d824710aa0f9b5633ef9e22"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Pytorch CNN.",
+    "topicSummary": "Topic index entry for Pytorch CNN under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "pytorch-skip-connection-62805317b53783a0a38d81d75a54f03a",
@@ -4618,8 +4618,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Pytorch Skip connection",
-    "question": "Generate a technical interview quiz about Pytorch Skip connection.",
-    "answer": "Topic index entry for Pytorch Skip connection under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "regularization",
@@ -4652,7 +4650,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e95a0de3df2340b499a6f2634a577897&pm=s",
       "pageId": "62805317b53783a0a38d81d75a54f03a",
       "publicPageId": "e95a0de3df2340b499a6f2634a577897"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Pytorch Skip connection.",
+    "topicSummary": "Topic index entry for Pytorch Skip connection under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "quantile-loss-e7405317b5378305a7e80122fcb4c3a2",
@@ -4662,8 +4662,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-20",
     "title": "Quantile Loss",
-    "question": "Generate a technical interview quiz about Quantile Loss.",
-    "answer": "Topic index entry for Quantile Loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -4689,7 +4687,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9c528208385c4330aaa0f3953e824a70&pm=s",
       "pageId": "e7405317b5378305a7e80122fcb4c3a2",
       "publicPageId": "9c528208385c4330aaa0f3953e824a70"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Quantile Loss.",
+    "topicSummary": "Topic index entry for Quantile Loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "ran-dom-forest-vs-gradient-boosted-forest-decision-tree-49c05317b53783c884b001837751f7a4",
@@ -4699,8 +4699,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "Ran‍‌‌‌‌‍‌‌‌‌‌‍‍‌‍‌dom Forest vs. Gradient Boosted Forest (Decision Tree)",
-    "question": "Generate a technical interview quiz about Ran‍‌‌‌‌‍‌‌‌‌‌‍‍‌‍‌dom Forest vs. Gradient Boosted Forest (Decision Tree).",
-    "answer": "Topic index entry for Ran‍‌‌‌‌‍‌‌‌‌‌‍‍‌‍‌dom Forest vs. Gradient Boosted Forest (Decision Tree) under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "ensemble-learning",
@@ -4738,7 +4736,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9cf7960b5d38458f85b5e517c97f9dc5&pm=s",
       "pageId": "49c05317b53783c884b001837751f7a4",
       "publicPageId": "9cf7960b5d38458f85b5e517c97f9dc5"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Ran‍‌‌‌‌‍‌‌‌‌‌‍‍‌‍‌dom Forest vs. Gradient Boosted Forest (Decision Tree).",
+    "topicSummary": "Topic index entry for Ran‍‌‌‌‌‍‌‌‌‌‌‍‍‌‍‌dom Forest vs. Gradient Boosted Forest (Decision Tree) under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "random-number-generator-48b05317b5378324baa901fcc029c905",
@@ -4748,8 +4748,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-20",
     "title": "Random Number Generator",
-    "question": "Generate a technical interview quiz about Random Number Generator.",
-    "answer": "Topic index entry for Random Number Generator under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -4777,7 +4775,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b1d6db248ad2466ca6a156c3b93fd478&pm=s",
       "pageId": "48b05317b5378324baa901fcc029c905",
       "publicPageId": "b1d6db248ad2466ca6a156c3b93fd478"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Random Number Generator.",
+    "topicSummary": "Topic index entry for Random Number Generator under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "receptive-field-39805317b537834bb904010a163be43e",
@@ -4787,8 +4787,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "Receptive Field",
-    "question": "Generate a technical interview quiz about Receptive Field.",
-    "answer": "Topic index entry for Receptive Field under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -4812,7 +4810,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a61443f903fa4c6e85ea68125168efe0&pm=s",
       "pageId": "39805317b537834bb904010a163be43e",
       "publicPageId": "a61443f903fa4c6e85ea68125168efe0"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Receptive Field.",
+    "topicSummary": "Topic index entry for Receptive Field under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "reinforcement-31a05317b53783828ba581f5c22ee44c",
@@ -4822,8 +4822,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Reinforcement",
-    "question": "Generate a technical interview quiz about Reinforcement.",
-    "answer": "Topic index entry for Reinforcement under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "loss-functions",
@@ -4856,7 +4854,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=bc9951df51a94560b58038c5d8df1f3d&pm=s",
       "pageId": "31a05317b53783828ba581f5c22ee44c",
       "publicPageId": "bc9951df51a94560b58038c5d8df1f3d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Reinforcement.",
+    "topicSummary": "Topic index entry for Reinforcement under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "relation-between-logistic-regression-and-neural-network-94305317b537839297f48185dc4c4f6e",
@@ -4866,8 +4866,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Relation between logistic regression and neural network?",
-    "question": "Generate a technical interview quiz about Relation between logistic regression and neural network?.",
-    "answer": "Topic index entry for Relation between logistic regression and neural network? under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "probability",
@@ -4903,7 +4901,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=86d8b3ec82394e5287c604768cca7575&pm=s",
       "pageId": "94305317b537839297f48185dc4c4f6e",
       "publicPageId": "86d8b3ec82394e5287c604768cca7575"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Relation between logistic regression and neural network?.",
+    "topicSummary": "Topic index entry for Relation between logistic regression and neural network? under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "relu-10905317b53782cc8ff0812e10b2bd42",
@@ -4913,8 +4913,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "ReLU",
-    "question": "Generate a technical interview quiz about ReLU.",
-    "answer": "Topic index entry for ReLU under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -4934,7 +4932,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=14ebbc2d4c444d6cb97325b8ee0c68cb&pm=s",
       "pageId": "10905317b53782cc8ff0812e10b2bd42",
       "publicPageId": "14ebbc2d4c444d6cb97325b8ee0c68cb"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about ReLU.",
+    "topicSummary": "Topic index entry for ReLU under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "residual-networks-skip-connections-41a05317b53782e98d9001bc6be96267",
@@ -4944,8 +4944,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Residual Networks skip connections",
-    "question": "Generate a technical interview quiz about Residual Networks skip connections.",
-    "answer": "Topic index entry for Residual Networks skip connections under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "regularization",
@@ -4978,7 +4976,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=75b87c7a28224a44abcfc6450624b117&pm=s",
       "pageId": "41a05317b53782e98d9001bc6be96267",
       "publicPageId": "75b87c7a28224a44abcfc6450624b117"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Residual Networks skip connections.",
+    "topicSummary": "Topic index entry for Residual Networks skip connections under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "retrieval-augmented-generation-26f05317b537827aa89b811c664ca039",
@@ -4988,8 +4988,6 @@
     "chunkType": "topic",
     "createdAt": "2024-03-01",
     "title": "Retrieval Augmented Generation",
-    "question": "Generate a technical interview quiz about Retrieval Augmented Generation.",
-    "answer": "Topic index entry for Retrieval Augmented Generation under GENAI. Open the source database for the original Notion notes.",
     "tags": [
       "genai",
       "retrieval",
@@ -5022,7 +5020,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=d728fb5770d14aada8a265e06a3ee7f1&pm=s",
       "pageId": "26f05317b537827aa89b811c664ca039",
       "publicPageId": "d728fb5770d14aada8a265e06a3ee7f1"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Retrieval Augmented Generation.",
+    "topicSummary": "Topic index entry for Retrieval Augmented Generation under GENAI. Open the source database for the original Notion notes."
   },
   {
     "id": "rmse-a7e05317b53782a0828901861ceb9d67",
@@ -5032,8 +5032,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-10",
     "title": "RMSE",
-    "question": "Generate a technical interview quiz about RMSE.",
-    "answer": "Topic index entry for RMSE under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -5061,7 +5059,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=340246da7cc24e959296d33382143626&pm=s",
       "pageId": "a7e05317b53782a0828901861ceb9d67",
       "publicPageId": "340246da7cc24e959296d33382143626"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about RMSE.",
+    "topicSummary": "Topic index entry for RMSE under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "rmsprop-cb405317b537827f8ec101235dfd0058",
@@ -5071,8 +5071,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "RMSprop",
-    "question": "Generate a technical interview quiz about RMSprop.",
-    "answer": "Topic index entry for RMSprop under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -5098,7 +5096,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=17dee7a2d82c40008e7e1b256b96f546&pm=s",
       "pageId": "cb405317b537827f8ec101235dfd0058",
       "publicPageId": "17dee7a2d82c40008e7e1b256b96f546"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about RMSprop.",
+    "topicSummary": "Topic index entry for RMSprop under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "rnn-59b05317b53782f6afcc81d23684a8e0",
@@ -5108,8 +5108,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-02",
     "title": "RNN",
-    "question": "Generate a technical interview quiz about RNN.",
-    "answer": "Topic index entry for RNN under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -5137,7 +5135,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=d33c3000b21540b49937179294afaf1e&pm=s",
       "pageId": "59b05317b53782f6afcc81d23684a8e0",
       "publicPageId": "d33c3000b21540b49937179294afaf1e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about RNN.",
+    "topicSummary": "Topic index entry for RNN under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "roc-auc-da005317b53783af858e819046e0367d",
@@ -5147,8 +5147,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "ROC AUC",
-    "question": "Generate a technical interview quiz about ROC AUC.",
-    "answer": "Topic index entry for ROC AUC under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -5172,7 +5170,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f2fa5a789ac3438881178fe83a3588ca&pm=s",
       "pageId": "da005317b53783af858e819046e0367d",
       "publicPageId": "f2fa5a789ac3438881178fe83a3588ca"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about ROC AUC.",
+    "topicSummary": "Topic index entry for ROC AUC under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "sgd-4db05317b5378366b29001193d830f65",
@@ -5182,8 +5182,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "SGD",
-    "question": "Generate a technical interview quiz about SGD.",
-    "answer": "Topic index entry for SGD under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -5209,7 +5207,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=fa7104f6458d410b81158a5f56bc4851&pm=s",
       "pageId": "4db05317b5378366b29001193d830f65",
       "publicPageId": "fa7104f6458d410b81158a5f56bc4851"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about SGD.",
+    "topicSummary": "Topic index entry for SGD under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "sigmoid-function-cb405317b5378275ab6681ae87bb8307",
@@ -5219,8 +5219,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Sigmoid function",
-    "question": "Generate a technical interview quiz about Sigmoid function.",
-    "answer": "Topic index entry for Sigmoid function under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -5242,7 +5240,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f993fad429a84a37bba112b9462e2577&pm=s",
       "pageId": "cb405317b5378275ab6681ae87bb8307",
       "publicPageId": "f993fad429a84a37bba112b9462e2577"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Sigmoid function.",
+    "topicSummary": "Topic index entry for Sigmoid function under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "small-convolutional-kernels-such-as-3x3-rather-than-a-few-large-ones-7be05317b5378289bc3e81aca1dd448f",
@@ -5252,8 +5252,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "Small convolutional kernels such as 3x3 rather than a few large ones",
-    "question": "Generate a technical interview quiz about Small convolutional kernels such as 3x3 rather than a few large ones.",
-    "answer": "Topic index entry for Small convolutional kernels such as 3x3 rather than a few large ones under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -5288,7 +5286,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2a47f04ea16e40f08449d0fd75a333a9&pm=s",
       "pageId": "7be05317b5378289bc3e81aca1dd448f",
       "publicPageId": "2a47f04ea16e40f08449d0fd75a333a9"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Small convolutional kernels such as 3x3 rather than a few large ones.",
+    "topicSummary": "Topic index entry for Small convolutional kernels such as 3x3 rather than a few large ones under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "softmax-activation-function-a1705317b537826fa2b001c351c6119d",
@@ -5298,8 +5298,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-08",
     "title": "Softmax Activation Function",
-    "question": "Generate a technical interview quiz about Softmax Activation Function.",
-    "answer": "Topic index entry for Softmax Activation Function under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -5323,7 +5321,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0d9613c4275044ac9dfde7c70b17450d&pm=s",
       "pageId": "a1705317b537826fa2b001c351c6119d",
       "publicPageId": "0d9613c4275044ac9dfde7c70b17450d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Softmax Activation Function.",
+    "topicSummary": "Topic index entry for Softmax Activation Function under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "sota-e8d05317b53782bcb936813790409c9c",
@@ -5333,8 +5333,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-17",
     "title": "SOTA",
-    "question": "Generate a technical interview quiz about SOTA.",
-    "answer": "Topic index entry for SOTA under SOTA. Open the source database for the original Notion notes.",
     "tags": [
       "sota",
       "ml-system-design",
@@ -5358,7 +5356,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=b1a9f3373d344e7eb871876692369d26&pm=s",
       "pageId": "e8d05317b53782bcb936813790409c9c",
       "publicPageId": "b1a9f3373d344e7eb871876692369d26"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about SOTA.",
+    "topicSummary": "Topic index entry for SOTA under SOTA. Open the source database for the original Notion notes."
   },
   {
     "id": "split-train-test-valid-bc905317b5378384b6da01de3bd74999",
@@ -5368,8 +5368,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-20",
     "title": "Split Train test valid",
-    "question": "Generate a technical interview quiz about Split Train test valid.",
-    "answer": "Topic index entry for Split Train test valid under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -5402,7 +5400,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a71c4458d1914e6c81a2bf17fe8eb9e8&pm=s",
       "pageId": "bc905317b5378384b6da01de3bd74999",
       "publicPageId": "a71c4458d1914e6c81a2bf17fe8eb9e8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Split Train test valid.",
+    "topicSummary": "Topic index entry for Split Train test valid under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "supervised-unsupervised-semi-supervised-weakly-supervised-self-supervised-and-unsupervised-learning-reinforcement-learning-b7c05317b5378299a12a814bc98aefcb",
@@ -5412,8 +5412,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "supervised, unsupervised, semi-supervised, weakly-supervised, Self-supervised and unsupervised learning reinforcement learning",
-    "question": "Generate a technical interview quiz about supervised, unsupervised, semi-supervised, weakly-supervised, Self-supervised and unsupervised learning reinforcement learning.",
-    "answer": "Topic index entry for supervised, unsupervised, semi-supervised, weakly-supervised, Self-supervised and unsupervised learning reinforcement learning under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "loss-functions",
@@ -5453,7 +5451,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a1234c84a7554a2790485571bd971574&pm=s",
       "pageId": "b7c05317b5378299a12a814bc98aefcb",
       "publicPageId": "a1234c84a7554a2790485571bd971574"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about supervised, unsupervised, semi-supervised, weakly-supervised, Self-supervised and unsupervised learning reinforcement learning.",
+    "topicSummary": "Topic index entry for supervised, unsupervised, semi-supervised, weakly-supervised, Self-supervised and unsupervised learning reinforcement learning under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "svm-support-vector-machine-01e05317b53782a69e9b813eb4d369a8",
@@ -5462,8 +5462,6 @@
     "subcategory": "implementation",
     "chunkType": "topic",
     "title": "SVM (Support Vector Machine)",
-    "question": "Generate a technical interview quiz about SVM (Support Vector Machine).",
-    "answer": "Topic index entry for SVM (Support Vector Machine) under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -5491,7 +5489,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=2672af341ba249f385d4a1f9549887b9&pm=s",
       "pageId": "01e05317b53782a69e9b813eb4d369a8",
       "publicPageId": "2672af341ba249f385d4a1f9549887b9"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about SVM (Support Vector Machine).",
+    "topicSummary": "Topic index entry for SVM (Support Vector Machine) under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "t-sne-sklearn-9e405317b537828796fd812113cd506a",
@@ -5501,8 +5501,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "t-SNE sklearn",
-    "question": "Generate a technical interview quiz about t-SNE sklearn.",
-    "answer": "Topic index entry for t-SNE sklearn under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "dimensionality-reduction",
@@ -5532,7 +5530,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=d2b447db64d34ba89518a82914428367&pm=s",
       "pageId": "9e405317b537828796fd812113cd506a",
       "publicPageId": "d2b447db64d34ba89518a82914428367"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about t-SNE sklearn.",
+    "topicSummary": "Topic index entry for t-SNE sklearn under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "tanh-60005317b5378317ad8f01c98dd2e779",
@@ -5542,8 +5542,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "tanh",
-    "question": "Generate a technical interview quiz about tanh.",
-    "answer": "Topic index entry for tanh under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -5563,7 +5561,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a8b276bc6af144349f6eff9c43933e06&pm=s",
       "pageId": "60005317b5378317ad8f01c98dd2e779",
       "publicPageId": "a8b276bc6af144349f6eff9c43933e06"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about tanh.",
+    "topicSummary": "Topic index entry for tanh under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "transformer-6a305317b537838290a301ecbe2199d6",
@@ -5573,8 +5573,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-24",
     "title": "Transformer",
-    "question": "Generate a technical interview quiz about Transformer.",
-    "answer": "Topic index entry for Transformer under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "sequence-modeling",
@@ -5600,7 +5598,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=afeb92084c584fa0912259b31c158955&pm=s",
       "pageId": "6a305317b537838290a301ecbe2199d6",
       "publicPageId": "afeb92084c584fa0912259b31c158955"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Transformer.",
+    "topicSummary": "Topic index entry for Transformer under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "turing-test-59305317b53783758ddc81a6338d0e28",
@@ -5610,8 +5610,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-06",
     "title": "Turing test",
-    "question": "Generate a technical interview quiz about Turing test.",
-    "answer": "Topic index entry for Turing test under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -5635,7 +5633,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e2f22e274f90442580b923a25dc32cb2&pm=s",
       "pageId": "59305317b53783758ddc81a6338d0e28",
       "publicPageId": "e2f22e274f90442580b923a25dc32cb2"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Turing test.",
+    "topicSummary": "Topic index entry for Turing test under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "type-i-error-type-ii-error-loss-6df05317b53782f6b6b301362b29985d",
@@ -5645,8 +5645,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "Type I error / Type II error loss",
-    "question": "Generate a technical interview quiz about Type I error / Type II error loss.",
-    "answer": "Topic index entry for Type I error / Type II error loss under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -5676,7 +5674,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=d99ec55839fd4d75bb9333d062f36f5b&pm=s",
       "pageId": "6df05317b53782f6b6b301362b29985d",
       "publicPageId": "d99ec55839fd4d75bb9333d062f36f5b"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Type I error / Type II error loss.",
+    "topicSummary": "Topic index entry for Type I error / Type II error loss under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "umap-cd305317b53783dcb9ca81b209d378f8",
@@ -5686,8 +5686,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-16",
     "title": "UMAP",
-    "question": "Generate a technical interview quiz about UMAP.",
-    "answer": "Topic index entry for UMAP under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "dimensionality-reduction",
@@ -5715,7 +5713,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9f6dad565e0d4d0c8f8f6c61d880ebef&pm=s",
       "pageId": "cd305317b53783dcb9ca81b209d378f8",
       "publicPageId": "9f6dad565e0d4d0c8f8f6c61d880ebef"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about UMAP.",
+    "topicSummary": "Topic index entry for UMAP under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "vanishing-gradient-00505317b53783dda3ba81abc8efc3de",
@@ -5725,8 +5725,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Vanishing gradient",
-    "question": "Generate a technical interview quiz about Vanishing gradient.",
-    "answer": "Topic index entry for Vanishing gradient under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -5752,7 +5750,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=60ccff2c94004a819bc7710e6ec3bc1e&pm=s",
       "pageId": "00505317b53783dda3ba81abc8efc3de",
       "publicPageId": "60ccff2c94004a819bc7710e6ec3bc1e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Vanishing gradient.",
+    "topicSummary": "Topic index entry for Vanishing gradient under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "vision-transformer-2ea05317b537829ea3d201ef052722ff",
@@ -5762,8 +5762,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-28",
     "title": "Vision Transformer",
-    "question": "Generate a technical interview quiz about Vision Transformer.",
-    "answer": "Topic index entry for Vision Transformer under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "sequence-modeling",
@@ -5791,7 +5789,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a3f4fe82f7fb401f84b2d5e0a02eaf8a&pm=s",
       "pageId": "2ea05317b537829ea3d201ef052722ff",
       "publicPageId": "a3f4fe82f7fb401f84b2d5e0a02eaf8a"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Vision Transformer.",
+    "topicSummary": "Topic index entry for Vision Transformer under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "what-do-you-understand-by-transfer-learning-name-a-few-commonly-used-transfer-learning-models-f6b05317b537830f8422018f98e5026d",
@@ -5800,8 +5800,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-28",
     "title": "What do you understand by transfer learning? Name a few commonly used transfer learning models.",
-    "question": "Generate a technical interview quiz about What do you understand by transfer learning? Name a few commonly used transfer learning models..",
-    "answer": "Topic index entry for What do you understand by transfer learning? Name a few commonly used transfer learning models. under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -5836,7 +5834,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0daa04144abe4e82a43f87122fbcd9a2&pm=s",
       "pageId": "f6b05317b537830f8422018f98e5026d",
       "publicPageId": "0daa04144abe4e82a43f87122fbcd9a2"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about What do you understand by transfer learning? Name a few commonly used transfer learning models..",
+    "topicSummary": "Topic index entry for What do you understand by transfer learning? Name a few commonly used transfer learning models. under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "what-is-attention-why-attention-c9905317b537832297ec813a778b93e7",
@@ -5846,8 +5846,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-23",
     "title": "What is attention, why attention",
-    "question": "Generate a technical interview quiz about What is attention, why attention.",
-    "answer": "Topic index entry for What is attention, why attention under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "sequence-modeling",
@@ -5871,7 +5869,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=83a8feca042e4e449c37da9548677081&pm=s",
       "pageId": "c9905317b537832297ec813a778b93e7",
       "publicPageId": "83a8feca042e4e449c37da9548677081"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about What is attention, why attention.",
+    "topicSummary": "Topic index entry for What is attention, why attention under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "what-is-backpropagation-77c05317b53783498ef2017827feea34",
@@ -5881,8 +5881,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "What is backpropagation?",
-    "question": "Generate a technical interview quiz about What is backpropagation?.",
-    "answer": "Topic index entry for What is backpropagation? under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "optimization",
@@ -5908,7 +5906,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=8808db4e7fa2475c8f5838c10ce85310&pm=s",
       "pageId": "77c05317b53783498ef2017827feea34",
       "publicPageId": "8808db4e7fa2475c8f5838c10ce85310"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about What is backpropagation?.",
+    "topicSummary": "Topic index entry for What is backpropagation? under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "what-is-cost-function-loss-function-93a05317b537827eb0ec814b0f4e1c70",
@@ -5918,8 +5918,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "What is cost function loss function",
-    "question": "Generate a technical interview quiz about What is cost function loss function.",
-    "answer": "Topic index entry for What is cost function loss function under Loss. Open the source database for the original Notion notes.",
     "tags": [
       "loss",
       "loss-functions",
@@ -5947,7 +5945,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=cb8dcaa6d0da4234985d1a96d8fe8ad9&pm=s",
       "pageId": "93a05317b537827eb0ec814b0f4e1c70",
       "publicPageId": "cb8dcaa6d0da4234985d1a96d8fe8ad9"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about What is cost function loss function.",
+    "topicSummary": "Topic index entry for What is cost function loss function under Loss. Open the source database for the original Notion notes."
   },
   {
     "id": "what-is-overfitting-85505317b53782cc9f2a81207fa8ccf8",
@@ -5956,8 +5956,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "What is overfitting?",
-    "question": "Generate a technical interview quiz about What is overfitting?.",
-    "answer": "Topic index entry for What is overfitting? under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -5987,7 +5985,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=0775641075a245e287c411e96f1c7507&pm=s",
       "pageId": "85505317b53782cc9f2a81207fa8ccf8",
       "publicPageId": "0775641075a245e287c411e96f1c7507"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about What is overfitting?.",
+    "topicSummary": "Topic index entry for What is overfitting? under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "what-is-underfitting-4a305317b53783558d5681a79c28788d",
@@ -5996,8 +5996,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "What is underfitting?",
-    "question": "Generate a technical interview quiz about What is underfitting?.",
-    "answer": "Topic index entry for What is underfitting? under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "machine-learning",
@@ -6027,7 +6025,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=cf4e67f17bf14ec1969fd7631154a83d&pm=s",
       "pageId": "4a305317b53783558d5681a79c28788d",
       "publicPageId": "cf4e67f17bf14ec1969fd7631154a83d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about What is underfitting?.",
+    "topicSummary": "Topic index entry for What is underfitting? under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "why-auc-is-desirable-d3405317b537834e951481db1d6a10b8",
@@ -6037,8 +6037,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Why AUC is desirable?",
-    "question": "Generate a technical interview quiz about Why AUC is desirable?.",
-    "answer": "Topic index entry for Why AUC is desirable? under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -6062,7 +6060,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=7e6ee9dfd2c44e6ab6ba3194a060e93f&pm=s",
       "pageId": "d3405317b537834e951481db1d6a10b8",
       "publicPageId": "7e6ee9dfd2c44e6ab6ba3194a060e93f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why AUC is desirable?.",
+    "topicSummary": "Topic index entry for Why AUC is desirable? under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "why-can-regularization-reduce-overfitting-15505317b537823eab11019d485b7d04",
@@ -6072,8 +6072,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Why can regularization reduce overfitting?",
-    "question": "Generate a technical interview quiz about Why can regularization reduce overfitting?.",
-    "answer": "Topic index entry for Why can regularization reduce overfitting? under Regularization. Open the source database for the original Notion notes.",
     "tags": [
       "regularization",
       "overfitting",
@@ -6101,7 +6099,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=26881d877e69484490b1c4a9387617a2&pm=s",
       "pageId": "15505317b537823eab11019d485b7d04",
       "publicPageId": "26881d877e69484490b1c4a9387617a2"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why can regularization reduce overfitting?.",
+    "topicSummary": "Topic index entry for Why can regularization reduce overfitting? under Regularization. Open the source database for the original Notion notes."
   },
   {
     "id": "why-convolution-layer-for-images-than-fc-48f05317b537824396f7014d73701a57",
@@ -6111,8 +6111,6 @@
     "chunkType": "topic",
     "createdAt": "2022-04-24",
     "title": "why convolution layer for images than FC",
-    "question": "Generate a technical interview quiz about why convolution layer for images than FC.",
-    "answer": "Topic index entry for why convolution layer for images than FC under CNN. Open the source database for the original Notion notes.",
     "tags": [
       "cnn",
       "computer-vision",
@@ -6140,7 +6138,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=3b2f826454b74c218fded32239011e3b&pm=s",
       "pageId": "48f05317b537824396f7014d73701a57",
       "publicPageId": "3b2f826454b74c218fded32239011e3b"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about why convolution layer for images than FC.",
+    "topicSummary": "Topic index entry for why convolution layer for images than FC under CNN. Open the source database for the original Notion notes."
   },
   {
     "id": "why-do-i-have-to-convert-uint8-into-float32-f6305317b537834397248144ba1ecccc",
@@ -6150,8 +6150,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "Why do I have to convert \"uint8\" into \"float32\"",
-    "question": "Generate a technical interview quiz about Why do I have to convert \"uint8\" into \"float32\".",
-    "answer": "Topic index entry for Why do I have to convert \"uint8\" into \"float32\" under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -6179,7 +6177,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=82e6176f0e564136a55af5ff3990d80c&pm=s",
       "pageId": "f6305317b537834397248144ba1ecccc",
       "publicPageId": "82e6176f0e564136a55af5ff3990d80c"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why do I have to convert \"uint8\" into \"float32\".",
+    "topicSummary": "Topic index entry for Why do I have to convert \"uint8\" into \"float32\" under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "why-do-we-need-a-validation-set-and-test-set-ce605317b53783b8a2fb81d020fec548",
@@ -6189,8 +6189,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-06",
     "title": "Why do we need a validation set and test set",
-    "question": "Generate a technical interview quiz about Why do we need a validation set and test set.",
-    "answer": "Topic index entry for Why do we need a validation set and test set under Data prepare. Open the source database for the original Notion notes.",
     "tags": [
       "data-prepare",
       "data-preprocessing",
@@ -6222,7 +6220,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=48ffc6a10425464f98746e9247c0b9e7&pm=s",
       "pageId": "ce605317b53783b8a2fb81d020fec548",
       "publicPageId": "48ffc6a10425464f98746e9247c0b9e7"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why do we need a validation set and test set.",
+    "topicSummary": "Topic index entry for Why do we need a validation set and test set under Data prepare. Open the source database for the original Notion notes."
   },
   {
     "id": "why-does-regularization-use-l1-l2-not-others-e7005317b537837caf3d0176fede6aac",
@@ -6232,8 +6232,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Why does regularization use L1, L2 not others?",
-    "question": "Generate a technical interview quiz about Why does regularization use L1, L2 not others?.",
-    "answer": "Topic index entry for Why does regularization use L1, L2 not others? under Regularization. Open the source database for the original Notion notes.",
     "tags": [
       "regularization",
       "overfitting",
@@ -6259,7 +6257,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=31ee1499dfea418689c64a5b6d40fc90&pm=s",
       "pageId": "e7005317b537837caf3d0176fede6aac",
       "publicPageId": "31ee1499dfea418689c64a5b6d40fc90"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why does regularization use L1, L2 not others?.",
+    "topicSummary": "Topic index entry for Why does regularization use L1, L2 not others? under Regularization. Open the source database for the original Notion notes."
   },
   {
     "id": "why-is-bias-used-in-nn-a5f05317b53783939251814c0909934d",
@@ -6268,8 +6268,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Why is bias used in NN?",
-    "question": "Generate a technical interview quiz about Why is bias used in NN?.",
-    "answer": "Topic index entry for Why is bias used in NN? under NN. Open the source database for the original Notion notes.",
     "tags": [
       "nn",
       "neural-networks",
@@ -6289,7 +6287,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=48fc27efc7bb437f9ea03c7b7bd3a705&pm=s",
       "pageId": "a5f05317b53783939251814c0909934d",
       "publicPageId": "48fc27efc7bb437f9ea03c7b7bd3a705"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why is bias used in NN?.",
+    "topicSummary": "Topic index entry for Why is bias used in NN? under NN. Open the source database for the original Notion notes."
   },
   {
     "id": "why-is-l1-regularization-supposed-to-lead-to-sparsity-than-l2-93105317b53782ffaf64813f3c8de01c",
@@ -6299,8 +6299,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Why is L1 regularization supposed to lead to sparsity than L2?",
-    "question": "Generate a technical interview quiz about Why is L1 regularization supposed to lead to sparsity than L2?.",
-    "answer": "Topic index entry for Why is L1 regularization supposed to lead to sparsity than L2? under Regularization. Open the source database for the original Notion notes.",
     "tags": [
       "regularization",
       "overfitting",
@@ -6330,7 +6328,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=a063bf0fed04485da80edc45c1bb1738&pm=s",
       "pageId": "93105317b53782ffaf64813f3c8de01c",
       "publicPageId": "a063bf0fed04485da80edc45c1bb1738"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why is L1 regularization supposed to lead to sparsity than L2?.",
+    "topicSummary": "Topic index entry for Why is L1 regularization supposed to lead to sparsity than L2? under Regularization. Open the source database for the original Notion notes."
   },
   {
     "id": "why-is-non-linear-activation-function-needed-db405317b53782c59d598162977fb1db",
@@ -6340,8 +6340,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-29",
     "title": "Why is non linear activation function needed?",
-    "question": "Generate a technical interview quiz about Why is non linear activation function needed?.",
-    "answer": "Topic index entry for Why is non linear activation function needed? under Activation Function. Open the source database for the original Notion notes.",
     "tags": [
       "activation-function",
       "neural-networks",
@@ -6369,7 +6367,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=9d25c9f67f984cccb81ebac3acc7113d&pm=s",
       "pageId": "db405317b53782c59d598162977fb1db",
       "publicPageId": "9d25c9f67f984cccb81ebac3acc7113d"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why is non linear activation function needed?.",
+    "topicSummary": "Topic index entry for Why is non linear activation function needed? under Activation Function. Open the source database for the original Notion notes."
   },
   {
     "id": "why-mse-doesnt-work-with-logistic-regression-10205317b53783c0b0f0018e51ab456f",
@@ -6379,8 +6379,6 @@
     "chunkType": "topic",
     "createdAt": "2021-08-28",
     "title": "Why MSE doesn’t work with logistic regression?",
-    "question": "Generate a technical interview quiz about Why MSE doesn’t work with logistic regression?.",
-    "answer": "Topic index entry for Why MSE doesn’t work with logistic regression? under Metrics. Open the source database for the original Notion notes.",
     "tags": [
       "metrics",
       "evaluation",
@@ -6417,7 +6415,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=86c6d3820e5a47159f43434eceb94f0f&pm=s",
       "pageId": "10205317b53783c0b0f0018e51ab456f",
       "publicPageId": "86c6d3820e5a47159f43434eceb94f0f"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Why MSE doesn’t work with logistic regression?.",
+    "topicSummary": "Topic index entry for Why MSE doesn’t work with logistic regression? under Metrics. Open the source database for the original Notion notes."
   },
   {
     "id": "word2vec-vs-doc2vec-18f05317b53783e993af01285921518b",
@@ -6427,8 +6427,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-09",
     "title": "word2vec vs. doc2vec",
-    "question": "Generate a technical interview quiz about word2vec vs. doc2vec.",
-    "answer": "Topic index entry for word2vec vs. doc2vec under Basic Concepts. Open the source database for the original Notion notes.",
     "tags": [
       "basic-concepts",
       "sequence-modeling",
@@ -6460,7 +6458,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=e9d60bc391834fd986a7f05b3973a274&pm=s",
       "pageId": "18f05317b53783e993af01285921518b",
       "publicPageId": "e9d60bc391834fd986a7f05b3973a274"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about word2vec vs. doc2vec.",
+    "topicSummary": "Topic index entry for word2vec vs. doc2vec under Basic Concepts. Open the source database for the original Notion notes."
   },
   {
     "id": "write-a-naive-bayes-classifier-from-scratch-e5b05317b537822e9f35815219802d43",
@@ -6470,8 +6470,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Write a Naive Bayes Classifier from scratch",
-    "question": "Generate a technical interview quiz about Write a Naive Bayes Classifier from scratch.",
-    "answer": "Topic index entry for Write a Naive Bayes Classifier from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6506,7 +6504,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=1f5d079f536749cfa34b81ebf91d79f0&pm=s",
       "pageId": "e5b05317b537822e9f35815219802d43",
       "publicPageId": "1f5d079f536749cfa34b81ebf91d79f0"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write a Naive Bayes Classifier from scratch.",
+    "topicSummary": "Topic index entry for Write a Naive Bayes Classifier from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-a-perceptron-classifier-for-binary-classification-f8805317b537830896a7810b6623a950",
@@ -6516,8 +6516,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Write a Perceptron Classifier for Binary Classification",
-    "question": "Generate a technical interview quiz about Write a Perceptron Classifier for Binary Classification.",
-    "answer": "Topic index entry for Write a Perceptron Classifier for Binary Classification under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6549,7 +6547,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=5ff4956dc22d4b3398347dc7aac5b11e&pm=s",
       "pageId": "f8805317b537830896a7810b6623a950",
       "publicPageId": "5ff4956dc22d4b3398347dc7aac5b11e"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write a Perceptron Classifier for Binary Classification.",
+    "topicSummary": "Topic index entry for Write a Perceptron Classifier for Binary Classification under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-a-simple-image-classifier-using-package-88605317b537833f80808124d1d31741",
@@ -6559,8 +6559,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-22",
     "title": "Write a Simple Image Classifier (Using package)",
-    "question": "Generate a technical interview quiz about Write a Simple Image Classifier (Using package).",
-    "answer": "Topic index entry for Write a Simple Image Classifier (Using package) under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6592,7 +6590,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=4a71e2ff1e264adbaeba3ec0bb13cd37&pm=s",
       "pageId": "88605317b537833f80808124d1d31741",
       "publicPageId": "4a71e2ff1e264adbaeba3ec0bb13cd37"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write a Simple Image Classifier (Using package).",
+    "topicSummary": "Topic index entry for Write a Simple Image Classifier (Using package) under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-conv2d-and-active-function-from-scratch-b9a05317b5378295b1a201174877a3a8",
@@ -6602,8 +6602,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "Write Conv2D and Active function from scratch",
-    "question": "Generate a technical interview quiz about Write Conv2D and Active function from scratch.",
-    "answer": "Topic index entry for Write Conv2D and Active function from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6635,7 +6633,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f5d3d4b059804bd6bd171868799c2916&pm=s",
       "pageId": "b9a05317b5378295b1a201174877a3a8",
       "publicPageId": "f5d3d4b059804bd6bd171868799c2916"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write Conv2D and Active function from scratch.",
+    "topicSummary": "Topic index entry for Write Conv2D and Active function from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-fc-layer-neural-network-from-scratch-9f305317b537839a8b630118bba35f56",
@@ -6645,8 +6645,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-29",
     "title": "Write FC Layer Neural Network from scratch",
-    "question": "Generate a technical interview quiz about Write FC Layer Neural Network from scratch.",
-    "answer": "Topic index entry for Write FC Layer Neural Network from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6679,7 +6677,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=48082292f6cd4a8f8a1c2929eb8daca8&pm=s",
       "pageId": "9f305317b537839a8b630118bba35f56",
       "publicPageId": "48082292f6cd4a8f8a1c2929eb8daca8"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write FC Layer Neural Network from scratch.",
+    "topicSummary": "Topic index entry for Write FC Layer Neural Network from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-gradient-descent-active-function-from-scratch-cc005317b53783ea9e1301269ede93e2",
@@ -6689,8 +6689,6 @@
     "chunkType": "topic",
     "createdAt": "2024-01-24",
     "title": "Write Gradient Descent / Active Function from scratch",
-    "question": "Generate a technical interview quiz about Write Gradient Descent / Active Function from scratch.",
-    "answer": "Topic index entry for Write Gradient Descent / Active Function from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "optimization",
@@ -6726,7 +6724,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=325ce5ee1f6c42dca8f7952bec011bd1&pm=s",
       "pageId": "cc005317b53783ea9e1301269ede93e2",
       "publicPageId": "325ce5ee1f6c42dca8f7952bec011bd1"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write Gradient Descent / Active Function from scratch.",
+    "topicSummary": "Topic index entry for Write Gradient Descent / Active Function from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-k-means-from-scratch-4e105317b53782d29f4281f00956abc6",
@@ -6736,8 +6736,6 @@
     "chunkType": "topic",
     "createdAt": "2024-01-18",
     "title": "Write K-means from scratch",
-    "question": "Generate a technical interview quiz about Write K-means from scratch.",
-    "answer": "Topic index entry for Write K-means from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6770,7 +6768,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=928e84d1ea72487b8347433f2c280cfa&pm=s",
       "pageId": "4e105317b53782d29f4281f00956abc6",
       "publicPageId": "928e84d1ea72487b8347433f2c280cfa"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write K-means from scratch.",
+    "topicSummary": "Topic index entry for Write K-means from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-knn-from-scratch-e5905317b5378364952d8112473e63f8",
@@ -6780,8 +6780,6 @@
     "chunkType": "topic",
     "createdAt": "2024-02-14",
     "title": "Write KNN from scratch",
-    "question": "Generate a technical interview quiz about Write KNN from scratch.",
-    "answer": "Topic index entry for Write KNN from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6814,7 +6812,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=f2d59138ecf041a7b82dcbdacf4ae7f3&pm=s",
       "pageId": "e5905317b5378364952d8112473e63f8",
       "publicPageId": "f2d59138ecf041a7b82dcbdacf4ae7f3"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write KNN from scratch.",
+    "topicSummary": "Topic index entry for Write KNN from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-max-pooling-from-scratch-f8605317b537825e899b812525df9f07",
@@ -6824,8 +6824,6 @@
     "chunkType": "topic",
     "createdAt": "2022-05-12",
     "title": "Write Max Pooling from scratch",
-    "question": "Generate a technical interview quiz about Write Max Pooling from scratch.",
-    "answer": "Topic index entry for Write Max Pooling from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "computer-vision",
@@ -6859,7 +6857,9 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=c6d77764a3de4e40ac342adcc5774a85&pm=s",
       "pageId": "f8605317b537825e899b812525df9f07",
       "publicPageId": "c6d77764a3de4e40ac342adcc5774a85"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write Max Pooling from scratch.",
+    "topicSummary": "Topic index entry for Write Max Pooling from scratch under ML Coding. Open the source database for the original Notion notes."
   },
   {
     "id": "write-plot-image-using-matplotlib-pyplot-from-scratch-10b05317b537828f878c81b7ec849553",
@@ -6869,8 +6869,6 @@
     "chunkType": "topic",
     "createdAt": "2024-01-04",
     "title": "Write plot image using Matplotlib pyplot from scratch",
-    "question": "Generate a technical interview quiz about Write plot image using Matplotlib pyplot from scratch.",
-    "answer": "Topic index entry for Write plot image using Matplotlib pyplot from scratch under ML Coding. Open the source database for the original Notion notes.",
     "tags": [
       "ml-coding",
       "implementation",
@@ -6903,6 +6901,8 @@
       "url": "https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca&p=62ba4d61ddda468494d3d7955b577a07&pm=s",
       "pageId": "10b05317b537828f878c81b7ec849553",
       "publicPageId": "62ba4d61ddda468494d3d7955b577a07"
-    }
+    },
+    "promptHint": "Generate a technical interview quiz about Write plot image using Matplotlib pyplot from scratch.",
+    "topicSummary": "Topic index entry for Write plot image using Matplotlib pyplot from scratch under ML Coding. Open the source database for the original Notion notes."
   }
 ]

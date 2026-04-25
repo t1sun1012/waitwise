@@ -35,8 +35,8 @@ export interface RetrievedChunk {
   chunkType?: CorpusChunkType;
   createdAt?: string;
   title: string;
-  question: string;
-  answer: string;
+  promptHint: string;
+  topicSummary: string;
   tags: string[];
   keywords: string[];
   text: string;
