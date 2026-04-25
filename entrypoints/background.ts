@@ -219,9 +219,17 @@ export default defineBackground(() => {
             console.log(
               `[wAItwise] Retrieval match not confident enough for ${quizProvider}, generated from a random RAG topic`
             );
+          } else if (fallbackReason === 'retrieval-random-topic-provider-failed') {
+            console.log(
+              `[wAItwise] ${quizProvider} random-topic retrieval generation failed, using math fallback`
+            );
+          } else if (fallbackReason === 'retrieval-provider-failed-random-topic') {
+            console.log(
+              `[wAItwise] ${quizProvider} retrieval generation failed, generated from a random RAG topic`
+            );
           } else if (fallbackReason === 'retrieval-provider-failed') {
             console.log(
-              `[wAItwise] ${quizProvider} retrieval generation failed, using local retrieval fallback`
+              `[wAItwise] ${quizProvider} retrieval generation failed, using math fallback`
             );
           } else if (fallbackReason === 'general-missing-api-key') {
             console.log(

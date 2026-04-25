@@ -265,6 +265,78 @@ test('retrieval mode uses provider generation with a random topic when retrieval
   assert.equal(result.question.mode, 'retrieval');
 });
 
+test('retrieval mode does not use local topic-index fallback when no provider key is set', async () => {
+  const result = await resolveQuizForMode({
+    quizMode: 'retrieval',
+    quizProvider: 'openai',
+    providerApiKey: '',
+    retrievedChunks: [],
+  });
+
+  assert.equal(result.fallbackReason, 'retrieval-missing-api-key');
+  assert.equal(result.question.mode, 'math');
+  assert.doesNotMatch(result.question.question, /Generate a technical interview quiz/i);
+});
+
+test('retrieval mode falls back to math instead of local topic-index quiz when random topic generation fails', async () => {
+  const result = await resolveQuizForMode(
+    {
+      quizMode: 'retrieval',
+      quizProvider: 'gemini',
+      providerApiKey: 'test-key',
+      retrievedChunks: [],
+    },
+    {
+      generateRetrievalQuiz: async () => null,
+    }
+  );
+
+  assert.equal(result.fallbackReason, 'retrieval-random-topic-provider-failed');
+  assert.equal(result.question.mode, 'math');
+  assert.doesNotMatch(result.question.question, /Generate a technical interview quiz/i);
+});
+
+test('retrieval mode retries provider generation with a random topic when matched retrieval generation fails', async () => {
+  const retrievedChunks = buildRetrievedChunks();
+  let callCount = 0;
+
+  const result = await resolveQuizForMode(
+    {
+      quizMode: 'retrieval',
+      quizProvider: 'anthropic',
+      providerApiKey: 'test-key',
+      retrievedChunks,
+      recentSourceIds: [],
+    },
+    {
+      generateRetrievalQuiz: async (params) => {
+        callCount += 1;
+        if (callCount === 1) return null;
+
+        return {
+          id: 'retrieval-random-after-failure',
+          question: 'What concept is this random topic testing?',
+          options: ['A topic', 'A database', 'A shell', 'A browser'],
+          correctIndex: 0,
+          mode: 'retrieval',
+          topic: params.retrievedChunks[0]?.chunk.title,
+          explanation: 'Generated from a random corpus topic.',
+          source: {
+            ...params.retrievedChunks[0].chunk,
+            tags: [...params.retrievedChunks[0].chunk.tags],
+            source: { ...params.retrievedChunks[0].chunk.source },
+          },
+        };
+      },
+    }
+  );
+
+  assert.equal(callCount, 2);
+  assert.equal(result.fallbackReason, 'retrieval-provider-failed-random-topic');
+  assert.equal(result.question.mode, 'retrieval');
+  assert.doesNotMatch(result.question.question, /Generate a technical interview quiz/i);
+});
+
 test('math mode uses provider generation when a key is present', async () => {
   let observedProvider = null;
 

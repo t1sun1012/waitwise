@@ -2,10 +2,7 @@ import type { QuizMode, QuizProvider, QuizQuestion } from '../types/messages';
 import type { ConversationContext, RankedRetrievedChunk } from '../types/rag';
 import { getRagCorpus } from './rag/corpus';
 import { mathGenerator } from '../quiz/mathGenerator';
-import {
-  hasConfidentRetrievalMatch,
-  retrievalQuizGenerator,
-} from '../quiz/retrievalGenerator';
+import { hasConfidentRetrievalMatch } from '../quiz/retrievalGenerator';
 import {
   generateGeneralQuiz,
   generateMathQuiz,
@@ -77,6 +74,17 @@ export async function resolveQuizForMode(
     dependencies.generateRetrievalQuiz ?? generateRetrievalQuiz;
   const generalGenerator = dependencies.generateGeneralQuiz ?? generateGeneralQuiz;
   const mathProviderGenerator = dependencies.generateMathQuiz ?? generateMathQuiz;
+  async function generateRandomTopicQuestion(): Promise<QuizQuestion | null> {
+    const randomRetrievedChunk = pickRandomRetrievedChunk(recentSourceIds);
+    if (!randomRetrievedChunk) return null;
+
+    return retrievalGenerator({
+      provider: quizProvider,
+      apiKey: providerApiKey,
+      retrievalContext,
+      retrievedChunks: [randomRetrievedChunk],
+    });
+  }
 
   if (quizMode === 'math') {
     if (!providerApiKey) {
@@ -135,39 +143,24 @@ export async function resolveQuizForMode(
   }
 
   if (!providerApiKey) {
-    const localFallback = retrievalQuizGenerator.generate(retrievedChunks, {
-      recentSourceIds,
-    });
     return {
-      question: localFallback ?? mathGenerator.generate(),
+      question: mathGenerator.generate(),
       fallbackReason: 'retrieval-missing-api-key',
     };
   }
 
   if (!hasConfidentRetrievalMatch(retrievedChunks)) {
-    const randomRetrievedChunk = pickRandomRetrievedChunk(recentSourceIds);
-    if (randomRetrievedChunk) {
-      const randomTopicQuestion = await retrievalGenerator({
-        provider: quizProvider,
-        apiKey: providerApiKey,
-        retrievalContext,
-        retrievedChunks: [randomRetrievedChunk],
-      });
-
-      if (randomTopicQuestion) {
-        return {
-          question: randomTopicQuestion,
-          fallbackReason: 'retrieval-random-topic',
-        };
-      }
+    const randomTopicQuestion = await generateRandomTopicQuestion();
+    if (randomTopicQuestion) {
+      return {
+        question: randomTopicQuestion,
+        fallbackReason: 'retrieval-random-topic',
+      };
     }
 
-    const localFallback = retrievalQuizGenerator.generate(retrievedChunks, {
-      recentSourceIds,
-    });
     return {
-      question: localFallback ?? mathGenerator.generate(),
-      fallbackReason: 'retrieval-low-confidence',
+      question: mathGenerator.generate(),
+      fallbackReason: 'retrieval-random-topic-provider-failed',
     };
   }
 
@@ -182,11 +175,16 @@ export async function resolveQuizForMode(
     return { question: retrievalQuestion };
   }
 
-  const localFallback = retrievalQuizGenerator.generate(retrievedChunks, {
-    recentSourceIds,
-  });
+  const randomTopicQuestion = await generateRandomTopicQuestion();
+  if (randomTopicQuestion) {
+    return {
+      question: randomTopicQuestion,
+      fallbackReason: 'retrieval-provider-failed-random-topic',
+    };
+  }
+
   return {
-    question: localFallback ?? mathGenerator.generate(),
+    question: mathGenerator.generate(),
     fallbackReason: 'retrieval-provider-failed',
   };
 }
