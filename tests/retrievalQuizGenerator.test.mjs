@@ -98,12 +98,18 @@ test('builds a retrieval-backed quiz from the top ranked chunk', () => {
   assert.match(question.question, /logistic regression/i);
   assert.equal(question.options.length, 4);
   assert.ok(question.correctIndex >= 0 && question.correctIndex < question.options.length);
-  assert.match(question.options[question.correctIndex], /classification|probability|sigmoid/i);
+  assert.match(question.options[question.correctIndex], /topic index entry/i);
   assert.equal(question.mode, 'retrieval');
   assert.equal(question.source.id, logisticRegressionChunk.id);
   assert.equal(question.source.title, logisticRegressionChunk.title);
   assert.equal(question.source.answer, logisticRegressionChunk.answer);
+  assert.equal(question.source.chunkType, 'topic');
   assert.equal(question.source.source.repo, logisticRegressionChunk.source.repo);
+  assert.equal(
+    question.source.source.publicPageId,
+    '6dd81e53955a435a8cd05ba72bff8f68'
+  );
+  assert.match(question.source.source.url, /[?&]p=6dd81e53955a435a8cd05ba72bff8f68&pm=s$/);
   assert.equal(question.explanation, logisticRegressionChunk.answer);
 });
 

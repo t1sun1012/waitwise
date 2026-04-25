@@ -146,7 +146,7 @@ function buildSignalsForChunk(
   }
 
   const textOverlap = intersection(
-    uniqueTokens(`${chunk.question} ${chunk.answer} ${chunk.text}`),
+    uniqueTokens(`${chunk.question} ${chunk.text}`),
     queryTokens
   ).slice(0, MAX_TEXT_TOKEN_MATCHES);
   for (const token of textOverlap) {

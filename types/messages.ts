@@ -15,6 +15,7 @@ export interface QuizSource {
   category: string;
   subcategory?: string;
   chunkType?: CorpusChunkType;
+  createdAt?: string;
   title: string;
   question: string;
   answer: string;

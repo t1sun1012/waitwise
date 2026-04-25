@@ -169,6 +169,8 @@ function buildQuizSource(chunk: RetrievedChunk): QuizSource {
     corpus: chunk.corpus,
     category: chunk.category,
     subcategory: chunk.subcategory,
+    chunkType: chunk.chunkType,
+    createdAt: chunk.createdAt,
     title: chunk.title,
     question: chunk.question,
     answer: chunk.answer,

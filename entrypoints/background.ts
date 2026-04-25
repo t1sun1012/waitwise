@@ -215,6 +215,10 @@ export default defineBackground(() => {
             console.log(
               `[wAItwise] Retrieval match not confident enough for ${quizProvider}, using local fallback`
             );
+          } else if (fallbackReason === 'retrieval-random-topic') {
+            console.log(
+              `[wAItwise] Retrieval match not confident enough for ${quizProvider}, generated from a random RAG topic`
+            );
           } else if (fallbackReason === 'retrieval-provider-failed') {
             console.log(
               `[wAItwise] ${quizProvider} retrieval generation failed, using local retrieval fallback`

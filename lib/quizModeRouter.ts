@@ -1,5 +1,6 @@
 import type { QuizMode, QuizProvider, QuizQuestion } from '../types/messages';
 import type { ConversationContext, RankedRetrievedChunk } from '../types/rag';
+import { getRagCorpus } from './rag/corpus';
 import { mathGenerator } from '../quiz/mathGenerator';
 import {
   hasConfidentRetrievalMatch,
@@ -31,6 +32,31 @@ interface ResolveQuizForModeDependencies {
   generateRetrievalQuiz?: typeof generateRetrievalQuiz;
   generateGeneralQuiz?: typeof generateGeneralQuiz;
   generateMathQuiz?: typeof generateMathQuiz;
+}
+
+function randomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function pickRandomRetrievedChunk(
+  recentSourceIds: string[] = []
+): RankedRetrievedChunk | null {
+  const recentSourceIdSet = new Set(recentSourceIds);
+  const corpus = getRagCorpus();
+  if (corpus.length === 0) return null;
+
+  const availableCorpus = corpus.filter(
+    (chunk) => !recentSourceIdSet.has(chunk.id)
+  );
+  const pool = availableCorpus.length > 0 ? availableCorpus : corpus;
+  const chunk = pool[randomInt(0, pool.length - 1)];
+  if (!chunk) return null;
+
+  return {
+    chunk,
+    score: 0,
+    signals: [],
+  };
 }
 
 export async function resolveQuizForMode(
@@ -119,6 +145,23 @@ export async function resolveQuizForMode(
   }
 
   if (!hasConfidentRetrievalMatch(retrievedChunks)) {
+    const randomRetrievedChunk = pickRandomRetrievedChunk(recentSourceIds);
+    if (randomRetrievedChunk) {
+      const randomTopicQuestion = await retrievalGenerator({
+        provider: quizProvider,
+        apiKey: providerApiKey,
+        retrievalContext,
+        retrievedChunks: [randomRetrievedChunk],
+      });
+
+      if (randomTopicQuestion) {
+        return {
+          question: randomTopicQuestion,
+          fallbackReason: 'retrieval-random-topic',
+        };
+      }
+    }
+
     const localFallback = retrievalQuizGenerator.generate(retrievedChunks, {
       recentSourceIds,
     });

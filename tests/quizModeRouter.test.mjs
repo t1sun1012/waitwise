@@ -215,6 +215,56 @@ test('retrieval mode still returns retrieval quizzes when provider generation su
   assert.equal(result.question.mode, 'retrieval');
 });
 
+test('retrieval mode uses provider generation with a random topic when retrieval is weak', async () => {
+  const corpus = getRagCorpus();
+  const keptChunk = corpus[0];
+  const excludedIds = corpus.slice(1).map((chunk) => chunk.id);
+  let observedChunkId = null;
+
+  const result = await resolveQuizForMode(
+    {
+      quizMode: 'retrieval',
+      quizProvider: 'gemini',
+      providerApiKey: 'test-key',
+      retrievedChunks: [],
+      recentSourceIds: excludedIds,
+      retrievalContext: {
+        currentUserPrompt: 'zzzxqv unrelated gibberish',
+        previousUserPrompts: [],
+        recentAssistantReplies: [],
+        intent: 'generic',
+        entities: [],
+        relatedConcepts: [],
+        summary: 'unrelated gibberish',
+        retrievalQueries: ['zzzxqv unrelated gibberish'],
+      },
+    },
+    {
+      generateRetrievalQuiz: async (params) => {
+        observedChunkId = params.retrievedChunks[0]?.chunk.id ?? null;
+        return {
+          id: 'retrieval-random-1',
+          question: 'What is this topic about?',
+          options: ['A topic', 'A database', 'A browser', 'A shell'],
+          correctIndex: 0,
+          mode: 'retrieval',
+          topic: params.retrievedChunks[0]?.chunk.title,
+          explanation: 'Generated from a random corpus topic.',
+          source: {
+            ...params.retrievedChunks[0].chunk,
+            tags: [...params.retrievedChunks[0].chunk.tags],
+            source: { ...params.retrievedChunks[0].chunk.source },
+          },
+        };
+      },
+    }
+  );
+
+  assert.equal(observedChunkId, keptChunk.id);
+  assert.equal(result.fallbackReason, 'retrieval-random-topic');
+  assert.equal(result.question.mode, 'retrieval');
+});
+
 test('math mode uses provider generation when a key is present', async () => {
   let observedProvider = null;
 

@@ -3,9 +3,10 @@ export interface CorpusSource {
   path: string;
   url: string;
   pageId?: string;
+  publicPageId?: string;
 }
 
-export type CorpusChunkType = 'question-answer' | 'note' | 'topic-only';
+export type CorpusChunkType = 'topic';
 
 export type ConversationIntent =
   | 'compare'
@@ -32,6 +33,7 @@ export interface RetrievedChunk {
   category: string;
   subcategory?: string;
   chunkType?: CorpusChunkType;
+  createdAt?: string;
   title: string;
   question: string;
   answer: string;
