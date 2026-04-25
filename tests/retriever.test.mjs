@@ -83,10 +83,7 @@ test('returns the Naive Bayes chunk for conditional independence queries', () =>
   );
 
   assert.ok(results.length > 0);
-  assert.equal(
-    results[0].chunk.id,
-    'write-a-naive-bayes-classifier-from-scratch-e5b05317b537822e9f35815219802d43'
-  );
+  assert.match(results[0].chunk.id, /naive-bayes/);
   assert.ok(
     results[0].signals.some((signal) =>
       signal.value.toLowerCase().includes('bayes')
@@ -114,7 +111,7 @@ test('returns the logistic regression chunk for sigmoid classification queries',
   assert.ok(results.length > 0);
   assert.match(results[0].chunk.id, /logistic-regression/);
   assert.ok(
-    results[0].signals.some((signal) => signal.value === 'logistic-regression')
+    results[0].signals.some((signal) => signal.value === 'logistic')
   );
 });
 

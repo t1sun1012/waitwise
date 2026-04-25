@@ -14,6 +14,8 @@ interface Props {
 
 const VIEWPORT_MARGIN = 16;
 const DEFAULT_EDGE_OFFSET = 24;
+const NOTION_TECHNICAL_INTERVIEW_SOURCE_URL =
+  'https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca';
 
 interface WidgetSize {
   width: number;
@@ -83,6 +85,9 @@ export function QuizWidget({
     question.mode === 'retrieval' ? 'text-teal-700'
     : question.mode === 'general' ? 'text-amber-700'
     : 'text-indigo-600';
+  const sourceUrl =
+    question.source?.source.url
+    ?? (question.mode === 'retrieval' ? NOTION_TECHNICAL_INTERVIEW_SOURCE_URL : undefined);
 
   useEffect(() => {
     getPetState().then((ps) => setPetStateLocal(ps));
@@ -269,6 +274,20 @@ export function QuizWidget({
             </p>
             {question.explanation && (
               <p className={`mt-2 text-xs leading-5 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>{question.explanation}</p>
+            )}
+            {sourceUrl && (
+              <a
+                href={sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`mt-3 inline-flex text-xs font-semibold ${
+                  isDark
+                    ? 'text-teal-300 hover:text-teal-200'
+                    : 'text-teal-700 hover:text-teal-900'
+                }`}
+              >
+                Open source
+              </a>
             )}
           </div>
         )}
