@@ -1,6 +1,6 @@
 <div align="center">
 
-# WaitWise
+# wAItwise
 
 **A Chrome extension that turns AI wait time into active thinking.**
 
@@ -13,7 +13,7 @@
 
 </div>
 
-WaitWise is a Chrome extension prototype that detects when ChatGPT is thinking and shows a lightweight quiz during that wait time. The goal is simple: instead of passively staring at the screen, the user gets one short prompt to think, review, or practice.
+wAItwise is a Chrome extension prototype that detects when ChatGPT is thinking and shows a lightweight quiz during that wait time. The goal is simple: instead of passively staring at the screen, the user gets one short prompt to think, review, or practice.
 
 The project now supports three different quiz experiences:
 
@@ -21,13 +21,13 @@ The project now supports three different quiz experiences:
 - **General Thinking**: prompt-anchored questions that extend the user’s thinking on any ChatGPT topic
 - **Math Drill**: quick arithmetic practice as a clean fallback or focused mode
 
-## Why WaitWise
+## Why wAItwise
 
-WaitWise explores one product idea:
+wAItwise explores one product idea:
 
 > AI wait time can become thinking time.
 
-Instead of adding another chatbot or another passive widget, WaitWise tries to create a small reflective loop while the model is generating.
+Instead of adding another chatbot or another passive widget, wAItwise tries to create a small reflective loop while the model is generating.
 
 ## Current Capabilities
 
@@ -52,7 +52,7 @@ Instead of adding another chatbot or another passive widget, WaitWise tries to c
 
 ### LLM Provider Support
 
-WaitWise supports one active provider at a time:
+wAItwise supports one active provider at a time:
 
 - Gemini
 - OpenAI
@@ -139,7 +139,7 @@ output/chrome-mv3
 1. Open [ChatGPT](https://chatgpt.com/)
 2. Submit a prompt
 3. Wait for ChatGPT to enter its thinking/generating state
-4. The WaitWise widget should appear on the page
+4. The wAItwise widget should appear on the page
 
 ## Useful Commands
 
