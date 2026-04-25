@@ -35,6 +35,7 @@ Instead of adding another chatbot or another passive widget, wAItwise tries to c
 
 - **Retrieval Review**
   - Uses conversation context plus a local Notion topic index
+  - Builds that index from the public [ML/CV Notion technical interview database](https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca)
   - Retrieves relevant topic chunks by title, tags, keywords, and summary
   - Generates conceptual multiple-choice quizzes with the selected provider
   - Falls back to a random topic when no confident topic match exists
@@ -77,6 +78,14 @@ The selected provider and API key are stored locally in the extension popup. The
 - **Storage**: `chrome.storage.local`
 - **Retrieval**: local Notion topic index + lexical/context-aware ranking
 - **LLM Providers**: Gemini, OpenAI, Anthropic
+
+## Retrieval Corpus Source
+
+The retrieval corpus in `lib/rag/corpus.json` is a clean topic index derived from this public Notion database:
+
+[ML/CV technical interview database](https://sassy-glasses-37e.notion.site/a649eaead75a4db7a40c942610aed5bb?v=6bad6d4e8ab94eb494594a87ae72ebca)
+
+The corpus stores topic metadata such as titles, tags, created dates, keywords, neutral summaries, and source links. It does not store copied full page bodies.
 
 ## Project Structure
 
