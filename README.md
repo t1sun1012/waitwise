@@ -17,7 +17,7 @@ WaitWise is a Chrome extension prototype that detects when ChatGPT is thinking a
 
 The project now supports three different quiz experiences:
 
-- **Retrieval Review**: grounded technical interview questions using a local RAG corpus plus an LLM quiz generator
+- **Retrieval Review**: conceptual technical interview questions generated from a local Notion topic index
 - **General Thinking**: prompt-anchored questions that extend the user’s thinking on any ChatGPT topic
 - **Math Drill**: quick arithmetic practice as a clean fallback or focused mode
 
@@ -34,10 +34,11 @@ Instead of adding another chatbot or another passive widget, WaitWise tries to c
 ### Quiz Modes
 
 - **Retrieval Review**
-  - Uses conversation context plus a local interview-question corpus
-  - Retrieves relevant source chunks
-  - Generates grounded multiple-choice quizzes
-  - Shows source evidence inside the widget
+  - Uses conversation context plus a local Notion topic index
+  - Retrieves relevant topic chunks by title, tags, keywords, and summary
+  - Generates conceptual multiple-choice quizzes with the selected provider
+  - Falls back to a random topic when no confident topic match exists
+  - Shows source links inside the widget
 
 - **General Thinking**
   - Uses the user’s prompt as the main anchor
@@ -74,7 +75,7 @@ The selected provider and API key are stored locally in the extension popup. The
 - **Frontend**: React
 - **Language**: TypeScript
 - **Storage**: `chrome.storage.local`
-- **Retrieval**: local RAG corpus + lexical/context-aware ranking
+- **Retrieval**: local Notion topic index + lexical/context-aware ranking
 - **LLM Providers**: Gemini, OpenAI, Anthropic
 
 ## Project Structure
@@ -157,7 +158,7 @@ This is still a prototype, but the current system already supports:
 - in-page quiz widget injection on ChatGPT
 - review hub popup
 - local quiz history and stats
-- retrieval-backed technical interview quizzes
+- provider-generated technical interview quizzes from the Notion topic index
 - general prompt-based quizzes
 - multi-provider LLM support
 
@@ -165,7 +166,7 @@ This is still a prototype, but the current system already supports:
 
 The next major step is improving data quality and retrieval quality:
 
-- expand the corpus beyond the hand-curated interview dataset
+- keep the corpus as clean topic metadata instead of copied page bodies
 - improve domain coverage
 - make retrieval relevance more stable across broader conversations
 - strengthen review and reflection flows

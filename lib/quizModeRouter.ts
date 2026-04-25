@@ -1,8 +1,8 @@
 import type { QuizMode, QuizProvider, QuizQuestion } from '../types/messages';
 import type { ConversationContext, RankedRetrievedChunk } from '../types/rag';
 import { getRagCorpus } from './rag/corpus';
+import { hasConfidentRetrievalMatch } from './rag/retriever';
 import { mathGenerator } from '../quiz/mathGenerator';
-import { hasConfidentRetrievalMatch } from '../quiz/retrievalGenerator';
 import {
   generateGeneralQuiz,
   generateMathQuiz,
@@ -70,7 +70,7 @@ export async function resolveQuizForMode(
     recentUserPrompts = [],
     recentSourceIds = [],
   } = input;
-  const retrievalGenerator =
+  const providerRetrievalGenerator =
     dependencies.generateRetrievalQuiz ?? generateRetrievalQuiz;
   const generalGenerator = dependencies.generateGeneralQuiz ?? generateGeneralQuiz;
   const mathProviderGenerator = dependencies.generateMathQuiz ?? generateMathQuiz;
@@ -78,7 +78,7 @@ export async function resolveQuizForMode(
     const randomRetrievedChunk = pickRandomRetrievedChunk(recentSourceIds);
     if (!randomRetrievedChunk) return null;
 
-    return retrievalGenerator({
+    return providerRetrievalGenerator({
       provider: quizProvider,
       apiKey: providerApiKey,
       retrievalContext,
@@ -164,7 +164,7 @@ export async function resolveQuizForMode(
     };
   }
 
-  const retrievalQuestion = await retrievalGenerator({
+  const retrievalQuestion = await providerRetrievalGenerator({
     provider: quizProvider,
     apiKey: providerApiKey,
     retrievalContext,

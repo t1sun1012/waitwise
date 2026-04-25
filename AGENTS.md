@@ -1,142 +1,110 @@
 # AGENTS.md
 
-This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
+This file provides guidance to Codex when working with code in this repository.
 
-## What this project is
+## What This Project Is
 
-wAItwise is a Chrome extension (Manifest V3) that detects when an AI site is generating a response and shows a micro-learning quiz widget during the wait. MVP targets ChatGPT only, uses rule-based quiz generation (no LLM), and focuses on getting the detection → widget → storage loop solid before adding polish.
+wAItwise is a Chrome extension (Manifest V3) that detects when ChatGPT is generating a response and shows a short micro-learning quiz widget during the wait. The current prototype supports provider-generated quizzes, a Notion-backed topic index for retrieval review, popup settings, and a review hub for past attempts.
 
 ## Stack
 
-- **WXT** — extension scaffold and dev tooling (handles manifest generation, hot reload, content script injection helpers)
-- **TypeScript + React** — UI components and typed extension logic
-- **Tailwind CSS** — widget styling
-- **Chrome Extension APIs** — `chrome.runtime`, `chrome.storage.local`, `chrome.tabs`
+- **WXT**: extension scaffold and dev tooling
+- **TypeScript + React**: UI components and typed extension logic
+- **Tailwind CSS**: widget styling
+- **Chrome Extension APIs**: `chrome.runtime`, `chrome.storage.local`, `chrome.tabs`
 
-## Dev commands
+## Dev Commands
 
 ```bash
 npm install
-npm run dev        # build + open Chrome with extension loaded (WXT handles this)
+npm run dev        # WXT dev server
 npm run build      # production build
 npm run zip        # package for distribution
+npm run test:rag   # retrieval/provider/router tests
 ```
 
-To load manually: `chrome://extensions` → Developer mode → Load unpacked → select `.output/chrome-mv3/`
+To load manually: `chrome://extensions` -> Developer mode -> Load unpacked -> select `output/chrome-mv3/`.
 
 ## Architecture
 
-The extension has four layers that communicate through Chrome's messaging API.
+The extension has four main layers that communicate through typed Chrome messages.
 
-### 1. Content script (`entrypoints/content.ts`)
+### 1. Content Script (`entrypoints/content.tsx`)
 
-Runs inside the ChatGPT page. Responsibilities:
-- Watch DOM with `MutationObserver` for generation state changes
-- Extract the latest user prompt text
-- Inject the quiz widget using WXT's `createShadowRootUi` (Shadow DOM isolates CSS from the host page)
-- Remove/update widget when generation ends
+Runs inside ChatGPT. Responsibilities:
 
-Widget lifecycle uses an explicit state machine: `idle → submitted → generating → done`, with a `dismissed` state when the user manually closes the widget mid-generation (don't reshow it for that cycle).
+- Watch the DOM for generation state changes
+- Extract the latest user prompt and lightweight conversation context
+- Inject the quiz widget using WXT's `createShadowRootUi`
+- Remove/update the widget when generation ends
 
-ChatGPT is a SPA — the page does not reload on new conversations. The content script must handle URL/conversation changes and reset state accordingly. Use WXT's `ctx.invalidated` for cleanup.
+ChatGPT is a SPA, so the content script must handle URL/conversation changes and reset widget state accordingly. Keep site-specific DOM selectors inside `lib/detector.ts`.
 
-### 2. Background service worker (`entrypoints/background.ts`)
+### 2. Background Service Worker (`entrypoints/background.ts`)
 
 The central state owner. Responsibilities:
-- Receive messages from content script
-- Call quiz engine to generate questions
+
+- Receive typed messages from the content script
+- Retrieve/rank RAG topic chunks when needed
+- Route quiz generation by mode/provider
 - Read/write `chrome.storage.local`
-- Return quiz questions to content script
+- Return quiz questions to the content script
 
-### 3. Quiz engine (`quiz/`)
+### 3. Quiz and Provider Layer (`lib/quizModeRouter.ts`, `lib/providers/`, `quiz/`)
 
-Rule-based only for MVP. `quizEngine.ts` decides which quiz type to show:
-- First prompt of a session → math quiz
-- Subsequent prompts → prompt-based quiz using previous prompt text
-- Prompt too vague/short → fallback to math quiz
+Current modes:
 
-`promptGenerator.ts` uses keyword matching to classify prompts (`coding`, `math`, `debugging`, `generic`) and fill question templates. No LLM, no remote calls.
+- **retrieval**: ranks local Notion topic-index chunks, then uses the selected provider to generate a conceptual quiz from topic metadata. If retrieval has no confident match and an API key exists, generate from a random topic. If provider generation fails, fall back to local math.
+- **general**: uses the selected provider to generate a prompt-anchored thinking question.
+- **math**: uses the selected provider for math when possible, with local `quiz/mathGenerator.ts` as a fallback.
 
-### 4. UI layer (`components/`, `entrypoints/popup/`)
+Do not reintroduce a local retrieval quiz generator for topic-index chunks. Topic-index entries are metadata anchors, not ground-truth Q&A answers.
 
-React components injected via Shadow DOM into the ChatGPT page. The widget appears in the corner during generation only.
+### 4. UI Layer (`components/`, `entrypoints/popup/`)
 
-## Shared message contract
+React components render the in-page widget, popup settings, and review hub. Source links should be visible when a retrieval quiz has source metadata.
 
-All cross-boundary communication goes through typed messages defined in `types/messages.ts`. Never use raw strings for message types — always import from this file. This is the shared contract between the three team members' areas of ownership.
+## RAG Corpus
 
-```ts
-// Every message type must be defined here
-type Message =
-  | { type: 'GENERATION_STARTED'; prompt: string }
-  | { type: 'GENERATION_ENDED' }
-  | { type: 'GET_QUIZ'; previousPrompt?: string }
-  | { type: 'QUIZ_ANSWERED'; correct: boolean }
-  | { type: 'QUIZ_SKIPPED' };
-```
+The corpus lives at `lib/rag/corpus.json` and is typed by `types/rag.ts`.
 
-## Key data types (`types/`)
+Each entry is a clean topic index chunk:
 
 ```ts
-type QuizMode = 'math' | 'prompt';
-type PromptCategory = 'coding' | 'math' | 'debugging' | 'generic';
-
-interface QuizQuestion {
+interface RetrievedChunk {
   id: string;
-  mode: QuizMode;
-  question: string;
-  options: string[];
-  correctIndex: number;
-  explanation?: string;
-}
-
-interface QuizContext {
-  currentPrompt: string;
-  previousPrompt?: string;
-  category: PromptCategory;
-  firstPrompt: boolean;
-}
-
-interface AppSettings {
-  enabled: boolean;
-  preferredMode: QuizMode | 'auto';
-  showGamification: boolean;
-}
-
-interface UserStats {
-  quizzesShown: number;
-  quizzesAnswered: number;
-  correctAnswers: number;
-  streak: number;
+  corpus: string;
+  category: string;
+  subcategory?: string;
+  chunkType?: 'topic';
+  createdAt?: string;
+  title: string;
+  promptHint: string;
+  topicSummary: string;
+  tags: string[];
+  keywords: string[];
+  text: string;
+  source: CorpusSource;
 }
 ```
 
-## Storage schema (`chrome.storage.local`)
+Avoid copying full Notion page bodies into the corpus. Use title, tags, created time, keywords, and neutral topic summaries. The provider should generate the actual quiz.
 
-```ts
-{
-  currentPrompt: string,      // prompt from the current/latest submission
-  previousPrompt: string,     // prompt from the submission before that
-  settings: AppSettings,
-  stats: UserStats,
-}
-```
+## Shared Message Contract
 
-On each prompt submission, swap `currentPrompt` into `previousPrompt` before writing the new one.
+All cross-boundary communication goes through typed messages in `types/messages.ts`. Never use raw strings for message types when a typed contract exists.
 
-## Generation detection notes
+## Storage
 
-- MutationObserver must be debounced (100–300ms) — streaming fires DOM events constantly
-- Target a specific stable container in ChatGPT's DOM, not `document.body`
-- Isolate all site-specific selectors inside `lib/detector.ts` so DOM changes only require edits in one place
-- The detector is the most brittle part of the extension — treat it as its own module with a clean interface
+Storage helpers live in `lib/storage.ts`. Quiz history stores the normalized `QuizQuestion`, answer result, and optional `QuizSource`. If you change source shape, update storage validation and review-hub rendering together.
 
-## Team ownership
+## Generation Detection Notes
 
-- **Person 1** — content script, DOM detection, prompt extraction, widget injection (`entrypoints/content.ts`, `lib/detector.ts`, `lib/dom.ts`)
-- **Person 2** — UI components, popup page, options page (`components/`, `entrypoints/popup/`)
-- **Person 3** — quiz engine, storage, message passing, background worker (`quiz/`, `lib/storage.ts`, `lib/messaging.ts`, `entrypoints/background.ts`)
+- MutationObserver callbacks must be debounced because streaming fires DOM events constantly.
+- Target stable ChatGPT containers instead of `document.body`.
+- Keep detector changes isolated in `lib/detector.ts`.
+- Treat the detector as brittle and verify manually after substantial changes.
 
-## MV3 constraint
+## MV3 Constraint
 
-Do not execute remotely hosted code or WASM. If adding a local model later (e.g. WebLLM, Transformers.js), the model weights must be bundled inside the extension package or fetched as data from an API — not executed as downloaded code.
+Do not execute remotely hosted code or WASM. Provider APIs may return data, but extension-executed code must be bundled locally.

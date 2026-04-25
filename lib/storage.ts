@@ -22,6 +22,7 @@ const MAX_QUIZ_ATTEMPTS = 100;
 const LEGACY_GEMINI_API_KEY_STORAGE_KEY = 'geminiApiKey';
 const PROVIDER_API_KEY_STORAGE_KEY = 'providerApiKey';
 const QUIZ_PROVIDER_STORAGE_KEY = 'quizProvider';
+const RECENT_QUIZ_SOURCE_IDS_STORAGE_KEY = 'recentQuizSourceIds';
 const QUIZ_QUESTION_TYPES: QuizQuestionType[] = [
   'concept_check',
   'application',
@@ -77,8 +78,8 @@ function isQuizSource(value: unknown): value is QuizSource {
     typeof candidate.corpus === 'string' &&
     typeof candidate.category === 'string' &&
     typeof candidate.title === 'string' &&
-    typeof candidate.question === 'string' &&
-    typeof candidate.answer === 'string' &&
+    typeof candidate.promptHint === 'string' &&
+    typeof candidate.topicSummary === 'string' &&
     Array.isArray(candidate.tags) &&
     candidate.tags.every((tag) => typeof tag === 'string') &&
     !!source &&
@@ -188,22 +189,60 @@ export async function getQuizAttempts(): Promise<QuizAttempt[]> {
 }
 
 export async function getRecentQuizSourceIds(limit = 5): Promise<string[]> {
-  const attempts = await getQuizAttempts();
+  const [attempts, result] = await Promise.all([
+    getQuizAttempts(),
+    chrome.storage.local.get(RECENT_QUIZ_SOURCE_IDS_STORAGE_KEY),
+  ]);
   const recentSourceIds: string[] = [];
   const seen = new Set<string>();
+  const shownSourceIds = result[RECENT_QUIZ_SOURCE_IDS_STORAGE_KEY];
+
+  const pushSourceId = (sourceId: unknown): boolean => {
+    if (typeof sourceId !== 'string') return false;
+    if (!sourceId || seen.has(sourceId)) return false;
+    seen.add(sourceId);
+    recentSourceIds.push(sourceId);
+    return recentSourceIds.length >= limit;
+  };
+
+  if (Array.isArray(shownSourceIds)) {
+    for (const sourceId of shownSourceIds) {
+      if (pushSourceId(sourceId)) {
+        return recentSourceIds;
+      }
+    }
+  }
 
   for (const attempt of attempts) {
     const sourceId = attempt.source?.id;
-    if (!sourceId || seen.has(sourceId)) continue;
-    seen.add(sourceId);
-    recentSourceIds.push(sourceId);
 
-    if (recentSourceIds.length >= limit) {
-      break;
+    if (pushSourceId(sourceId)) {
+      return recentSourceIds;
     }
   }
 
   return recentSourceIds;
+}
+
+export async function recordQuizSourceShown(
+  sourceId: string | undefined,
+  limit = 10
+): Promise<void> {
+  if (!sourceId) return;
+
+  const result = await chrome.storage.local.get(RECENT_QUIZ_SOURCE_IDS_STORAGE_KEY);
+  const existing = result[RECENT_QUIZ_SOURCE_IDS_STORAGE_KEY];
+  const existingSourceIds = Array.isArray(existing)
+    ? existing.filter((value): value is string => typeof value === 'string')
+    : [];
+  const nextSourceIds = [
+    sourceId,
+    ...existingSourceIds.filter((existingSourceId) => existingSourceId !== sourceId),
+  ].slice(0, limit);
+
+  await chrome.storage.local.set({
+    [RECENT_QUIZ_SOURCE_IDS_STORAGE_KEY]: nextSourceIds,
+  });
 }
 
 export async function getWidgetPosition(): Promise<WidgetPosition | null> {

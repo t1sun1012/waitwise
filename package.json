@@ -8,7 +8,7 @@
     "build": "wxt build",
     "zip": "wxt zip",
     "test:retriever": "node --test tests/retriever.test.mjs",
-    "test:rag": "node --test tests/retriever.test.mjs tests/queryBuilder.test.mjs tests/retrievalQuizGenerator.test.mjs tests/geminiProvider.test.mjs tests/providerAdapters.test.mjs tests/quizModeRouter.test.mjs"
+    "test:rag": "node --test tests/retriever.test.mjs tests/queryBuilder.test.mjs tests/geminiProvider.test.mjs tests/providerAdapters.test.mjs tests/quizModeRouter.test.mjs"
   },
   "dependencies": {
     "@wxt-dev/module-react": "^1.2.2",

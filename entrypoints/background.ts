@@ -7,6 +7,7 @@ import {
   getQuizProvider,
   recordAnswer,
   recordQuizShown,
+  recordQuizSourceShown,
 } from '../lib/storage';
 import type { Message } from '../types/messages';
 import type { ConversationContext, RankedRetrievedChunk } from '../types/rag';
@@ -57,8 +58,8 @@ function contextFitBonus(
 
   const searchableText = [
     chunk.title,
-    chunk.question,
-    chunk.answer,
+    chunk.promptHint,
+    chunk.topicSummary,
     chunk.text,
     chunk.category,
     chunk.subcategory,
@@ -209,11 +210,7 @@ export default defineBackground(() => {
 
           if (fallbackReason === 'retrieval-missing-api-key') {
             console.log(
-              `[wAItwise] ${quizProvider} API key not set, using local retrieval fallback`
-            );
-          } else if (fallbackReason === 'retrieval-low-confidence') {
-            console.log(
-              `[wAItwise] Retrieval match not confident enough for ${quizProvider}, using local fallback`
+              `[wAItwise] ${quizProvider} API key not set, using math fallback`
             );
           } else if (fallbackReason === 'retrieval-random-topic') {
             console.log(
@@ -253,18 +250,7 @@ export default defineBackground(() => {
             );
           }
 
-          if (quizMode === 'retrieval' && question.contextNote) {
-            console.log(
-              '[wAItwise] Retrieval quiz fallback -> random RAG question',
-              retrievedChunks[0]
-                ? {
-                    topChunkId: retrievedChunks[0].chunk.id,
-                    topScore: retrievedChunks[0].score,
-                    secondScore: retrievedChunks[1]?.score ?? null,
-                  }
-                : { topChunkId: null, topScore: null, secondScore: null }
-            );
-          }
+          await recordQuizSourceShown(question.source?.id);
 
           console.log('[wAItwise] Active quiz mode:', quizMode);
           console.log('[wAItwise] Active quiz provider:', quizProvider);

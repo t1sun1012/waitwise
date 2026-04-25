@@ -103,13 +103,15 @@ function createRankedChunk(id = 'python_flask_benefits_q13') {
     signals: [],
     chunk: {
       id,
-      corpus: 'data_science_interview_questions_answers',
+      corpus: 'notion_technical_interview',
       category: 'python',
       subcategory: 'flask',
+      chunkType: 'topic',
+      createdAt: '2024-02-17',
       title: 'Explain what Flask is and its benefits',
-      question: 'Explain what Flask is and its benefits.',
-      answer:
-        'Flask is a web framework that provides tools, libraries, and technologies for building web applications.',
+      promptHint: 'Generate a technical interview quiz about Flask.',
+      topicSummary:
+        'Topic index entry for Flask under Python. Open the source database for the original Notion notes.',
       tags: ['python', 'flask', 'framework'],
       keywords: ['flask', 'web framework'],
       text: 'Flask is a lightweight Python microframework.',

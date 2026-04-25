@@ -17,8 +17,8 @@ export interface QuizSource {
   chunkType?: CorpusChunkType;
   createdAt?: string;
   title: string;
-  question: string;
-  answer: string;
+  promptHint: string;
+  topicSummary: string;
   tags: string[];
   source: CorpusSource;
 }
