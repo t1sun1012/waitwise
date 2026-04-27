@@ -41,11 +41,19 @@ The current prototype runs on ChatGPT, watches generation state, and shows a qui
 ## User Workflow
 
 <figure class="doc-image-frame">
-  <img
-    class="theme-aware-diagram"
-    :src="withBase('/images/waitwise-user-workflow.png')"
-    alt="wAItwise user workflow from prompt submission through detection, mode choice, quiz generation, answering, and local review storage"
-  />
+  <a class="doc-image-link" :href="withBase('/images/waitwise-user-workflow.png')" target="_blank" rel="noopener">
+    <img
+      class="diagram-light"
+      :src="withBase('/images/waitwise-user-workflow.png')"
+      alt="wAItwise user workflow from prompt submission through detection, mode choice, quiz generation, answering, and local review storage"
+    />
+    <img
+      class="diagram-dark"
+      :src="withBase('/images/waitwise-user-workflow.png')"
+      alt=""
+      aria-hidden="true"
+    />
+  </a>
   <figcaption>
     The core user loop: submit a prompt, detect generation, choose the active mode, generate one quiz, answer it, and save the attempt locally for review.
   </figcaption>
