@@ -15,6 +15,14 @@
 
 wAItwise is a Chrome extension prototype that detects when ChatGPT is thinking and shows a lightweight quiz during that wait time. The goal is simple: instead of passively staring at the screen, the user gets one short prompt to think, review, or practice.
 
+## Project Docs
+
+The public documentation site is published with VitePress and GitHub Pages:
+
+[https://t1sun1012.github.io/waitwise/](https://t1sun1012.github.io/waitwise/)
+
+Docs source lives in `docs/`, and the GitHub Pages workflow lives in `.github/workflows/deploy-docs.yml`.
+
 The project now supports three different quiz experiences:
 
 - **Retrieval Review**: conceptual technical interview questions generated from a local Notion topic index
@@ -92,6 +100,7 @@ The corpus stores topic metadata such as titles, tags, created dates, keywords, 
 ```text
 waitwise/
 ├── components/
+├── docs/
 ├── entrypoints/
 ├── lib/
 │   ├── providers/
@@ -156,9 +165,14 @@ output/chrome-mv3
 npm install
 npm run build
 npm run test:rag
+npm run docs:dev
+npm run docs:build
+npm run docs:preview
 ```
 
 If you change the code, run `npm run build` again and then refresh the extension on `chrome://extensions`.
+
+If you change the documentation, run `npm run docs:build` before pushing. The docs deploy automatically to GitHub Pages when changes land on `main`.
 
 ## Status
 
