@@ -29,11 +29,17 @@
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   box-shadow: 0 16px 40px -28px rgba(15, 23, 42, 0.4);
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .vp-doc .doc-image-wide {
   overflow-x: auto;
   padding-bottom: 4px;
+}
+
+.dark .vp-doc .theme-aware-diagram {
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.86) brightness(0.94);
+  box-shadow: 0 18px 44px -26px rgba(0, 0, 0, 0.7);
 }
 
 .vp-doc .doc-image-frame figcaption {

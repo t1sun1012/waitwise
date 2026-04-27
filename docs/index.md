@@ -42,6 +42,7 @@ The current prototype runs on ChatGPT, watches generation state, and shows a qui
 
 <figure class="doc-image-frame">
   <img
+    class="theme-aware-diagram"
     :src="withBase('/images/waitwise-user-workflow.png')"
     alt="wAItwise user workflow from prompt submission through detection, mode choice, quiz generation, answering, and local review storage"
   />

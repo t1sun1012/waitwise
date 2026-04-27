@@ -8,6 +8,7 @@ wAItwise has four main layers connected by typed Chrome runtime messages.
 
 <figure class="doc-image-frame doc-image-wide">
   <img
+    class="theme-aware-diagram"
     :src="withBase('/images/waitwise-architecture-overview.png')"
     alt="wAItwise architecture overview showing ChatGPT page, content script, background worker, quiz engines, shared data layer, and review hub popup"
   />
