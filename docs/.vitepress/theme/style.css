@@ -16,3 +16,34 @@
 .custom-block.tip {
   border-color: rgba(15, 118, 110, 0.24);
 }
+
+.vp-doc .doc-image-frame {
+  margin: 28px 0;
+}
+
+.vp-doc .doc-image-frame img {
+  width: 100%;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px -28px rgba(15, 23, 42, 0.4);
+}
+
+.vp-doc .doc-image-wide {
+  margin-left: calc(50% - min(50vw, 560px));
+  margin-right: calc(50% - min(50vw, 560px));
+}
+
+.vp-doc .doc-image-frame figcaption {
+  margin-top: 10px;
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .vp-doc .doc-image-wide {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

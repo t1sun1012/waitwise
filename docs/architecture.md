@@ -1,6 +1,20 @@
 # Architecture
 
+<script setup>
+import { withBase } from 'vitepress';
+</script>
+
 wAItwise has four main layers connected by typed Chrome runtime messages.
+
+<figure class="doc-image-frame doc-image-wide">
+  <img
+    :src="withBase('/images/waitwise-architecture-overview.png')"
+    alt="wAItwise architecture overview showing ChatGPT page, content script, background worker, quiz engines, shared data layer, and review hub popup"
+  />
+  <figcaption>
+    Runtime overview: the ChatGPT page triggers the content script, the background worker routes quiz generation, shared storage keeps local state, and the popup provides settings and review history.
+  </figcaption>
+</figure>
 
 ## Content Script
 

@@ -28,11 +28,27 @@ features:
     details: Content script, background service worker, provider adapters, RAG utilities, storage helpers, and typed messages stay clearly separated.
 ---
 
+<script setup>
+import { withBase } from 'vitepress';
+</script>
+
 ## What This Project Is
 
 wAItwise explores a small product idea: while an AI system is generating, the user has a few seconds of attention available. Instead of letting that moment become passive waiting, wAItwise turns it into one compact prompt for recall, reflection, or practice.
 
 The current prototype runs on ChatGPT, watches generation state, and shows a quiz widget while ChatGPT is still working. It also includes a popup review hub where the user can configure quiz behavior and review past attempts.
+
+## User Workflow
+
+<figure class="doc-image-frame">
+  <img
+    :src="withBase('/images/waitwise-user-workflow.png')"
+    alt="wAItwise user workflow from prompt submission through detection, mode choice, quiz generation, answering, and local review storage"
+  />
+  <figcaption>
+    The core user loop: submit a prompt, detect generation, choose the active mode, generate one quiz, answer it, and save the attempt locally for review.
+  </figcaption>
+</figure>
 
 ## Current Prototype Scope
 
